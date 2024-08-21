@@ -1,0 +1,90 @@
+package com.myhotswap.runner;
+
+import com.intellij.execution.CantRunException;
+import com.intellij.execution.ExecutionException;
+import com.intellij.execution.JavaTestConfigurationBase;
+import com.intellij.execution.configurations.*;
+import com.intellij.execution.runners.ExecutionEnvironment;
+import com.intellij.ide.BrowserUtil;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.projectRoots.Sdk;
+import com.intellij.openapi.ui.Messages;
+import com.myhotswap.CheckResult;
+import com.myhotswap.JdkManager;
+import com.myhotswap.utils.MyUtils;
+import org.jetbrains.annotations.NotNull;
+
+import java.io.File;
+
+/**
+ * @author bruce ge 2024/8/20
+ */
+public interface MyRunner {
+    static void patchProfile(@NotNull JavaParameters javaParameters, @NotNull RunProfile runProfile) {
+        if (runProfile instanceof RunConfiguration) {
+            //get current jdk to check.
+            Sdk jdk1 = javaParameters.getJdk();
+            String homePath1 = jdk1.getHomePath();
+            CheckResult result = JdkManager.checkJdkHome(homePath1);
+            Sdk jdk = javaParameters.getJdk();
+            //get user jdk version. if this is from dcevm jdk, add the agent to it.
+//            String jdkPath = javaParameters.getJdkPath();
+            String homePath = jdk.getHomePath();
+            String versionString = jdk.getVersionString();
+            //check if the jdk is from jetbrain.
+            //check the version and replace with the decvm jdk.
+            //todo jvm 参数未来可以自定义
+            if (!(runProfile instanceof JavaTestConfigurationBase)) {
+                int javaVersion = result.getJavaVersion();
+                if(javaVersion==8) {
+                    File agentFile = new File(MyUtils.getHotSwapFolder() + "hotswap-agent.jar");
+                    if (!agentFile.exists()) {
+                        ApplicationManager.getApplication().invokeLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                Messages.showErrorDialog(((RunConfiguration) runProfile).getProject(),
+                                        "HotSwap agent jar not found", "Error");
+                            }
+                        });
+                        return;
+                    } else {
+                        javaParameters.getVMParametersList().addParametersString("-XXaltjvm=dcevm");
+                        javaParameters.getVMParametersList().addParametersString("-javaagent:" + agentFile.getPath());
+                    }
+                } else if(javaVersion==11){
+                    javaParameters.getVMParametersList().addParametersString("-XX:HotswapAgent=fatjar");
+                } else if(javaVersion==17){
+                    javaParameters.getVMParametersList().addParametersString("-XX:+AllowEnhancedClassRedefinition");
+                    javaParameters.getVMParametersList().addParametersString("-XX:HotswapAgent=fatjar");
+                }
+            }
+        }
+    }
+
+    static boolean checkJdk(@NotNull ExecutionEnvironment environment) throws ExecutionException {
+        RunProfileState currentState = environment.getState();
+        if (currentState == null) {
+            return true;
+        }
+        if(currentState instanceof JavaCommandLine){
+            JavaCommandLine theline = (JavaCommandLine) currentState;
+            JavaParameters javaParameters = theline.getJavaParameters();
+            Sdk jdk = javaParameters.getJdk();
+            String homePath = jdk.getHomePath();
+            if(homePath==null){
+                throw new CantRunException("please select jdk");
+            }
+            CheckResult result = JdkManager.checkJdkHome(homePath);
+            if(!result.isHasFound()){
+                ApplicationManager.getApplication().invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        BrowserUtil.browse("");
+                    }
+                });
+                throw new CantRunException("please download jdk from website, error is"+result.getErrorText());
+            }
+        }
+        return false;
+    }
+}

@@ -1,0 +1,14 @@
+### IntelliJ IDEA ###
+
+## 忽略其他配置文件，防止冲突
+.idea/
+.gradle/
+*.iml
+
+gradle.properties
+
+##忽略输出文件夹
+out/
+build/
+idea-sandbox
+jvmargs.txt
