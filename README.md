@@ -1,31 +1,29 @@
-## HotSwapHelper 基于HotSwapAgent热更新的Intellij插件
+## HotSwapHelper - IntelliJ Plugin Based on HotSwapAgent for Hot Code Swapping
 
-### 使用说明
-#### 安装jdk
+### Usage Instructions
+#### Install JDK
 
-1. https://github.com/gejun123456/HotSwapHelper/releases 根据自己的jdk版本去下载对应的jdk
-2. 下载后解压，idea配置为对应的jdk
-3. 安装了HotSwapHelper后在idea的debug按钮旁边有两个图标，点击即可热更新
-4. 查看日志中是否出现org.hotswap.agent.HotswapAgent字样，出现则代表加载成功了
+1. Visit [HotSwapHelper Releases](https://github.com/gejun123456/HotSwapHelper/releases) and download the JDK corresponding to your version.
+2. After downloading, extract the files and configure IntelliJ IDEA to use the corresponding JDK.
+3. Once HotSwapHelper is installed, two icons will appear next to the Debug button in IDEA. Click them to perform hot code swapping.
+4. Check the logs for the appearance of `org.hotswap.agent.HotswapAgent`. If it appears, the agent has been successfully loaded.
 
-### 支持框架
+### Supported Frameworks
 
-#### hotSwapAgent支持的插件都支持 包括以下
-springboot,springmvc,hibernate,mybatis,mybatis-plus,log4j等等，可以参考https://github.com/HotswapProjects/HotswapAgent
-目前已支持国内常见的springboot+mybatis项目
+#### All plugins supported by HotSwapAgent are also supported by HotSwapHelper, including:
+Spring Boot, Spring MVC, Hibernate, MyBatis, MyBatis-Plus, Log4j, etc. For more information, visit the [HotSwapAgent GitHub page](https://github.com/HotswapProjects/HotswapAgent).
 
-### 本地测试已通过的一些开源项目
-项目名称  | 地址 | 支持的地方 |更多说明
+Currently, the plugin supports common Spring Boot + MyBatis projects in China.
+
+### Open-Source Projects Tested Locally
+Project Name | URL | Supported Features | Additional Notes
 -----   |---| -----| -----
-若依 | https://github.com/yangzongzhuan/RuoYi  | 支持mybatis xml热加载 java热加载
-jeecg |https://github.com/jeecgboot/JeecgBoot | 支持mybatis xml热加载 java热加载
+RuoYi | [https://github.com/yangzongzhuan/RuoYi](https://github.com/yangzongzhuan/RuoYi)  | Supports MyBatis XML hot-swapping and Java hot-swapping |
+Jeecg | [https://github.com/jeecgboot/JeecgBoot](https://github.com/jeecgboot/JeecgBoot) | Supports MyBatis XML hot-swapping and Java hot-swapping |
 
-
-
-### 碰到问题
-
-可以联系我,加入qq群: [HotSwapHelper插件交流群](https://qm.qq.com/q/JQKyhlt4ke)
-或者发邮件给:gejun123456@gmail.com
-
+### Encountering Issues?
+Just issue on github or contact me following:
+You can contact me by joining the QQ group: [HotSwapHelper Plugin User Group](https://qm.qq.com/q/JQKyhlt4ke)
+Or send an email to: gejun123456@gmail.com
 
 
