@@ -3,6 +3,7 @@ package com.myhotswap.ui;
 import com.intellij.ide.BrowserUtil;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.DialogWrapper;
+import com.intellij.openapi.ui.Messages;
 import com.intellij.ui.components.labels.LinkLabel;
 import com.intellij.ui.components.labels.LinkListener;
 import com.intellij.uiDesigner.core.GridConstraints;
@@ -22,6 +23,7 @@ public class JdkNotSupportedDialog extends DialogWrapper {
     private LinkLabel qqGroupLink;
     private LinkLabel githubLink;
     private JLabel errorLabel;
+    private LinkLabel dontCheckJdk;
 
     public JdkNotSupportedDialog(@Nullable Project project, boolean canBeParent, String errorText) {
         super(project, canBeParent);
@@ -36,6 +38,14 @@ public class JdkNotSupportedDialog extends DialogWrapper {
             @Override
             public void linkSelected(LinkLabel aSource, Object aLinkData) {
                 BrowserUtil.browse("https://qm.qq.com/q/pOUouYAUsU");
+            }
+        }, null);
+
+        dontCheckJdk.setListener(new LinkListener() {
+            @Override
+            public void linkSelected(LinkLabel aSource, Object aLinkData) {
+                Messages.showInfoMessage(project, "Current is not supported, Will be avaliable in future plugin versions", "Not Check Jdk");
+                return;
             }
         }, null);
         setTitle("Current Jdk Is Not Supported");
@@ -60,7 +70,7 @@ public class JdkNotSupportedDialog extends DialogWrapper {
         panel1 = new JPanel();
         panel1.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
         thePanel = new JPanel();
-        thePanel.setLayout(new GridLayoutManager(5, 2, new Insets(0, 0, 0, 0), -1, -1));
+        thePanel.setLayout(new GridLayoutManager(6, 2, new Insets(0, 0, 0, 0), -1, -1));
         panel1.add(thePanel, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         final JLabel label1 = new JLabel();
         label1.setText("current jdk is not supported");
@@ -68,7 +78,7 @@ public class JdkNotSupportedDialog extends DialogWrapper {
         final Spacer spacer1 = new Spacer();
         thePanel.add(spacer1, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, 1, null, null, null, 0, false));
         final Spacer spacer2 = new Spacer();
-        thePanel.add(spacer2, new GridConstraints(4, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL, 1, GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
+        thePanel.add(spacer2, new GridConstraints(5, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL, 1, GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
         final JLabel label2 = new JLabel();
         label2.setText("error is:");
         thePanel.add(label2, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
@@ -87,6 +97,9 @@ public class JdkNotSupportedDialog extends DialogWrapper {
         qqGroupLink = new LinkLabel();
         qqGroupLink.setText("qq群");
         thePanel.add(qqGroupLink, new GridConstraints(3, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        dontCheckJdk = new LinkLabel();
+        dontCheckJdk.setText("don't check jdk");
+        thePanel.add(dontCheckJdk, new GridConstraints(4, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
     }
 
     /**
