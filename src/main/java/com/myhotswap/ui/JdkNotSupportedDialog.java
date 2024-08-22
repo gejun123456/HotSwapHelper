@@ -44,7 +44,7 @@ public class JdkNotSupportedDialog extends DialogWrapper {
         dontCheckJdk.setListener(new LinkListener() {
             @Override
             public void linkSelected(LinkLabel aSource, Object aLinkData) {
-                Messages.showInfoMessage(project, "Current is not supported, Will be avaliable in future plugin versions", "Not Check Jdk");
+                Messages.showInfoMessage(project, "Current is not supported, Will be available in future plugin versions", "Not Check Jdk");
                 return;
             }
         }, null);
