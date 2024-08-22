@@ -1,68 +1,16 @@
 <idea-plugin>
     <id>com.bruce.hotswapHelper</id>
     <name>HotSwapHelper</name>
-    <vendor email="gejun123456@gmail.com" url="https://github.com/gejun123456/HotSwapIntellij">bruce-ge</vendor>
+    <vendor email="gejun123456@gmail.com" url="https://github.com/gejun123456/HotSwapHelper">bruce-ge</vendor>
     <description><![CDATA[
-        <tag>HotswapAgent is a powerful tool that allows you to modify your code and see the changes immediately without restarting your application.
-            It integrates seamlessly with popular JVM-based frameworks,
-            enabling faster development cycles and more efficient debugging.</tag>
-        <ul>
-            <li>HotswapAgent is a powerful tool for Java applications, primarily designed for enabling hot code swapping.</li>
-            <li>During development, HotswapAgent allows you to modify your code without restarting the application, letting you see the changes immediately, which greatly enhances development efficiency.</li>
-            <li>
-                <title>Core Features</title>
-                <ul>
-                    <li>Instant Code Updates: HotswapAgent enables dynamic class replacement in a running application without the need to restart or redeploy.</li>
-                    <li>Framework Support: HotswapAgent seamlessly integrates with popular JVM frameworks like Spring and Hibernate, ensuring that your code changes take effect instantly.</li>
-                    <li>Flexible Configuration: HotswapAgent offers various configuration options, allowing developers to adjust the hot swapping behavior to suit their specific project needs.</li>
-                </ul>
-            </li>
-            <li>
-                <title>Why Choose HotswapAgent?</title>
-                <ul>
-                    <li>HotswapAgent eliminates the time wasted on frequent application restarts, making code modification and debugging much more efficient.</li>
-                    <li>It reduces development workflow interruptions caused by restarts, enabling developers to stay focused on the code itself.</li>
-                </ul>
-            </li>
-            <li>
-                <title>Use Cases</title>
-                <ul>
-                    <li>HotswapAgent is suitable for Java projects of all sizes, particularly in scenarios with long development cycles or frequent modification and debugging needs.</li>
-                    <li>Whether you’re an individual developer or part of a team, HotswapAgent is the ideal choice for accelerating your development process.</li>
-                </ul>
-            </li>
-
-            <li>Overall, HotswapAgent is an indispensable tool that provides Java developers with a seamless, instant code update experience.</li>
-        </ul>
+        <div>
+            <p>Based on HotSwapAgent, reload code without restarting the application.</p>
+            <p>Support many framework like spring,hibernate,mybatis ect</p>
+        </div>
         <h3>中文：</h3>
-        <ul>
-            <li>HotswapAgent 是一个用于 Java 应用的强大工具，主要功能是实现代码的热加载。</li>
-            <li>在开发过程中，HotswapAgent 可以让你在不重启应用的情况下，对代码进行修改并立即看到效果，从而大大提高了开发效率。</li>
-            <li>
-                <title>核心功能</title>
-                <ul>
-                    <li>即时代码更新：HotswapAgent 允许你在运行中的应用中动态替换类文件，无需重新启动或重新部署应用。</li>
-                    <li>框架支持：HotswapAgent 与 Spring、Hibernate,mybatis等流行的 JVM 框架无缝集成，确保代码更新能即时生效。</li>
-                    <li>灵活的配置：HotswapAgent 提供多种配置选项，允许开发者根据具体需求调整热加载的行为。</li>
-                    <li>支持spring mybatis项目更新xml或者java类立即热部署</li>
-                </ul>
-            </li>
-            <li>
-                <title>选择 HotswapAgent 的理由</title>
-                <ul>
-                    <li>HotswapAgent 解决了频繁重启应用带来的时间浪费问题，使得代码修改和调试更加高效。</li>
-                    <li>它减少了因重启应用导致的开发流程中断，让开发者可以专注于代码本身。</li>
-                </ul>
-            </li>
-            <li>
-                <title>适用场景</title>
-                <ul>
-                    <li>HotswapAgent 适用于各种规模的 Java 项目，特别是在开发周期较长或需要频繁修改和调试的项目中。</li>
-                    <li>无论是个人开发者还是团队合作，HotswapAgent 都是加速开发流程的理想选择。</li>
-                </ul>
-            </li>
-
-            <li>总之，HotswapAgent 是一个不可或缺的工具，为 Java 开发者提供了无缝、即时的代码更新体验。</li>
+        <p>基于HotSwapAgent开发的idea插件,实现热部署功能，支持spring,hibernate,mybatis等框架</p>
+        <p>jrebel的免费替代</p>
+        <p>测试已支持若依等项目，支持xml和java文件热部署</p>
         ]]></description>
 
     <change-notes><![CDATA[
