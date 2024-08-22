@@ -1,7 +1,7 @@
 <idea-plugin>
-    <id>com.bruce.hotswapAgent</id>
-    <name>HotSwapAgent</name>
-    <vendor email="gejun123456@gmail.com" url="https://github.com/gejun123456/IntellijHotSwap">bruce-ge</vendor>
+    <id>com.bruce.hotswapHelper</id>
+    <name>HotSwapHelper</name>
+    <vendor email="gejun123456@gmail.com" url="https://github.com/gejun123456/HotSwapIntellij">bruce-ge</vendor>
     <description><![CDATA[
         <tag>HotswapAgent is a powerful tool that allows you to modify your code and see the changes immediately without restarting your application.
             It integrates seamlessly with popular JVM-based frameworks,
