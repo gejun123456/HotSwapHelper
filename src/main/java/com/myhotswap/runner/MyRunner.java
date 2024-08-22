@@ -11,6 +11,7 @@ import com.intellij.openapi.projectRoots.Sdk;
 import com.intellij.openapi.ui.Messages;
 import com.myhotswap.CheckResult;
 import com.myhotswap.JdkManager;
+import com.myhotswap.ui.JdkNotSupportedDialog;
 import com.myhotswap.utils.MyUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -43,7 +44,8 @@ public interface MyRunner {
                             @Override
                             public void run() {
                                 Messages.showErrorDialog(((RunConfiguration) runProfile).getProject(),
-                                        "HotSwap agent jar not found", "Error");
+                                        "HotSwap agent jar not found,please add issue to github" +
+                                        "https://github.com/gejun123456/HotSwapIntellij", "Error");
                             }
                         });
                         return;
@@ -74,15 +76,17 @@ public interface MyRunner {
             if(homePath==null){
                 throw new CantRunException("please select jdk");
             }
+            //add setting to not check jdk.
             CheckResult result = JdkManager.checkJdkHome(homePath);
             if(!result.isHasFound()){
                 ApplicationManager.getApplication().invokeLater(new Runnable() {
                     @Override
                     public void run() {
-                        BrowserUtil.browse("");
+                        JdkNotSupportedDialog dialog = new JdkNotSupportedDialog(environment.getProject(),true,result.getErrorText());
+                        dialog.show();
                     }
                 });
-                throw new CantRunException("please download jdk from website, error is"+result.getErrorText());
+                return true;
             }
         }
         return false;
