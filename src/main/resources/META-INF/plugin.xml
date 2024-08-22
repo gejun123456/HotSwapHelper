@@ -23,7 +23,7 @@
         ]]></change-notes>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-    <idea-version since-build="191"/>
+    <idea-version since-build="192"/>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->
@@ -48,11 +48,11 @@
 
     <actions>
         <group>
-            <action id="com.hotswap.plugin.action.HotSwapAction" icon="PluginIcons.ICON_16"
+            <action id="com.hotswap.plugin.action.HotSwapAction" icon="/icons/icon.png"
                     class="com.myhotswap.HotSwapAction" text="HotSwapAgent" description="HotSwapAgent">
             </action>
 
-            <action id="com.hotswap.plugin.action.HotSwapDebugAction" icon="PluginIcons.ICONDBUG_16"
+            <action id="com.hotswap.plugin.action.HotSwapDebugAction" icon="/icons/rotate.png"
                     class="com.myhotswap.HotSwapDebugAction" text="HotSwapAgentDebug" description="HotSwapAgentDebug">
             </action>
             <add-to-group group-id="RunDashboardContentToolbar" anchor="last"/>
