@@ -13,9 +13,11 @@ import com.myhotswap.CheckResult;
 import com.myhotswap.JdkManager;
 import com.myhotswap.ui.JdkNotSupportedDialog;
 import com.myhotswap.utils.MyUtils;
+import org.apache.commons.io.FileUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
+import java.io.InputStream;
 
 /**
  * @author bruce ge 2024/8/20
@@ -87,6 +89,25 @@ public interface MyRunner {
                     }
                 });
                 return true;
+            }
+            //copy the hotwap agent file to the folder if 11 or 17.
+            if(result.getJavaVersion()>8){
+                try {
+                    // make sure to use with the least version in plugin resource.
+                    // user can config it later if needed.
+                    //copy the hotswap agent to the place.
+                    File agentFile = new File(homePath, "lib/hotswap/hotswap-agent.jar");
+                    //copy the stream to the file.
+                    if (agentFile.exists()) {
+                        agentFile.delete();
+                    }
+                    InputStream resourceAsStream = JdkManager.class.getClassLoader().getResourceAsStream("hotswap-agent.jar");
+                    //copy resource to the file
+                    FileUtils.copyInputStreamToFile(resourceAsStream, agentFile);
+                    resourceAsStream.close();
+                }catch (Exception e){
+                    //ignore this.
+                }
             }
         }
         return false;
