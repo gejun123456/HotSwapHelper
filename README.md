@@ -1,7 +1,6 @@
 ## HotSwapHelper - IntelliJ Plugin Based on HotSwapAgent for Hot Code Swapping
-
+[中文文档](https://github.com/gejun123456/HotSwapHelper/blob/master/README_CN.md)
 ### Usage Instructions
-#### Install JDK
 
 1. Visit [HotSwapHelper Releases](https://github.com/gejun123456/HotSwapHelper/releases) and download the JDK corresponding to your version.
 2. After downloading, extract the files and configure IntelliJ IDEA to use the corresponding JDK.
