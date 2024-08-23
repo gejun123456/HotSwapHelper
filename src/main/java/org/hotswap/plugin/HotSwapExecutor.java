@@ -1,8 +1,6 @@
-package com.myhotswap;
+package org.hotswap.plugin;
 
-import com.intellij.coverage.CoverageBundle;
 import com.intellij.execution.Executor;
-import com.intellij.icons.AllIcons.General;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.openapi.util.text.TextWithMnemonic;
 import org.jetbrains.annotations.NonNls;

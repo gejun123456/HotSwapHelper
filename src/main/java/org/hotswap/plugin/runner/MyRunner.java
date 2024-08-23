@@ -1,18 +1,17 @@
-package com.myhotswap.runner;
+package org.hotswap.plugin.runner;
 
 import com.intellij.execution.CantRunException;
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.JavaTestConfigurationBase;
 import com.intellij.execution.configurations.*;
 import com.intellij.execution.runners.ExecutionEnvironment;
-import com.intellij.ide.BrowserUtil;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.projectRoots.Sdk;
 import com.intellij.openapi.ui.Messages;
-import com.myhotswap.CheckResult;
-import com.myhotswap.JdkManager;
-import com.myhotswap.ui.JdkNotSupportedDialog;
-import com.myhotswap.utils.MyUtils;
+import org.hotswap.plugin.CheckResult;
+import org.hotswap.plugin.JdkManager;
+import org.hotswap.plugin.ui.JdkNotSupportedDialog;
+import org.hotswap.plugin.utils.MyUtils;
 import org.apache.commons.io.FileUtils;
 import org.jetbrains.annotations.NotNull;
 

@@ -1,8 +1,7 @@
-package com.myhotswap;
+package org.hotswap.plugin;
 
-import com.intellij.openapi.externalSystem.service.remote.RawExternalSystemProjectResolver;
 import com.intellij.util.lang.JavaVersion;
-import com.myhotswap.utils.MyUtils;
+import org.hotswap.plugin.utils.MyUtils;
 
 import java.io.File;
 import java.io.FileInputStream;

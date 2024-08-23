@@ -1,4 +1,4 @@
-package com.myhotswap;
+package org.hotswap.plugin;
 
 import com.intellij.openapi.util.IconLoader;
 

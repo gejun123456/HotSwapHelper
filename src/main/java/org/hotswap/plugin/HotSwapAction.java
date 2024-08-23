@@ -1,16 +1,11 @@
-package com.myhotswap;
+package org.hotswap.plugin;
 
-import com.intellij.execution.ExecutionBundle;
 import com.intellij.execution.Executor;
 import com.intellij.execution.ExecutorRegistry;
 import com.intellij.execution.dashboard.actions.ExecutorAction;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.Presentation;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.roots.ProjectRootManager;
-import com.intellij.openapi.wm.ToolWindowId;
 import org.jetbrains.annotations.NotNull;
 
 /**

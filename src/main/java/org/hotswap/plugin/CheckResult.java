@@ -1,4 +1,4 @@
-package com.myhotswap;
+package org.hotswap.plugin;
 
 /**
  * @author bruce ge 2024/8/19

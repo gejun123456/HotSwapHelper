@@ -1,12 +1,10 @@
-package com.myhotswap.runner;
+package org.hotswap.plugin.runner;
 
 import com.intellij.debugger.impl.GenericDebuggerRunner;
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.configurations.*;
 import com.intellij.execution.runners.ExecutionEnvironment;
-import com.intellij.execution.runners.RunConfigurationWithSuppressedDefaultRunAction;
-import com.myhotswap.HotSwapDebugExecutor;
-import com.myhotswap.HotSwapExecutor;
+import org.hotswap.plugin.HotSwapDebugExecutor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -19,7 +17,7 @@ public class HotSwapDebugRunner extends GenericDebuggerRunner implements MyRunne
     @Override
     public void patch(@NotNull JavaParameters javaParameters, @Nullable RunnerSettings settings, @NotNull RunProfile runProfile, boolean beforeExecution) throws ExecutionException {
         super.patch(javaParameters, settings, runProfile, beforeExecution);
-        MyRunner.patchProfile(javaParameters, runProfile);
+        patchProfile(javaParameters, runProfile);
     }
 
     @Override
@@ -31,7 +29,7 @@ public class HotSwapDebugRunner extends GenericDebuggerRunner implements MyRunne
 
     @Override
     public void execute(@NotNull ExecutionEnvironment environment) throws ExecutionException {
-        if (MyRunner.checkJdk(environment)) return;
+        if (checkJdk(environment)) return;
         super.execute(environment);
     }
 }
