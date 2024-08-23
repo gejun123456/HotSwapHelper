@@ -22,6 +22,21 @@ springboot,springmvc,hibernate,mybatis,mybatis-plus,log4j等等，可以参考ht
 jeecg |https://github.com/jeecgboot/JeecgBoot | 支持mybatis xml热加载 java热加载
 
 
+### 常见问题
+
+#### java17使用run修改代码不生效
+可以使用debug with hotSwap
+
+### 修改xml后编译报错  java.nio.channels.ReadableByteChannel sun.nio.ch.ChannelInputStream.ch accessible: module java.base does not "opens sun.nio.ch" to unnamed module @8297b3a
+
+加入vm参数 
+--add-opens java.base/sun.nio.ch=ALL-UNNAMED   
+--add-opens=java.base/java.lang=ALL-UNNAMED  
+--add-opens=java.base/java.lang.reflect=ALL-UNNAMED  
+--add-opens=java.base/java.io=ALL-UNNAMED  
+--add-exports=jdk.unsupported/sun.misc=ALL-UNNAMED  
+
+
 
 ### 碰到问题
 
