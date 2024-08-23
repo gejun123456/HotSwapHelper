@@ -1,4 +1,6 @@
 ## HotSwapHelper - IntelliJ Plugin Based on HotSwapAgent for Hot Code Swapping
+
+[![Jetbrains Plugins](https://img.shields.io/jetbrains/plugin/v/25171-a8translate.svg)][plugin]  
 [中文文档](https://github.com/gejun123456/HotSwapHelper/blob/master/README_CN.md)
 ### Usage Instructions
 
@@ -28,5 +30,6 @@ Or send an email to: gejun123456@gmail.com
 
 ### ScreenShot
 ![runAndDebug](https://raw.githubusercontent.com/gejun123456/HotSwapHelper/master/screenShot/RunAndDebugIcon.png)
+![changeCodeAndWork](https://raw.githubusercontent.com/gejun123456/HotSwapHelper/master/screenShot/HotSwapHelperChangeCodeWork.gif)
 
-
+[plugin]: https://plugins.jetbrains.com/plugin/25171
