@@ -3,7 +3,7 @@
 ### 使用说明
 #### 安装jdk
 
-1. https://github.com/gejun123456/HotSwapHelper/releases 根据自己的jdk版本去下载对应的jdk
+1. https://github.com/gejun123456/HotSwapHelper/releases 根据自己的jdk版本去下载对应的jdk或者去qq群下载
 2. 下载后解压，idea配置为对应的jdk
 3. 安装了HotSwapHelper后在idea的debug按钮旁边有两个图标，点击即可热更新
 4. 查看日志中是否出现org.hotswap.agent.HotswapAgent字样，出现则代表加载成功了
