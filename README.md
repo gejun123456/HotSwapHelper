@@ -6,6 +6,7 @@
 2. After downloading, extract the files and configure IntelliJ IDEA to use the corresponding JDK.
 3. Once HotSwapHelper is installed, two icons will appear next to the Debug button in IDEA. Click them to perform hot code swapping.
 4. Check the logs for the appearance of `org.hotswap.agent.HotswapAgent`. If it appears, the agent has been successfully loaded.
+5. After change code, need recompile the project(Ctrl+F9), then it will automatically hot swap.
 
 ### Supported Frameworks
 
