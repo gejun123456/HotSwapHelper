@@ -27,7 +27,7 @@ jeecg |https://github.com/jeecgboot/JeecgBoot | 支持mybatis xml热加载 java�
 #### java17使用run修改代码不生效
 可以使用debug with hotSwap
 
-### 修改xml后编译报错  java.nio.channels.ReadableByteChannel sun.nio.ch.ChannelInputStream.ch accessible: module java.base does not "opens sun.nio.ch" to unnamed module @8297b3a
+#### 修改xml后编译报错  java.nio.channels.ReadableByteChannel sun.nio.ch.ChannelInputStream.ch accessible: module java.base does not "opens sun.nio.ch" to unnamed module @8297b3a
 
 加入vm参数 
 --add-opens java.base/sun.nio.ch=ALL-UNNAMED   
@@ -35,6 +35,8 @@ jeecg |https://github.com/jeecgboot/JeecgBoot | 支持mybatis xml热加载 java�
 --add-opens=java.base/java.lang.reflect=ALL-UNNAMED  
 --add-opens=java.base/java.io=ALL-UNNAMED  
 --add-exports=jdk.unsupported/sun.misc=ALL-UNNAMED  
+
+#### 其他问题也可以查看HotSwapAgent 看看是否支持或者去提交issue https://github.com/HotswapProjects/HotswapAgent
 
 
 
