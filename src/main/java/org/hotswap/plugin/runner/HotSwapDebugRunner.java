@@ -17,7 +17,7 @@ public class HotSwapDebugRunner extends GenericDebuggerRunner implements MyRunne
     @Override
     public void patch(@NotNull JavaParameters javaParameters, @Nullable RunnerSettings settings, @NotNull RunProfile runProfile, boolean beforeExecution) throws ExecutionException {
         super.patch(javaParameters, settings, runProfile, beforeExecution);
-        patchProfile(javaParameters, runProfile);
+        MyRunner.patchProfile(javaParameters, runProfile);
     }
 
     @Override
@@ -29,7 +29,7 @@ public class HotSwapDebugRunner extends GenericDebuggerRunner implements MyRunne
 
     @Override
     public void execute(@NotNull ExecutionEnvironment environment) throws ExecutionException {
-        if (checkJdk(environment)) return;
+        if (MyRunner.checkJdk(environment)) return;
         super.execute(environment);
     }
 }
