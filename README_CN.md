@@ -38,7 +38,7 @@ jeecg |https://github.com/jeecgboot/JeecgBoot | 支持mybatis xml热加载 java�
 
 #### 为什么需要下载一个 jdk？
 [HotSwapHelper Releases](https://github.com/gejun123456/HotSwapHelper/releases)这里提供的 jdk 包含了dcevm 和hotswap 文件夹，统一在一个位置，
-支持更好的热加载功能，比如类加减字段和方法等。
+dcevm用来支持更好的热加载功能，比如类加减字段和方法等。
 无需自己再去安装dcevm或者根据jdk版本去查对应的jdk加入agent文件等，方便用户使用。
 如果您不喜欢这种方式，您可以根据文档[HotSwapAgent GitHub page](https://github.com/HotswapProjects/HotswapAgent)自行安装
 
