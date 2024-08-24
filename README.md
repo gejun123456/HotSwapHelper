@@ -23,6 +23,14 @@ Project Name | URL | Supported Features | Additional Notes
 RuoYi | [https://github.com/yangzongzhuan/RuoYi](https://github.com/yangzongzhuan/RuoYi)  | Supports MyBatis XML hot-swapping and Java hot-swapping |
 Jeecg | [https://github.com/jeecgboot/JeecgBoot](https://github.com/jeecgboot/JeecgBoot) | Supports MyBatis XML hot-swapping and Java hot-swapping |
 
+
+### Common Question?
+
+#### Why need to download a jdk?
+The jdk provided by [HotSwapHelper Releases](https://github.com/gejun123456/HotSwapHelper/releases) has package 
+dcevm with hotswap folder into it, so you don't need to install dcevm separately.
+If you don't like it, you can always install by yourself from doc:[HotSwapAgent GitHub page](https://github.com/HotswapProjects/HotswapAgent).
+
 ### Encountering Issues?
 Just issue on github or contact me following:
 You can contact me by joining the QQ group: [HotSwapHelper Plugin User Group](https://qm.qq.com/q/JQKyhlt4ke)

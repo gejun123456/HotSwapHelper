@@ -27,7 +27,7 @@ jeecg |https://github.com/jeecgboot/JeecgBoot | 支持mybatis xml热加载 java�
 #### java17使用run修改代码不生效
 可以使用debug with hotSwap
 
-#### 修改xml后编译报错  java.nio.channels.ReadableByteChannel sun.nio.ch.ChannelInputStream.ch accessible: module java.base does not "opens sun.nio.ch" to unnamed module @8297b3a
+#### java17启动报错 java.nio.channels.ReadableByteChannel sun.nio.ch.ChannelInputStream.ch accessible: module java.base does not "opens sun.nio.ch" to unnamed module @8297b3a
 
 加入vm参数 
 --add-opens java.base/sun.nio.ch=ALL-UNNAMED   
@@ -36,12 +36,15 @@ jeecg |https://github.com/jeecgboot/JeecgBoot | 支持mybatis xml热加载 java�
 --add-opens=java.base/java.io=ALL-UNNAMED  
 --add-exports=jdk.unsupported/sun.misc=ALL-UNNAMED  
 
+#### 为什么需要下载一个 jdk？
+[HotSwapHelper Releases](https://github.com/gejun123456/HotSwapHelper/releases)这里提供的 jdk 包含了dcevm 和hotswap 文件夹，统一在一个位置，
+支持更好的热加载功能，比如类加减字段和方法等。
+无需自己再去安装dcevm或者根据jdk版本去查对应的jdk加入agent文件等，方便用户使用。
+如果您不喜欢这种方式，您可以根据文档[HotSwapAgent GitHub page](https://github.com/HotswapProjects/HotswapAgent)自行安装
+
 #### 其他问题也可以查看HotSwapAgent 看看是否支持或者去提交issue https://github.com/HotswapProjects/HotswapAgent
 
-
-
 ### 碰到问题
-
 可以联系我,加入qq群: [HotSwapHelper插件交流群](https://qm.qq.com/q/JQKyhlt4ke)
 或者发邮件给:gejun123456@gmail.com
 
