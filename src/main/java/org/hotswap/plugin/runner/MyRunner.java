@@ -59,6 +59,11 @@ public interface MyRunner {
                 } else if(javaVersion==17){
                     javaParameters.getVMParametersList().addParametersString("-XX:+AllowEnhancedClassRedefinition");
                     javaParameters.getVMParametersList().addParametersString("-XX:HotswapAgent=fatjar");
+                    //add --add-opens
+                    javaParameters.getVMParametersList().addParametersString("--add-opens java.base/sun.nio.ch=ALL-UNNAMED");
+                    javaParameters.getVMParametersList().addParametersString("--add-opens=java.base/java.lang=ALL-UNNAMED");
+                    javaParameters.getVMParametersList().addParametersString("--add-opens=java.base/java.lang.reflect=ALL-UNNAMED");
+                    javaParameters.getVMParametersList().addParametersString("--add-opens=java.base/java.io=ALL-UNNAMED");
                 }
             }
         }

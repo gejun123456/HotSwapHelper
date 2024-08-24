@@ -14,6 +14,10 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>1.0.1</p>
+        <ul>
+            <li>1.Fix java17 module java.base does not "opens sun.nio.ch" to unnamed module </li>
+        </ul>
         <p>1.0.0</p>
         <ul>
             <li>1.Support run with hotswap agent</li>
