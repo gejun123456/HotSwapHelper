@@ -95,7 +95,7 @@
           <component id="7193d" class="javax.swing.JCheckBox" binding="useExternalAgentFileCheckBox" default-binding="true">
             <constraints border-constraint="West"/>
             <properties>
-              <text value="useExternalAgentFile"/>
+              <text value="useExternalAgentFileForCurrentProject"/>
             </properties>
           </component>
         </children>

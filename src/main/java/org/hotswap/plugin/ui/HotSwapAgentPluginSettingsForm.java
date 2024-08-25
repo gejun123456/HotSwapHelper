@@ -106,7 +106,7 @@ public class HotSwapAgentPluginSettingsForm {
         panel4.setLayout(new BorderLayout(0, 0));
         rootPanel.add(panel4, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_VERTICAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         useExternalAgentFileCheckBox = new JCheckBox();
-        useExternalAgentFileCheckBox.setText("useExternalAgentFile");
+        useExternalAgentFileCheckBox.setText("useExternalAgentFileForCurrentProject");
         panel4.add(useExternalAgentFileCheckBox, BorderLayout.WEST);
         final Spacer spacer1 = new Spacer();
         rootPanel.add(spacer1, new GridConstraints(2, 0, 1, 4, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL, 1, GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));

@@ -25,7 +25,7 @@ apply plugin: 'kotlin'
 
 
 group 'com.bruce.plugins'
-version '1.0.1'
+version '1.0.2'
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
