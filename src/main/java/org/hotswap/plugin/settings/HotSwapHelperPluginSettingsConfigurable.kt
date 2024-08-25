@@ -27,6 +27,7 @@ import com.intellij.ui.DocumentAdapter
 import com.intellij.util.execution.ParametersListUtil
 import org.apache.commons.lang.StringUtils
 import org.hotswap.plugin.ui.HotSwapAgentPluginSettingsForm
+import java.awt.CardLayout
 import java.util.*
 import javax.swing.JComponent
 import javax.swing.event.DocumentEvent
@@ -65,7 +66,7 @@ class HotSwapHelperPluginSettingsConfigurable(project: Project) : Configurable {
 //        stateProvider.currentState.enableAgentForAllConfiguration = form.applyAgentToAllConfigurationsBox.isSelected
 //        stateProvider.currentState.selectedRunConfigurations = form.configurationTableProvider.getSelectedConfigurationNames()
         stateProvider.currentState.disabledPlugins = form.disabledPluginsField.text.parse()
-        showUpdateButton()
+//        showUpdateButton()
         stateChanged = false
     }
 
@@ -133,6 +134,7 @@ class HotSwapHelperPluginSettingsConfigurable(project: Project) : Configurable {
     }
 
     private fun showUpdateButton() {
+        (form.updateButtonPanel.layout as CardLayout).show(form.updateButtonPanel, "cardWithUpdateButton")
 //        val currentVersion = HotSwapAgentPathUtil.determineAgentVersionFromPath(stateProvider.currentState.agentPath)
 //        val show = currentVersion != null && File(stateProvider.currentState.agentPath).exists() && downloadManager.isLatestAgentVersionAvailable(currentVersion)
 //        if (show) {
