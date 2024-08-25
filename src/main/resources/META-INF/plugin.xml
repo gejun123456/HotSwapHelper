@@ -47,6 +47,14 @@
         <programRunner implementation="org.hotswap.plugin.runner.HotSwapRunner"/>
         <programRunner implementation="org.hotswap.plugin.runner.HotSwapDebugRunner"/>
         <java.programPatcher implementation="org.hotswap.plugin.runner.HotswapPatcher"/>
+        <projectConfigurable instance="org.hotswap.plugin.settings.HotSwapHelperPluginSettingsConfigurable"
+                             bundle="HotSwapHelperIntellijPluginBundle"
+                             groupId="tools"
+                             nonDefaultProject="true"
+                             key="settings.hotswap.plugin.name">
+        </projectConfigurable>
+
+        <projectService id="stateProvider" serviceImplementation="org.hotswap.plugin.settings.HotSwapHelperPluginSettingsProvider"/>
 
     </extensions>
 

@@ -40,9 +40,9 @@ add vm parameters:
 plugin 1.0.1 version will fix the issue.  
 
 ### Encountering Issues?
-Just issue on github or contact me following:
-You can contact me by joining the QQ group: [HotSwapHelper Plugin User Group](https://qm.qq.com/q/JQKyhlt4ke)
-Or send an email to: gejun123456@gmail.com
+Just issue on github or contact me following:  
+You can contact me by joining the QQ group: [HotSwapHelper Plugin User Group](https://qm.qq.com/q/JQKyhlt4ke)  
+Or send an email to: gejun123456@gmail.com  
 
 ### ScreenShot
 ![runAndDebug](https://raw.githubusercontent.com/gejun123456/HotSwapHelper/master/screenShot/RunAndDebugIcon.png)
