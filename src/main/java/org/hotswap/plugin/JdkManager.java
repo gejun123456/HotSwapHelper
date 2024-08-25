@@ -72,17 +72,18 @@ public class JdkManager {
                         } else {
                             result.setHasFound(false);
                             result.setErrorText("hotSwap file not exist in your jdk home," +
-                                                "the path is"+file.getAbsolutePath()+"please download jdk in release");
+                                                "the path is"+file.getAbsolutePath()+" please download jdk in github release");
                             return result;
                         }
                     } else if(feature>=17){
+                        //todo maybe just check if current is jbr?
                         if(file.exists()){
                             result.setHasFound(true);
                             result.setJavaVersion(feature);
                             return result;
                         } else {
                             result.setHasFound(false);
-                            result.setErrorText("hotSwap file not exist in your jdk home,"+file.getAbsolutePath()+"please download jdk in release");
+                            result.setErrorText("hotSwap file not exist in your jdk home,"+file.getAbsolutePath()+"please download jdk in github release");
                             return result;
                         }
                     } else {
