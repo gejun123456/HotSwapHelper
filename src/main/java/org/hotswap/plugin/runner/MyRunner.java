@@ -56,7 +56,7 @@ public interface MyRunner {
                     }
                 } else if(javaVersion==11){
                     javaParameters.getVMParametersList().addParametersString("-XX:HotswapAgent=fatjar");
-                } else if(javaVersion==17){
+                } else if(javaVersion>=17){
                     javaParameters.getVMParametersList().addParametersString("-XX:+AllowEnhancedClassRedefinition");
                     javaParameters.getVMParametersList().addParametersString("-XX:HotswapAgent=fatjar");
                     //add --add-opens

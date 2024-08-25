@@ -62,37 +62,41 @@ public class JdkManager {
                         }
                     }
 
-                } else if(feature==11){
-                    if(new File(jdkhome,"lib/hotswap/hotswap-agent.jar").exists()){
-                        result.setHasFound(true);
-                        result.setJavaVersion(11);
-                        return result;
-                    } else {
-                        result.setHasFound(false);
-                        result.setErrorText("hotSwap file not exist in your jdk home, please download jdk");
-                        return result;
-                    }
-                } else if(feature==17){
-                    if(new File(jdkhome,"lib/hotswap/hotswap-agent.jar").exists()){
-                        result.setHasFound(true);
-                        result.setJavaVersion(17);
-                        return result;
-                    } else {
-                        result.setHasFound(false);
-                        result.setErrorText("hotSwap file not exist in your jdk home, please download jdk");
-                        return result;
-                    }
                 } else {
-                    result.setHasFound(false);
-                    result.setErrorText("jdk version is not supported, please download jdk");
-                    return result;
+                    File file = new File(jdkhome, "lib/hotswap/hotswap-agent.jar");
+                    if(feature == 11){
+                        if(file.exists()){
+                            result.setHasFound(true);
+                            result.setJavaVersion(11);
+                            return result;
+                        } else {
+                            result.setHasFound(false);
+                            result.setErrorText("hotSwap file not exist in your jdk home," +
+                                                "the path is"+file.getAbsolutePath()+"please download jdk in release");
+                            return result;
+                        }
+                    } else if(feature>=17){
+                        if(file.exists()){
+                            result.setHasFound(true);
+                            result.setJavaVersion(feature);
+                            return result;
+                        } else {
+                            result.setHasFound(false);
+                            result.setErrorText("hotSwap file not exist in your jdk home,"+file.getAbsolutePath()+"please download jdk in release");
+                            return result;
+                        }
+                    } else {
+                        result.setHasFound(false);
+                        result.setErrorText("jdk version is not supported, please download jdk");
+                        return result;
+                    }
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         } else {
             result.setHasFound(false);
-            result.setErrorText("release file not found in your jdk home:"+jdkhome+"Please download jdk");
+            result.setErrorText("release file not found in your jdk home:"+jdkhome+" Please download jdk");
             return result;
         }
     }
