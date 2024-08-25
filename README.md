@@ -36,7 +36,7 @@ add vm parameters:
 --add-opens=java.base/java.lang=ALL-UNNAMED  
 --add-opens=java.base/java.lang.reflect=ALL-UNNAMED  
 --add-opens=java.base/java.io=ALL-UNNAMED  
---add-exports=jdk.unsupported/sun.misc=ALL-UNNAMED
+--add-exports=jdk.unsupported/sun.misc=ALL-UNNAMED  
 plugin 1.0.1 version will fix the issue.  
 
 ### Encountering Issues?
