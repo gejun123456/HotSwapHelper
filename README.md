@@ -15,8 +15,6 @@
 #### All plugins supported by HotSwapAgent are also supported by HotSwapHelper, including:
 Spring Boot, Spring MVC, Hibernate, MyBatis, MyBatis-Plus, Log4j, etc. For more information, visit the [HotSwapAgent GitHub page](https://github.com/HotswapProjects/HotswapAgent).
 
-Currently, the plugin supports common Spring Boot + MyBatis projects in China.
-
 ### Open-Source Projects Tested Locally
 Project Name | URL | Supported Features | Additional Notes
 -----   |---| -----| -----
