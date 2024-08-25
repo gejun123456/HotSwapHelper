@@ -90,7 +90,7 @@ public class JdkNotSupportedDialog extends DialogWrapper {
         final Spacer spacer2 = new Spacer();
         thePanel.add(spacer2, new GridConstraints(6, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL, 1, GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
         final JLabel label2 = new JLabel();
-        label2.setText("error is:");
+        label2.setText("Error is:");
         thePanel.add(label2, new GridConstraints(2, 0, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         errorLabel = new JLabel();
         errorLabel.setText("Label");
