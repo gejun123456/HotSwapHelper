@@ -28,7 +28,7 @@ public interface MyRunner {
             Sdk jdk1 = javaParameters.getJdk();
             String homePath1 = jdk1.getHomePath();
             //todo maybe parse it from versionString?
-            CheckResult result = JdkManager.checkJdkHome(homePath1);
+            CheckResult result = JdkManager.checkJdkHome(homePath1 );
             Sdk jdk = javaParameters.getJdk();
             //get user jdk version. if this is from dcevm jdk, add the agent to it.
 //            String jdkPath = javaParameters.getJdkPath();

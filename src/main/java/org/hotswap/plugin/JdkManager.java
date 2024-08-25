@@ -15,6 +15,7 @@ public class JdkManager {
     public static CheckResult checkJdkHome(String jdkhome){
         //get java version from jdk home.
         //get the release file.
+        String downloadJdkInGithubRelease = " please download jdk in github release";
         String theVersion = "1.8";
         File release = new File(jdkhome, "release");
         CheckResult result = new CheckResult();
@@ -45,7 +46,7 @@ public class JdkManager {
                         }
                         else{
                             result.setHasFound(false);
-                            result.setErrorText("dcevm not found in your jdk home:"+jdkhome);
+                            result.setErrorText("dcevm not found in your jdk home:"+jdkhome+","+downloadJdkInGithubRelease);
                             return result;
                         }
                     } else {
@@ -57,7 +58,7 @@ public class JdkManager {
                             return result;
                         } else{
                             result.setHasFound(false);
-                            result.setErrorText("dcevm not found in your jdk home:"+jdkhome);
+                            result.setErrorText("dcevm not found in your jdk home:"+jdkhome+","+downloadJdkInGithubRelease);
                             return result;
                         }
                     }
@@ -72,7 +73,7 @@ public class JdkManager {
                         } else {
                             result.setHasFound(false);
                             result.setErrorText("hotSwap file not exist in your jdk home," +
-                                                "the path is"+file.getAbsolutePath()+" please download jdk in github release");
+                                                "the path is" + file.getAbsolutePath() + downloadJdkInGithubRelease);
                             return result;
                         }
                     } else if(feature>=17){
