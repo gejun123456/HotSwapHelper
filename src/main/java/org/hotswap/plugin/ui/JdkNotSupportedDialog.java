@@ -34,7 +34,7 @@ public class JdkNotSupportedDialog extends DialogWrapper {
         githubLink.setListener(new LinkListener() {
             @Override
             public void linkSelected(LinkLabel aSource, Object aLinkData) {
-                BrowserUtil.browse("https://github.com/gejun123456/HotSwapHelper/releases");
+                BrowserUtil.browse("https://github.com/gejun123456/HotSwapHelper/releases/tag/1.0");
             }
         }, null);
         qqGroupLink.setListener(new LinkListener() {
