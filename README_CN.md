@@ -24,7 +24,7 @@ jeecg |https://github.com/jeecgboot/JeecgBoot | 支持mybatis xml热加载 java�
 
 ### 常见问题
 
-#### java17使用run修改代码不生效
+#### 使用run修改java代码不生效
 可以使用debug with hotSwap
 
 #### java17启动报错 java.nio.channels.ReadableByteChannel sun.nio.ch.ChannelInputStream.ch accessible: module java.base does not "opens sun.nio.ch" to unnamed module @8297b3a
