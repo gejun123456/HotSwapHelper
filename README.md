@@ -45,7 +45,7 @@ You can contact me by joining the QQ group: [HotSwapHelper Plugin User Group](ht
 Or send an email to: gejun123456@gmail.com  
 
 ### ScreenShot
-![runAndDebug](https://raw.githubusercontent.com/gejun123456/HotSwapHelper/master/screenShot/RunAndDebugIcon.png)
+![runAndDebug](https://raw.githubusercontent.com/gejun123456/HotSwapHelper/master/screenShot/DebugWithHotSwap.png)
 ![changeCodeAndWork](https://raw.githubusercontent.com/gejun123456/HotSwapHelper/master/screenShot/HotSwapHelperChangeCodeWork.gif)
 
 [plugin]: https://plugins.jetbrains.com/plugin/25171
