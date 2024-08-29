@@ -20,9 +20,9 @@ springboot,springmvc,hibernate,mybatis,mybatis-plus,log4j等等，可以参考ht
 
 #### 支持的框架的版本
 
-参考文章：https://github.com/HotswapProjects/HotswapAgent?tab=readme-ov-file#java-frameworks-plugins
-mybatis最好在3.5.0以上
-mybatisplus需要3.2.0以上
+参考文章：https://github.com/HotswapProjects/HotswapAgent?tab=readme-ov-file#java-frameworks-plugins  
+mybatis最好在3.5.0以上  
+mybatisplus需要3.2.0以上  
 
 ### 本地测试已通过的一些开源项目
 项目名称  | 地址 | 支持的地方 |更多说明
