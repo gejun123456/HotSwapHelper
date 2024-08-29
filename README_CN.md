@@ -28,6 +28,7 @@ mybatisplus需要3.2.0以上
 项目名称  | 地址 | 支持的地方 |更多说明
 -----   |---| -----| -----
 若依 | https://github.com/yangzongzhuan/RuoYi  | 支持mybatis xml热加载 java热加载
+RuoYi-Vue-Plus | https://gitee.com/dromara/RuoYi-Vue-Plus | 支持mybatis xml热加载 java热加载
 jeecg |https://github.com/jeecgboot/JeecgBoot | 支持mybatis xml热加载 java热加载
 
 
