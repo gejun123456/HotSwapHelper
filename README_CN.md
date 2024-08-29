@@ -1,5 +1,7 @@
 ## HotSwapHelper 基于HotSwapAgent热更新的Intellij插件
 
+[![Jetbrains Plugins](https://img.shields.io/jetbrains/plugin/v/25171-a8translate.svg)][plugin]
+
 ### 使用说明
 #### 安装jdk
 
@@ -14,6 +16,12 @@
 #### hotSwapAgent支持的插件都支持 包括以下
 springboot,springmvc,hibernate,mybatis,mybatis-plus,log4j等等，可以参考https://github.com/HotswapProjects/HotswapAgent
 目前已支持国内常见的springboot+mybatis项目
+
+
+#### 支持的框架的版本
+
+参考文章：https://github.com/HotswapProjects/HotswapAgent?tab=readme-ov-file#java-frameworks-plugins
+mybatisplus需要3.2.0以上
 
 ### 本地测试已通过的一些开源项目
 项目名称  | 地址 | 支持的地方 |更多说明
@@ -47,6 +55,9 @@ dcevm用来支持更好的热加载功能，比如类加减字段和方法等。
 ### 碰到问题
 可以联系我,加入qq群: [HotSwapHelper插件交流群](https://qm.qq.com/q/JQKyhlt4ke)
 或者发邮件给:gejun123456@gmail.com
+
+
+[plugin]: https://plugins.jetbrains.com/plugin/25171
 
 
 
