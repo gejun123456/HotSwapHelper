@@ -9,7 +9,7 @@
 2. 下载后解压，idea配置为对应的jdk
 3. 安装了HotSwapHelper后在idea的debug按钮旁边有两个图标，使用Debug With HotSwap 即可热更新
 4. 查看日志中是否出现org.hotswap.agent.HotswapAgent字样，出现则代表加载成功了
-5. 修改代码后,需要编译一下ctrl shift f9或者ctrl f9 build project即可
+5. 修改代码后,需要编译一下ctrl shift f9或者ctrl f9 build project即可 注意修改xml要用ctrl+F9
 
 ### 支持框架
 
@@ -40,12 +40,7 @@ mall |https://gitee.com/macrozheng/mall| 支持mybatis xml热加载 java热加�
 
 #### java17启动报错 java.nio.channels.ReadableByteChannel sun.nio.ch.ChannelInputStream.ch accessible: module java.base does not "opens sun.nio.ch" to unnamed module @8297b3a
 
-加入vm参数 
---add-opens java.base/sun.nio.ch=ALL-UNNAMED   
---add-opens=java.base/java.lang=ALL-UNNAMED  
---add-opens=java.base/java.lang.reflect=ALL-UNNAMED  
---add-opens=java.base/java.io=ALL-UNNAMED  
---add-exports=jdk.unsupported/sun.misc=ALL-UNNAMED  
+使用插件新版本即可
 
 #### 为什么需要下载一个 jdk？
 [HotSwapHelper Releases](https://github.com/gejun123456/HotSwapHelper/releases)这里提供的 jdk 包含了dcevm 和hotswap 文件夹，统一在一个位置，
