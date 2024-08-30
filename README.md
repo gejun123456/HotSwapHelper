@@ -30,14 +30,7 @@ dcevm with hotswap folder into it, so you don't need to install dcevm separately
 If you don't like it, you can always install by yourself from doc:[HotSwapAgent GitHub page](https://github.com/HotswapProjects/HotswapAgent).
 
 #### java17 startUp issue java.nio.channels.ReadableByteChannel sun.nio.ch.ChannelInputStream.ch accessible: module java.base does not "opens sun.nio.ch" to unnamed module @8297b3a
-
-add vm parameters:
---add-opens java.base/sun.nio.ch=ALL-UNNAMED   
---add-opens=java.base/java.lang=ALL-UNNAMED  
---add-opens=java.base/java.lang.reflect=ALL-UNNAMED  
---add-opens=java.base/java.io=ALL-UNNAMED  
---add-exports=jdk.unsupported/sun.misc=ALL-UNNAMED  
-plugin 1.0.1 version will fix the issue.  
+Update to plugin 1.0.2 version, it has fixed.
 
 ### Encountering Issues?
 Just issue on github or contact me following:  
