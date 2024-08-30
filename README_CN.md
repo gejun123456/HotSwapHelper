@@ -30,6 +30,7 @@ mybatisplus需要3.2.0以上
 若依 | https://github.com/yangzongzhuan/RuoYi  | 支持mybatis xml热加载 java热加载
 RuoYi-Vue-Plus | https://gitee.com/dromara/RuoYi-Vue-Plus | 支持mybatis xml热加载 java热加载
 jeecg |https://github.com/jeecgboot/JeecgBoot | 支持mybatis xml热加载 java热加载
+mall |https://gitee.com/macrozheng/mall| 支持mybatis xml热加载 java热加载
 
 
 ### 常见问题
