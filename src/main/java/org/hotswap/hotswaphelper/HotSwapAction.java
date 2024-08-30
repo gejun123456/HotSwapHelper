@@ -1,4 +1,4 @@
-package org.hotswap.plugin;
+package org.hotswap.hotswaphelper;
 
 import com.intellij.execution.Executor;
 import com.intellij.execution.ExecutorRegistry;

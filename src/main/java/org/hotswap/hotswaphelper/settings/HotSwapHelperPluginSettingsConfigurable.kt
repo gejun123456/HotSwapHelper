@@ -13,11 +13,10 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package org.hotswap.plugin.settings
+package org.hotswap.hotswaphelper.settings
 
 import com.intellij.execution.RunManager
 import com.intellij.ide.BrowserUtil
-import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.fileChooser.FileChooserDescriptor
 import com.intellij.openapi.options.Configurable
 import com.intellij.openapi.project.Project
@@ -26,7 +25,7 @@ import com.intellij.openapi.ui.Messages
 import com.intellij.ui.DocumentAdapter
 import com.intellij.util.execution.ParametersListUtil
 import org.apache.commons.lang.StringUtils
-import org.hotswap.plugin.ui.HotSwapAgentPluginSettingsForm
+import org.hotswap.hotswaphelper.ui.HotSwapAgentPluginSettingsForm
 import java.awt.CardLayout
 import java.util.*
 import javax.swing.JComponent

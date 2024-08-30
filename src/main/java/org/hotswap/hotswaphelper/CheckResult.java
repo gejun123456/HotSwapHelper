@@ -1,4 +1,4 @@
-package org.hotswap.plugin;
+package org.hotswap.hotswaphelper;
 
 /**
  * @author bruce ge 2024/8/19

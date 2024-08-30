@@ -1,10 +1,10 @@
-package org.hotswap.plugin.runner;
+package org.hotswap.hotswaphelper.runner;
 
 import com.intellij.debugger.impl.GenericDebuggerRunner;
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.configurations.*;
 import com.intellij.execution.runners.ExecutionEnvironment;
-import org.hotswap.plugin.HotSwapDebugExecutor;
+import org.hotswap.hotswaphelper.HotSwapDebugExecutor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

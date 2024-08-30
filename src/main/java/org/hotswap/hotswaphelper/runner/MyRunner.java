@@ -1,4 +1,4 @@
-package org.hotswap.plugin.runner;
+package org.hotswap.hotswaphelper.runner;
 
 import com.intellij.execution.CantRunException;
 import com.intellij.execution.ExecutionException;
@@ -9,11 +9,11 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.projectRoots.Sdk;
 import com.intellij.openapi.ui.Messages;
-import org.hotswap.plugin.CheckResult;
-import org.hotswap.plugin.JdkManager;
-import org.hotswap.plugin.settings.HotSwapHelperPluginSettingsProvider;
-import org.hotswap.plugin.ui.JdkNotSupportedDialog;
-import org.hotswap.plugin.utils.MyUtils;
+import org.hotswap.hotswaphelper.CheckResult;
+import org.hotswap.hotswaphelper.JdkManager;
+import org.hotswap.hotswaphelper.settings.HotSwapHelperPluginSettingsProvider;
+import org.hotswap.hotswaphelper.ui.JdkNotSupportedDialog;
+import org.hotswap.hotswaphelper.utils.MyUtils;
 import org.apache.commons.io.FileUtils;
 import org.jetbrains.annotations.NotNull;
 

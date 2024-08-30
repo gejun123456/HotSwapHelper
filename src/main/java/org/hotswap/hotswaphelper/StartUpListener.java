@@ -1,8 +1,8 @@
-package org.hotswap.plugin;
+package org.hotswap.hotswaphelper;
 
 import com.intellij.ide.AppLifecycleListener;
 import com.intellij.openapi.application.ApplicationManager;
-import org.hotswap.plugin.utils.MyUtils;
+import org.hotswap.hotswaphelper.utils.MyUtils;
 import org.apache.commons.io.FileUtils;
 import org.jetbrains.annotations.NotNull;
 

@@ -1,7 +1,7 @@
-package org.hotswap.plugin;
+package org.hotswap.hotswaphelper;
 
 import com.intellij.util.lang.JavaVersion;
-import org.hotswap.plugin.utils.MyUtils;
+import org.hotswap.hotswaphelper.utils.MyUtils;
 
 import java.io.File;
 import java.io.FileInputStream;

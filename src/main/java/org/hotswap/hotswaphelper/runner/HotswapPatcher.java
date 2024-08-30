@@ -1,10 +1,10 @@
-package org.hotswap.plugin.runner;
+package org.hotswap.hotswaphelper.runner;
 
 import com.intellij.execution.Executor;
 import com.intellij.execution.configurations.JavaParameters;
 import com.intellij.execution.configurations.RunProfile;
 import com.intellij.execution.runners.JavaProgramPatcher;
-import org.hotswap.plugin.HotSwapDebugExecutor;
+import org.hotswap.hotswaphelper.HotSwapDebugExecutor;
 
 /**
  * @author bruce ge 2024/8/20

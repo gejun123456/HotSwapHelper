@@ -1,11 +1,11 @@
-package org.hotswap.plugin.runner;
+package org.hotswap.hotswaphelper.runner;
 
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.configurations.*;
 import com.intellij.execution.impl.DefaultJavaProgramRunner;
 import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.execution.runners.RunConfigurationWithSuppressedDefaultRunAction;
-import org.hotswap.plugin.HotSwapExecutor;
+import org.hotswap.hotswaphelper.HotSwapExecutor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

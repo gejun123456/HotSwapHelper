@@ -1,4 +1,4 @@
-package org.hotswap.plugin.ui;
+package org.hotswap.hotswaphelper.ui;
 
 import com.intellij.ide.BrowserUtil;
 import com.intellij.openapi.project.Project;

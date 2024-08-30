@@ -10,7 +10,7 @@
         <h3>中文：</h3>
         <p>基于HotSwapAgent开发的idea插件,实现热部署功能，支持spring,hibernate,mybatis等框架</p>
         <p>jrebel的免费替代</p>
-        <p>测试已支持若依等项目，支持xml和java文件热部署</p>
+        <p>测试已支持若依jeecg,mall,RuoYi-Vue-Plus等项目，支持xml和java文件热加载</p>
         ]]></description>
 
     <change-notes><![CDATA[
@@ -42,30 +42,30 @@
     <extensions defaultExtensionNs="com.intellij">
         <notificationGroup displayType="NONE" id="hot.swap.notification.none"/>
         <notificationGroup displayType="BALLOON" id="hot.swap.notification.balloon"/>
-        <executor implementation="org.hotswap.plugin.HotSwapExecutor"/>
-        <executor implementation="org.hotswap.plugin.HotSwapDebugExecutor"/>
-        <programRunner implementation="org.hotswap.plugin.runner.HotSwapRunner"/>
-        <programRunner implementation="org.hotswap.plugin.runner.HotSwapDebugRunner"/>
-        <java.programPatcher implementation="org.hotswap.plugin.runner.HotswapPatcher"/>
-        <projectConfigurable instance="org.hotswap.plugin.settings.HotSwapHelperPluginSettingsConfigurable"
+        <executor implementation="org.hotswap.hotswaphelper.HotSwapExecutor"/>
+        <executor implementation="org.hotswap.hotswaphelper.HotSwapDebugExecutor"/>
+        <programRunner implementation="org.hotswap.hotswaphelper.runner.HotSwapRunner"/>
+        <programRunner implementation="org.hotswap.hotswaphelper.runner.HotSwapDebugRunner"/>
+        <java.programPatcher implementation="org.hotswap.hotswaphelper.runner.HotswapPatcher"/>
+        <projectConfigurable instance="org.hotswap.hotswaphelper.settings.HotSwapHelperPluginSettingsConfigurable"
                              bundle="HotSwapHelperIntellijPluginBundle"
                              groupId="tools"
                              nonDefaultProject="true"
                              key="settings.hotswap.plugin.name">
         </projectConfigurable>
 
-        <projectService id="stateProvider" serviceImplementation="org.hotswap.plugin.settings.HotSwapHelperPluginSettingsProvider"/>
+        <projectService id="stateProvider" serviceImplementation="org.hotswap.hotswaphelper.settings.HotSwapHelperPluginSettingsProvider"/>
 
     </extensions>
 
     <actions>
         <group>
             <action id="com.hotswap.plugin.action.HotSwapAction" icon="/icons/icon.png"
-                    class="org.hotswap.plugin.HotSwapAction" text="HotSwapAgent" description="HotSwapAgent">
+                    class="org.hotswap.hotswaphelper.HotSwapAction" text="HotSwapAgent" description="HotSwapAgent">
             </action>
 
             <action id="com.hotswap.plugin.action.HotSwapDebugAction" icon="/icons/rotate.png"
-                    class="org.hotswap.plugin.HotSwapDebugAction" text="HotSwapAgentDebug" description="HotSwapAgentDebug">
+                    class="org.hotswap.hotswaphelper.HotSwapDebugAction" text="HotSwapAgentDebug" description="HotSwapAgentDebug">
             </action>
             <add-to-group group-id="RunDashboardContentToolbar" anchor="last"/>
         </group>
@@ -73,7 +73,7 @@
     </actions>
 
     <applicationListeners>
-        <listener class="org.hotswap.plugin.StartUpListener" topic="com.intellij.ide.AppLifecycleListener" />
+        <listener class="org.hotswap.hotswaphelper.StartUpListener" topic="com.intellij.ide.AppLifecycleListener" />
     </applicationListeners>
 
 </idea-plugin>
