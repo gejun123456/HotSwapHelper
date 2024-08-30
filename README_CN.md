@@ -24,6 +24,8 @@ springboot,springmvc,hibernate,mybatis,mybatis-plus,log4j等等，可以参考ht
 mybatis最好在3.5.0以上  
 mybatisplus需要3.2.0以上  
 
+pageHelper正在兼容中，qq群中有兼容的版本
+
 ### 本地测试已通过的一些开源项目
 项目名称  | 地址 | 支持的地方 |更多说明
 -----   |---| -----| -----
