@@ -72,6 +72,7 @@ public interface MyRunner {
                         javaParameters.getVMParametersList().addParametersString("--add-opens=java.base/java.lang=ALL-UNNAMED");
                         javaParameters.getVMParametersList().addParametersString("--add-opens=java.base/java.lang.reflect=ALL-UNNAMED");
                         javaParameters.getVMParametersList().addParametersString("--add-opens=java.base/java.io=ALL-UNNAMED");
+                        javaParameters.getVMParametersList().addParametersString("--add-opens=java.base/sun.security.action=ALL-UNNAMED");
                     }
                 } else {
                     // use external mode?
