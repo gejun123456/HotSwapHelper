@@ -14,6 +14,14 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>1.0.3</p>
+        <ul>
+            <li>1.Support pageHelper ect mybatis interceptor</li>
+        </ul>
+        <p>1.0.2</p>
+        <ul>
+            <li>1.Support config hotSwap jar file</li>
+        </ul>
         <p>1.0.1</p>
         <ul>
             <li>1.Fix java17 module java.base does not "opens sun.nio.ch" to unnamed module </li>
