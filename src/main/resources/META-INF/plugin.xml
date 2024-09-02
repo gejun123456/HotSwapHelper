@@ -67,7 +67,7 @@
     </extensions>
 
     <actions>
-        <group>
+        <group id="org.hotswap.hotswaphelper">
             <action id="com.hotswap.plugin.action.HotSwapAction" icon="/icons/icon.png"
                     class="org.hotswap.hotswaphelper.HotSwapAction" text="HotSwapAgent" description="HotSwapAgent">
             </action>
