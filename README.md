@@ -12,6 +12,11 @@
 
 ### Supported Frameworks
 
+
+#### Compile code not work. no error no log
+
+1. make sure intellij setting `Build, Execution, Deployment/Debugger/HotSwap/Reload class after compilation is Always.
+
 #### All plugins supported by HotSwapAgent are also supported by HotSwapHelper, including:
 Spring Boot, Spring MVC, Hibernate, MyBatis, MyBatis-Plus, Log4j, etc. For more information, visit the [HotSwapAgent GitHub page](https://github.com/HotswapProjects/HotswapAgent).
 

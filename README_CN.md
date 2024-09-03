@@ -38,7 +38,12 @@ mall |https://gitee.com/macrozheng/mall| 支持mybatis xml热加载 java热加�
 ### 常见问题
 
 #### 使用run修改java代码不生效
-可以使用debug with hotSwap
+需要使用Debug with hotSwap
+
+#### 编译代码后没反应 日志中没有错误也没有新日志
+
+1. 确保intellij配置 `Build, Execution, Deployment/Debugger/HotSwap/Reload class after compilation 为Always.
+2. 使用Debug with HotSwapAgent启动
 
 #### java17启动报错 java.nio.channels.ReadableByteChannel sun.nio.ch.ChannelInputStream.ch accessible: module java.base does not "opens sun.nio.ch" to unnamed module @8297b3a
 
