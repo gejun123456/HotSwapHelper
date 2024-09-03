@@ -20,6 +20,10 @@
 #### All plugins supported by HotSwapAgent are also supported by HotSwapHelper, including:
 Spring Boot, Spring MVC, Hibernate, MyBatis, MyBatis-Plus, Log4j, etc. For more information, visit the [HotSwapAgent GitHub page](https://github.com/HotswapProjects/HotswapAgent).
 
+
+#### java.lang.NoClassDefFoundError: org/hotswap/agent/config/PluginManage
+Edit Configuration -> Shorten Command Line -> Jar manifest
+
 ### Open-Source Projects Tested Locally
 Project Name | URL | Supported Features | Additional Notes
 -----   |---| -----| -----

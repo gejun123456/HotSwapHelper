@@ -49,6 +49,9 @@ mall |https://gitee.com/macrozheng/mall| 支持mybatis xml热加载 java热加�
 
 使用插件新版本即可
 
+#### java.lang.NoClassDefFoundError: org/hotswap/agent/config/PluginManage
+Edit Configuration -> Shorten Command Line -> Jar manifest
+
 #### 为什么需要下载一个 jdk？
 [HotSwapHelper Releases](https://github.com/gejun123456/HotSwapHelper/releases)这里提供的 jdk 包含了dcevm 和hotswap 文件夹，统一在一个位置，
 dcevm用来支持更好的热加载功能，比如类加减字段和方法等。
