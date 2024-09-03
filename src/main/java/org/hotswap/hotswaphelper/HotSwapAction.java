@@ -21,9 +21,9 @@ public class HotSwapAction extends ExecutorAction {
     protected void update(@NotNull AnActionEvent e, boolean running) {
         Presentation presentation = e.getPresentation();
         if (running) {
-            presentation.setText("reRun with hotswap");
-            presentation.setDescription("reRun with hotswap");
-            presentation.setIcon(AllIcons.Actions.Restart);
+            presentation.setText("ReRun with Hotswap");
+            presentation.setDescription("ReRun with hotswap");
+            presentation.setIcon(IconUtils.hotswapIcon);
         }
         else {
             presentation.setText("Run with hotswap agent");

@@ -21,13 +21,13 @@ public class HotSwapDebugAction extends ExecutorAction {
     protected void update(@NotNull AnActionEvent e, boolean running) {
         Presentation presentation = e.getPresentation();
         if (running) {
-            presentation.setText("reRun with hotswap");
-            presentation.setDescription("reRun with hotswap");
-            presentation.setIcon(AllIcons.Actions.RestartDebugger);
+            presentation.setText("ReRun Debug with Hotswap");
+            presentation.setDescription("ReRun Debug with hotswap");
+            presentation.setIcon(IconUtils.hotSwapDebugIcon);
         }
         else {
-            presentation.setText("debug with hotswap agent");
-            presentation.setDescription("debug with hotswap agent");
+            presentation.setText("Debug with Hotswap Agent");
+            presentation.setDescription("Debug with hotswap agent");
             presentation.setIcon(IconUtils.hotSwapDebugIcon);
         }
     }
