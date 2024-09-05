@@ -96,6 +96,15 @@ public interface MyRunner {
                         javaParameters.getVMParametersList().addParametersString("-XX:HotswapAgent=external");
                         javaParameters.getVMParametersList().addParametersString("-javaagent:" + agentFile.getPath());
                         javaParameters.getVMParametersList().addParametersString("-XX:+AllowEnhancedClassRedefinition");
+                        if(javaVersion>=17){
+                            //add --add-opens
+                            javaParameters.getVMParametersList().addParametersString("--add-opens java.base/sun.nio.ch=ALL-UNNAMED");
+                            javaParameters.getVMParametersList().addParametersString("--add-opens=java.base/java.lang=ALL-UNNAMED");
+                            javaParameters.getVMParametersList().addParametersString("--add-opens=java.base/java.lang.reflect=ALL-UNNAMED");
+                            javaParameters.getVMParametersList().addParametersString("--add-opens=java.base/java.io=ALL-UNNAMED");
+                            javaParameters.getVMParametersList().addParametersString("--add-opens=java.base/sun.security.action=ALL-UNNAMED");
+
+                        }
                     }
 
                 }

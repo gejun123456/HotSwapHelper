@@ -23,8 +23,8 @@ springboot,springmvc,hibernate,mybatis,mybatis-plus,log4j等等，可以参考ht
 参考文章：https://github.com/HotswapProjects/HotswapAgent?tab=readme-ov-file#java-frameworks-plugins  
 mybatis最好在3.5.0以上  
 mybatisplus需要3.2.0以上  
-
-pageHelper正在兼容中，qq群中有兼容的版本
+pageHelper正在兼容中 插件1.0.3版本已兼容  
+dynamic-datasource需要4.2.0以上的版本  
 
 ### 本地测试已通过的一些开源项目
 项目名称  | 地址 | 支持的地方 |更多说明
@@ -47,7 +47,7 @@ mall |https://gitee.com/macrozheng/mall| 支持mybatis xml热加载 java热加�
 
 #### java17启动报错 java.nio.channels.ReadableByteChannel sun.nio.ch.ChannelInputStream.ch accessible: module java.base does not "opens sun.nio.ch" to unnamed module @8297b3a
 
-使用插件新版本即可
+使用插件新版本即
 
 #### java.lang.NoClassDefFoundError: org/hotswap/agent/config/PluginManage
 Edit Configuration -> Shorten Command Line -> Jar manifest
