@@ -57,8 +57,8 @@
         <java.programPatcher implementation="org.hotswap.hotswaphelper.runner.HotswapPatcher"/>
         <projectConfigurable instance="org.hotswap.hotswaphelper.settings.HotSwapHelperPluginSettingsConfigurable"
                              bundle="HotSwapHelperIntellijPluginBundle"
-                             groupId="tools"
                              nonDefaultProject="true"
+                             groupId="root"
                              key="settings.hotswap.plugin.name">
         </projectConfigurable>
 
