@@ -1,9 +1,9 @@
 ## HotSwapHelper 基于HotSwapAgent热更新的Intellij插件
 
 [![Jetbrains Plugins](https://img.shields.io/jetbrains/plugin/v/25171-a8translate.svg)][plugin]
+[![加入QQ群](https://img.shields.io/badge/chat-QQ群-46BC99.svg?style=flat-square)](https://qm.qq.com/q/JQKyhlt4ke)  
 
 ### 使用说明
-#### 安装jdk
 
 1. https://github.com/gejun123456/HotSwapHelper/releases 根据自己的jdk版本去下载对应的jdk或者去qq群下载
 2. 下载后解压，idea配置为对应的jdk
@@ -75,7 +75,8 @@ dcevm用来支持更好的热加载功能，比如类加减字段和方法等。
 #### 其他问题也可以查看HotSwapAgent 看看是否支持或者去提交issue https://github.com/HotswapProjects/HotswapAgent
 
 ### 碰到问题
-可以联系我,加入qq群: [HotSwapHelper插件交流群](https://qm.qq.com/q/JQKyhlt4ke)
+可以联系我,加入qq群: [![加入QQ群](https://img.shields.io/badge/chat-QQ群-46BC99.svg?style=flat-square)](https://qm.qq.com/q/JQKyhlt4ke)
+
 或者发邮件给:gejun123456@gmail.com
 
 
