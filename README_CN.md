@@ -17,9 +17,12 @@
 springboot,springmvc,hibernate,mybatis,mybatis-plus,log4j等等，可以参考https://github.com/HotswapProjects/HotswapAgent
 目前已支持国内常见的springboot+mybatis项目
 
+#### Ctrl+F9速度很慢  
+1. 对修改过的java文件ctrl shift F9即可
+
 
 #### 修改了xml后用ctrl shift F9报错了 File Not Found 
-可以使用ctrl F9或者在xml的文件夹上用ctrl Shift F9
+可以使用ctrl F9(速度慢)或者在xml的文件夹上用ctrl Shift F9(推荐)
 
 
 #### 支持的框架的版本
