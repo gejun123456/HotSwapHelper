@@ -14,6 +14,12 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>1.0.4</p>
+        <ul>
+            <li>1.Better spring aop support</li>
+            <li>2.Spring @Valid annotation support</li>
+            <li>3.Better Mybatis interceptor support</li>
+        </ul>
         <p>1.0.3</p>
         <ul>
             <li>1.Support pageHelper ect mybatis interceptor</li>
@@ -59,6 +65,7 @@
                              bundle="HotSwapHelperIntellijPluginBundle"
                              nonDefaultProject="true"
                              groupId="root"
+                             id="hotswap.plugin.settings"
                              key="settings.hotswap.plugin.name">
         </projectConfigurable>
 
@@ -68,11 +75,11 @@
 
     <actions>
         <group id="org.hotswap.hotswaphelper">
-            <action id="com.hotswap.plugin.action.HotSwapAction" icon="/icons/icon.png"
+            <action id="org.hotswap.hotswaphelper.action.HotSwapAction" icon="/icons/icon.png"
                     class="org.hotswap.hotswaphelper.HotSwapAction" text="HotSwapAgent" description="HotSwapAgent">
             </action>
 
-            <action id="com.hotswap.plugin.action.HotSwapDebugAction" icon="/icons/rotate.png"
+            <action id="org.hotswap.hotswaphelper.action.HotSwapDebugAction" icon="/icons/rotate.png"
                     class="org.hotswap.hotswaphelper.HotSwapDebugAction" text="HotSwapAgentDebug" description="HotSwapAgentDebug">
             </action>
             <add-to-group group-id="RunDashboardContentToolbar" anchor="last"/>
