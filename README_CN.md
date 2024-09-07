@@ -18,6 +18,10 @@ springboot,springmvc,hibernate,mybatis,mybatis-plus,log4j等等，可以参考ht
 目前已支持国内常见的springboot+mybatis项目
 
 
+#### 修改了xml后用ctrl shift F9报错了 File Not Found 
+可以使用ctrl F9或者在xml的文件夹上用ctrl Shift F9
+
+
 #### 支持的框架的版本
 
 参考文章：https://github.com/HotswapProjects/HotswapAgent?tab=readme-ov-file#java-frameworks-plugins  
