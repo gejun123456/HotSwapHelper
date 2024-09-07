@@ -27,7 +27,10 @@ pageHelper正在兼容中 插件1.0.3版本已兼容
 dynamic-datasource需要4.2.0以上的版本  
 
 #### mybatisplus修改xml后分页sql有问题
-1. 升级插件到最新版本1.0.4 qq群文件有 
+1. 升级插件到最新版本1.0.4 qq群文件有
+
+#### dynamic datasource加了注解后不生效
+1. 升级插件到最新版本1.0.4 qq群文件有
 
 ### 本地测试已通过的一些开源项目
 项目名称  | 地址 | 支持的地方 |更多说明
@@ -36,6 +39,7 @@ dynamic-datasource需要4.2.0以上的版本
 RuoYi-Vue-Plus | https://gitee.com/dromara/RuoYi-Vue-Plus | 支持mybatis xml热加载 java热加载
 jeecg |https://github.com/jeecgboot/JeecgBoot | 支持mybatis xml热加载 java热加载
 mall |https://gitee.com/macrozheng/mall| 支持mybatis xml热加载 java热加载
+ruoyi-vue-pro|https://gitee.com/zhijiantianya/ruoyi-vue-pro|支持mybatis xml热加载 java热加载
 
 
 ### 常见问题
