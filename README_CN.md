@@ -49,6 +49,15 @@ mall |https://gitee.com/macrozheng/mall| 支持mybatis xml热加载 java热加�
 ruoyi-vue-pro|https://gitee.com/zhijiantianya/ruoyi-vue-pro|支持mybatis xml热加载 java热加载
 
 
+### 和其他方案对比
+
+名称 | 是否收费   | 优点                       |  缺点 
+-----   |--------|--------------------------| -----
+Jrebel| 是 收费很贵 | 兼容框架较多 兼容一些老版本的框架        | 测试不兼容mybatis实体类加减字段 不支持部分spring aop 其他待测试
+HotSwapAgent| 免费开源   | 兼容性还行，大部分都兼容，开源可自己修改代码兼容一些框架 | 不支持一些框架的老版本 
+Spring dev tool | 免费开源   | 依赖springboot             | 使用重启技术 对于大点的项目速度较慢
+
+
 ### 常见问题
 
 #### 使用run修改java代码不生效
