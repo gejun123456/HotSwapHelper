@@ -68,11 +68,7 @@ public interface MyRunner {
                         javaParameters.getVMParametersList().addParametersString("-XX:+AllowEnhancedClassRedefinition");
                         javaParameters.getVMParametersList().addParametersString("-XX:HotswapAgent=fatjar");
                         //add --add-opens
-                        javaParameters.getVMParametersList().addParametersString("--add-opens java.base/sun.nio.ch=ALL-UNNAMED");
-                        javaParameters.getVMParametersList().addParametersString("--add-opens=java.base/java.lang=ALL-UNNAMED");
-                        javaParameters.getVMParametersList().addParametersString("--add-opens=java.base/java.lang.reflect=ALL-UNNAMED");
-                        javaParameters.getVMParametersList().addParametersString("--add-opens=java.base/java.io=ALL-UNNAMED");
-                        javaParameters.getVMParametersList().addParametersString("--add-opens=java.base/sun.security.action=ALL-UNNAMED");
+                        addOpens(javaParameters);
                     }
                 } else {
                     // use external mode?
@@ -98,18 +94,22 @@ public interface MyRunner {
                         javaParameters.getVMParametersList().addParametersString("-XX:+AllowEnhancedClassRedefinition");
                         if(javaVersion>=17){
                             //add --add-opens
-                            javaParameters.getVMParametersList().addParametersString("--add-opens java.base/sun.nio.ch=ALL-UNNAMED");
-                            javaParameters.getVMParametersList().addParametersString("--add-opens=java.base/java.lang=ALL-UNNAMED");
-                            javaParameters.getVMParametersList().addParametersString("--add-opens=java.base/java.lang.reflect=ALL-UNNAMED");
-                            javaParameters.getVMParametersList().addParametersString("--add-opens=java.base/java.io=ALL-UNNAMED");
-                            javaParameters.getVMParametersList().addParametersString("--add-opens=java.base/sun.security.action=ALL-UNNAMED");
-
+                            addOpens(javaParameters);
                         }
                     }
 
                 }
             }
         }
+    }
+
+    static void addOpens(@NotNull JavaParameters javaParameters) {
+        javaParameters.getVMParametersList().addParametersString("--add-opens java.base/sun.nio.ch=ALL-UNNAMED");
+        javaParameters.getVMParametersList().addParametersString("--add-opens=java.base/java.lang=ALL-UNNAMED");
+        javaParameters.getVMParametersList().addParametersString("--add-opens=java.base/java.lang.reflect=ALL-UNNAMED");
+        javaParameters.getVMParametersList().addParametersString("--add-opens=java.base/java.io=ALL-UNNAMED");
+        javaParameters.getVMParametersList().addParametersString("--add-opens=java.base/sun.security.action=ALL-UNNAMED");
+        javaParameters.getVMParametersList().addParametersString("--add-opens=java.base/jdk.internal.reflect=ALL-UNNAMED");
     }
 
     static boolean checkJdk(@NotNull ExecutionEnvironment environment) throws ExecutionException {
