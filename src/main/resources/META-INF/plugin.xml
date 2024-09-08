@@ -66,7 +66,7 @@
                              nonDefaultProject="true"
                              groupId="root"
                              id="hotswap.plugin.settings"
-                             key="settings.hotswap.plugin.name">
+                             key="settings.hotswap.plugin.name" dynamic="true">
         </projectConfigurable>
 
         <projectService id="stateProvider" serviceImplementation="org.hotswap.hotswaphelper.settings.HotSwapHelperPluginSettingsProvider"/>
