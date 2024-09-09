@@ -53,7 +53,9 @@ public interface MyRunner {
                                 @Override
                                 public void run() {
                                     Messages.showErrorDialog(((RunConfiguration) runProfile).getProject(),
-                                            "HotSwap agent jar not found,please add issue to github" +
+                                            "HotSwap agent jar not found," +
+                                            "please check your folder:"+agentFile.getAbsolutePath() + " is there exist " +
+                                            "hotswap-agent.jar"+
                                             "https://github.com/gejun123456/HotSwapIntellij", "Error");
                                 }
                             });
