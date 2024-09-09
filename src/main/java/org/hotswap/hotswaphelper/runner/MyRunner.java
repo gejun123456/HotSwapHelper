@@ -56,7 +56,7 @@ public interface MyRunner {
                                             "HotSwap agent jar not found," +
                                             "please check your folder:"+agentFile.getAbsolutePath() + " is there exist " +
                                             "hotswap-agent.jar"+
-                                            "https://github.com/gejun123456/HotSwapIntellij", "Error");
+                                            "https://github.com/gejun123456/HotSwapIntellij", "HotSwap Agent Jar Not Found");
                                 }
                             });
                             return;
