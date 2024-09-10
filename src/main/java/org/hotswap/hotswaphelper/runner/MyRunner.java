@@ -62,7 +62,7 @@ public interface MyRunner {
                             return;
                         } else {
                             javaParameters.getVMParametersList().addParametersString("-XXaltjvm=dcevm");
-                            javaParameters.getVMParametersList().addParametersString("-javaagent:" + agentFile.getPath());
+                            javaParameters.getVMParametersList().addParametersString("-javaagent:" + agentFile.getAbsolutePath());
                         }
                     } else if (javaVersion == 11) {
                         javaParameters.getVMParametersList().addParametersString("-XX:HotswapAgent=fatjar");
@@ -86,13 +86,11 @@ public interface MyRunner {
                         });
                         return;
                     }
+                    javaParameters.getVMParametersList().addParametersString("-javaagent:\"" + agentFile.getAbsolutePath()+"\"");
                     if(javaVersion==8){
-                            javaParameters.getVMParametersList().addParametersString("-XXaltjvm=dcevm");
-                            javaParameters.getVMParametersList().addParametersString("-javaagent:" + agentFile.getPath());
-
+                        javaParameters.getVMParametersList().addParametersString("-XXaltjvm=dcevm");
                     } else if(javaVersion>=11){
                         javaParameters.getVMParametersList().addParametersString("-XX:HotswapAgent=external");
-                        javaParameters.getVMParametersList().addParametersString("-javaagent:" + agentFile.getPath());
                         javaParameters.getVMParametersList().addParametersString("-XX:+AllowEnhancedClassRedefinition");
                         if(javaVersion>=17){
                             //add --add-opens
