@@ -18,7 +18,8 @@ springboot,springmvc,hibernate,mybatis,mybatis-plus,log4j等等，可以参考ht
 目前已支持国内常见的springboot+mybatis项目
 
 #### Ctrl+F9速度很慢  
-1. 对修改过的java文件ctrl shift F9即可或者选中文件夹或者module ctrl shift F9 rebuild
+1. 修改一个文件可以用ctrl shift F9 修改单个module的话在Build菜单 Build Module或者文件夹上build module
+2. 不要使用Rebuild module 或者 Rebuild project 会导致去加载所有的类
 
 
 #### 修改了xml后用ctrl shift F9报错了 File Not Found 
