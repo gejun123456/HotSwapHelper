@@ -84,11 +84,7 @@
     </extensions>
 
     <actions>
-        <group id="org.hotswap.hotswaphelper">
-            <action id="org.hotswap.hotswaphelper.action.HotSwapAction" icon="/icons/icon.png"
-                    class="org.hotswap.hotswaphelper.HotSwapAction" text="HotSwapAgent" description="HotSwapAgent">
-            </action>
-
+        <group>
             <action id="org.hotswap.hotswaphelper.action.HotSwapDebugAction" icon="/icons/rotate.png"
                     class="org.hotswap.hotswaphelper.HotSwapDebugAction" text="HotSwapAgentDebug" description="HotSwapAgentDebug">
             </action>
