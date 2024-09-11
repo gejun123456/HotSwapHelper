@@ -102,7 +102,7 @@ public class JdkNotSupportedDialog extends DialogWrapper {
         githubLink.setText("github");
         thePanel.add(githubLink, new GridConstraints(3, 2, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         final JLabel label4 = new JLabel();
-        label4.setText("无法下载可以加入qq群:");
+        this.$$$loadLabelText$$$(label4, this.$$$getMessageFromBundle$$$("HotSwapHelperIntellijPluginBundle", "无法下载可以加入qq群"));
         thePanel.add(label4, new GridConstraints(4, 0, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         qqGroupLink = new LinkLabel();
         qqGroupLink.setText("qq群");
