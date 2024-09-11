@@ -11,9 +11,19 @@
         <p>基于HotSwapAgent开发的idea插件,实现热部署功能，支持spring,hibernate,mybatis等框架</p>
         <p>jrebel的免费替代</p>
         <p>测试已支持若依jeecg,mall,RuoYi-Vue-Plus等项目，支持xml和java文件热加载</p>
+        <p>相比Jrebel支持mybatis添加删除xml,Mybatis实体类加减字段后也能映射好,还支持spring aop比如方法注解等生效</p>
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>1.0.6</p>
+        <ul>
+            <li>1.Mac using jbr11 AllowEnhancedClassRedefinition not added issue</li>
+        </ul>
+        <p>1.0.5</p>
+        <ul>
+            <li>1.Spring controller change parameters support</li>
+            <li>2.Mybatis add or delete xml support</li>
+        </ul>
         <p>1.0.4</p>
         <ul>
             <li>1.Better spring aop support</li>
