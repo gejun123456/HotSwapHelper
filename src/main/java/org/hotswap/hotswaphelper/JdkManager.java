@@ -28,6 +28,10 @@ public class JdkManager {
                 String javaVersion = properties.getProperty("JAVA_VERSION");
                 JavaVersion parse = JavaVersion.parse(javaVersion);
                 int feature = parse.feature;
+                String implementor = properties.getProperty("IMPLEMENTOR");
+                if(implementor!=null&&implementor.toLowerCase().contains("jetbrain")){
+                    result.setJbr(true);
+                }
                 if(feature<8){
                     //not supported.
                     result.setHasFound(false);

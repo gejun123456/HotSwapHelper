@@ -10,6 +10,16 @@ public class CheckResult {
 
     private int javaVersion;
 
+    public boolean jbr = false;
+
+
+    public boolean isJbr() {
+        return jbr;
+    }
+
+    public void setJbr(boolean jbr) {
+        this.jbr = jbr;
+    }
 
     public int getJavaVersion() {
         return javaVersion;

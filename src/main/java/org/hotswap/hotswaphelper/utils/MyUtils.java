@@ -1,5 +1,7 @@
 package org.hotswap.hotswaphelper.utils;
 
+import com.sun.jna.Platform;
+
 /**
  * @author bruce ge 2024/8/19
  */

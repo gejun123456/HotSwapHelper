@@ -88,7 +88,7 @@
     </actions>
 
     <applicationListeners>
-        <listener class="org.hotswap.hotswaphelper.StartUpListener" topic="com.intellij.ide.AppLifecycleListener" />
+        <listener class="org.hotswap.hotswaphelper.StartUpListener" topic="com.intellij.ide.AppLifecycleListener"/>
     </applicationListeners>
 
 </idea-plugin>
