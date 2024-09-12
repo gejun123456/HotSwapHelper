@@ -56,7 +56,7 @@ ruoyi-vue-pro|https://gitee.com/zhijiantianya/ruoyi-vue-pro|支持mybatis xml热
 -----   |--------|--------------------------| -----
 Jrebel| 是 收费很贵 | 兼容框架较多 兼容一些老版本的框架        | 测试不兼容mybatis实体类加减字段 不支持部分spring aop 其他待测试
 HotSwapAgent| 免费开源   | 兼容性还行，大部分都兼容，开源可自己修改代码兼容一些框架 | 不支持一些框架的老版本 
-Spring dev tool | 免费开源   | 依赖springboot             | 使用重启技术 对于大点的项目速度较慢
+Spring dev tool | 免费开源   | 依赖springboot             | 使用重启技术 对于大点的项目速度较慢  
 
 
 ### 常见问题
@@ -68,6 +68,10 @@ Spring dev tool | 免费开源   | 依赖springboot             | 使用重启�
 
 1. 确保intellij配置 `Build, Execution, Deployment/Debugger/HotSwap/Reload class after compilation 为Always.
 2. 使用Debug with HotSwapAgent启动
+
+#### maven热加载失败 程序直接退出了
+
+1. 确保intellij配置 `Build, Execution, Deployment/Build tools/Maven/Runner/Delegate IDE build to maven 不要勾选
 
 #### java17启动报错 java.nio.channels.ReadableByteChannel sun.nio.ch.ChannelInputStream.ch accessible: module java.base does not "opens sun.nio.ch" to unnamed module @8297b3a
 
