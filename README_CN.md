@@ -69,9 +69,13 @@ Spring dev tool | 免费开源   | 依赖springboot             | 使用重启�
 1. 确保intellij配置 `Build, Execution, Deployment/Debugger/HotSwap/Reload class after compilation 为Always.
 2. 使用Debug with HotSwapAgent启动
 
-#### maven热加载失败 程序直接退出了
+#### maven热加载失败 程序直接退出了  
 
-1. 确保intellij配置 `Build, Execution, Deployment/Build tools/Maven/Runner/Delegate IDE build to maven 不要勾选
+1. 确保intellij配置 `Build, Execution, Deployment/Build tools/Maven/Runner/Delegate IDE build to maven 不要勾选  
+
+#### Intellij新ui 按钮看不到 怎么拖出来  
+
+1.在IDEA dubug 按钮那里右键 有个 customize Toolbar -> Add Actions -> 搜索Hotswap 然后添加到General Actions中  
 
 #### java17启动报错 java.nio.channels.ReadableByteChannel sun.nio.ch.ChannelInputStream.ch accessible: module java.base does not "opens sun.nio.ch" to unnamed module @8297b3a
 
