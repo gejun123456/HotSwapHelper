@@ -17,13 +17,17 @@
 springboot,springmvc,hibernate,mybatis,mybatis-plus,log4j等等，可以参考https://github.com/HotswapProjects/HotswapAgent
 目前已支持国内常见的springboot+mybatis项目
 
+
+#### HotSwapAgent支持的操作  
+1. 修改java方法，增减java方法字段等等，唯一不支持的操作是修改类继承关系比如改变父类或者删除接口
+
 #### Ctrl+F9速度很慢  
 1. 修改一个文件可以用ctrl shift F9 修改单个module的话在Build菜单 Build Module或者文件夹上build module
 2. 不要使用Rebuild module 或者 Rebuild project 会导致去加载所有的类
 
 
 #### 修改了xml后用ctrl shift F9报错了 File Not Found 
-可以使用ctrl F9(速度慢)或者在xml的文件夹上用ctrl Shift F9(推荐)
+可以使用ctrl F9或者在xml的文件夹上用ctrl Shift F9(推荐)
 
 
 #### 支持的框架的版本
@@ -69,7 +73,7 @@ Spring dev tool | 免费开源   | 依赖springboot             | 使用重启�
 1. 确保intellij配置 `Build, Execution, Deployment/Debugger/HotSwap/Reload class after compilation 为Always.
 2. 使用Debug with HotSwapAgent启动
 
-#### maven热加载失败 程序直接退出了  
+#### maven热加载失败 程序直接退出了
 
 1. 确保intellij配置 `Build, Execution, Deployment/Build tools/Maven/Runner/Delegate IDE build to maven 不要勾选  
 
@@ -77,10 +81,10 @@ Spring dev tool | 免费开源   | 依赖springboot             | 使用重启�
 
 1.在IDEA dubug 按钮那里右键 有个 customize Toolbar -> Add Actions -> 搜索Hotswap 然后添加到General Actions中  
 
+
 #### java17启动报错 java.nio.channels.ReadableByteChannel sun.nio.ch.ChannelInputStream.ch accessible: module java.base does not "opens sun.nio.ch" to unnamed module @8297b3a
 
 使用插件新版本即
-
 #### java.lang.NoClassDefFoundError: org/hotswap/agent/config/PluginManage
 Edit Configuration -> Shorten Command Line -> Jar manifest
 
