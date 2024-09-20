@@ -18,6 +18,10 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>1.0.7</p>
+        <ul>
+            <li>1.Fix HotSwapAgent jar file not found issues</li>
+        </ul>
         <p>1.0.6</p>
         <ul>
             <li>1.Mac using jbr11 AllowEnhancedClassRedefinition not added issue</li>

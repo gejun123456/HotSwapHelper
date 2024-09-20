@@ -18,12 +18,12 @@ public class StartUpListener implements AppLifecycleListener {
    public void appFrameCreated(@NotNull List<String> commandLineArgs) {
       ApplicationManager.getApplication().executeOnPooledThread(() -> {
          try {
-            File folder = new File(MyUtils.getHotSwapFolder());
+            File folder = MyUtils.getHotSwapFolder();
             if (!folder.exists()) {
                folder.mkdirs();
             }
 
-            File agentFile = new File(MyUtils.getHotSwapFolder() + "hotswap-agent.jar");
+            File agentFile = MyUtils.getHotSwapJarPath();
             if (agentFile.exists()) {
                agentFile.delete();
             }

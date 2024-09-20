@@ -49,7 +49,7 @@ public interface MyRunner {
                 boolean useExternalHotSwapAgentFile = currentState.getUseExternalHotSwapAgentFile();
                 if (!useExternalHotSwapAgentFile) {
                     if (javaVersion == 8) {
-                        File agentFile = new File(MyUtils.getHotSwapFolder() + "hotswap-agent.jar");
+                        File agentFile = MyUtils.getHotSwapJarPath();
                         if (!agentFile.exists()) {
                             ApplicationManager.getApplication().invokeLater(new Runnable() {
                                 @Override
