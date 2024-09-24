@@ -37,6 +37,7 @@ mybatis最好在3.5.0以上
 mybatisplus需要3.2.0以上  
 pageHelper正在兼容中 插件1.0.3版本已兼容  
 dynamic-datasource需要4.2.0以上的版本  
+dubbo正在兼容中 
 
 #### mybatisplus修改xml后分页sql有问题
 1. 升级插件到最新版本1.0.4 qq群文件有
