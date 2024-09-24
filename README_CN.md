@@ -36,7 +36,7 @@ springboot,springmvc,hibernate,mybatis,mybatis-plus,log4j等等，可以参考ht
 mybatis最好在3.5.0以上  
 mybatisplus需要3.2.0以上  
 pageHelper正在兼容中 插件1.0.3版本已兼容  
-dynamic-datasource需要4.2.0以上的版本  
+dynamic-datasource最好在3.6.1以上的版本，低于该版本看启动是否会报错    
 dubbo正在兼容中 
 
 #### mybatisplus修改xml后分页sql有问题
