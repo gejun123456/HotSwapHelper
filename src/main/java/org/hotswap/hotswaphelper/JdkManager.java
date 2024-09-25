@@ -41,7 +41,8 @@ public class JdkManager {
                 if(feature==8){
                     if(MyUtils.isWindows()) {
                         //check if dcevm exist or not.
-                        if (new File(jdkhome, "jre/bin/dcevm").exists()) {
+                        File file = new File(jdkhome, "jre/bin/dcevm");
+                        if (file.exists()) {
                             //dcevm exist.
                             result.setHasFound(true);
                             result.setErrorText("");
@@ -50,11 +51,13 @@ public class JdkManager {
                         }
                         else{
                             result.setHasFound(false);
-                            result.setErrorText("dcevm not found in your jdk home:"+jdkhome+","+downloadJdkInGithubRelease);
+                            result.setErrorText("dcevm not found in your jdk home:"+file.getAbsolutePath()+","+downloadJdkInGithubRelease);
                             return result;
                         }
                     } else {
-                        if (new File(jdkhome, "jre/lib/dcevm").exists()) {
+                        File thepath1 = new File(jdkhome, "jre/lib/dcevm");
+                        File thePath2 = new File(jdkhome, "jre/lib/amd64/dcevm");
+                        if (thepath1.exists() || thePath2.exists()) {
                             //dcevm exist.
                             result.setHasFound(true);
                             result.setErrorText("");
@@ -62,7 +65,8 @@ public class JdkManager {
                             return result;
                         } else{
                             result.setHasFound(false);
-                            result.setErrorText("dcevm not found in your jdk home:"+jdkhome+","+downloadJdkInGithubRelease);
+                            result.setErrorText("dcevm not found in your path:"+thepath1.getAbsolutePath()
+                                                +" or path:"+thePath2.getAbsolutePath()+","+downloadJdkInGithubRelease);
                             return result;
                         }
                     }

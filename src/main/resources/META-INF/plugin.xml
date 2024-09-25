@@ -18,6 +18,12 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>1.0.8</p>
+        <ul>
+            <li>1.Support linux jdk 1.8</li>
+            <li>2.Update HotSwapAgent jar file</li>
+            <li>3.Support dynamic datasource start from 3.3.2</li>
+        </ul>
         <p>1.0.7</p>
         <ul>
             <li>1.Fix HotSwapAgent jar file not found issues</li>
