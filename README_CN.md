@@ -25,7 +25,6 @@ springboot,springmvc,hibernate,mybatis,mybatis-plus,log4j等等，可以参考ht
 1. 修改一个文件可以用ctrl shift F9 修改单个module的话在Build菜单 Build Module或者文件夹上build module
 2. 不要使用Rebuild module 或者 Rebuild project 会导致去加载所有的类
 
-
 #### 修改了xml后用ctrl shift F9报错了 File Not Found 
 可以使用ctrl F9或者在xml的文件夹上用ctrl Shift F9(推荐)
 
