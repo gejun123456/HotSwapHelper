@@ -15,7 +15,11 @@ public class ReloadChangedClassAction extends HotSwapAction {
     @Override
     public void update(@NotNull AnActionEvent e) {
         e.getPresentation().setIcon(IconUtils.hotSwapDebugIcon);
-        e.getPresentation().setVisible(true);
         super.update(e);
+        if(e.getPresentation().isEnabled()){
+            e.getPresentation().setVisible(true);
+        } else {
+            e.getPresentation().setVisible(false);
+        }
     }
 }
