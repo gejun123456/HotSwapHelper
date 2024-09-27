@@ -25,7 +25,7 @@ apply plugin: 'kotlin'
 
 
 group 'com.bruce.plugins'
-version '1.0.8'
+version '1.0.9'
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
@@ -53,7 +53,7 @@ intellij {
     // 各种IDEA版本去这里找
     // https://www.jetbrains.com/intellij-repository/releases
     // 依赖的插件
-    plugins = ['java','PsiViewer:212-SNAPSHOT']
+    plugins = ['java','PsiViewer:212-SNAPSHOT','maven','gradle']
     //Disables updating since-build attribute in plugin.xml
     updateSinceUntilBuild false
     downloadSources = true

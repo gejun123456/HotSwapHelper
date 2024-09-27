@@ -103,7 +103,10 @@
             </action>
             <add-to-group group-id="RunDashboardContentToolbar" anchor="last"/>
         </group>
-
+        <action class="org.hotswap.hotswaphelper.ReloadChangedClassAction" id="org.hotswap.hotswaphelper.ReloadChangedClassAction"
+        text="Hotswap Changed Classes">
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+        </action>
     </actions>
 
     <applicationListeners>
