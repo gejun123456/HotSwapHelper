@@ -25,9 +25,13 @@ springboot,springmvc,hibernate,mybatis,mybatis-plus,log4j等等，可以参考ht
 1. 修改一个文件可以用ctrl shift F9 修改单个module的话在Build菜单 Build Module或者文件夹上build module
 2. 不要使用Rebuild module 或者 Rebuild project 会导致去加载所有的类
 
+#### 建议给Build module加一个快捷键 比如ctrl alt shift F9，使用起来更方便  
+#### 多模块项目 ctrl F9编译后导致很多类 reload导致程序或者热加载失败  
+1. 在maven或gradle clean后请用ctrl F9编译项目两次，然后启动，这个问题是Intellij第二次ctrl F9去更新了target目录的resource文件导致的  
+2. 可以使用Build module编译单个module  
+3. 其他问题请联系我来看看  
 #### 修改了xml后用ctrl shift F9报错了 File Not Found 
-可以使用ctrl F9或者在xml的文件夹上用ctrl Shift F9(推荐)
-
+可以使用ctrl F9或者在xml的文件夹上用ctrl Shift F9或者build module
 
 #### 支持的框架的版本
 
