@@ -27,9 +27,13 @@ springboot,springmvc,hibernate,mybatis,mybatis-plus,log4j等等，可以参考ht
 
 #### 建议给Build module加一个快捷键 比如ctrl alt shift F9，使用起来更方便  
 #### 多模块项目 ctrl F9编译后导致很多类 reload导致程序或者热加载失败  
-1. 在maven或gradle clean后请用ctrl F9编译项目两次，然后启动，这个问题是Intellij第二次ctrl F9去更新了target目录的resource文件导致的  
-2. 可以使用Build module编译单个module  
-3. 其他问题请联系我来看看  
+1. 如果你没有修改resource文件比如xml或者properties,yml等,但是target目录的文件夹时间更新了，比如依赖的module的target文件夹,  
+这个问题是Intellij第二次ctrl F9去更新了target目录的resource文件导致的。
+解决方法: 
+1. 在maven或gradle clean后请用ctrl F9编译项目两次，然后再启动项目。
+2. 可以使用Build module编译单个module。
+3. 如果还有问题，可以查看intellij的版本是否是2023的版本，升级到2024版本。  
+4. 其他问题请联系我来看看  
 #### 修改了xml后用ctrl shift F9报错了 File Not Found 
 可以使用ctrl F9或者在xml的文件夹上用ctrl Shift F9或者build module
 
