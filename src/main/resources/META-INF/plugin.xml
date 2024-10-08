@@ -8,7 +8,8 @@
             <p>Support many framework like spring,hibernate,mybatis ect</p>
         </div>
         <h3>中文：</h3>
-        <p>基于HotSwapAgent开发的idea插件,实现热加载功能，支持spring,hibernate,mybatis等框架</p>
+        <a href="https://www.bilibili.com/video/BV1cpWUedEbF">BiliBili</a>
+        <p>基于HotSwapAgent开发的idea插件,实现热加载功能，支持spring,hibernate,mybatis,mybatisplus等框架</p>
         <p>jrebel的免费替代</p>
         <p>修改代码后无需重启服务器即可热加载</p>
         <p>测试已支持若依jeecg,mall,RuoYi-Vue-Plus等项目，支持xml和java文件热加载</p>
@@ -18,6 +19,14 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>1.0.9</p>
+        <ul>
+            <li>1.Support mybatisPlus version from 3.0 by <a href="https://github.com/homejim">homejim</a></li>
+        </ul>
+
+        <ul>
+            <li>1.兼容mybatisplus的版本从3.0开始<a href="https://github.com/homejim">homejim</a></li>
+        </ul>
         <p>1.0.8</p>
         <ul>
             <li>1.Support linux jdk 1.8</li>
