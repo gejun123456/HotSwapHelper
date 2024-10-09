@@ -112,12 +112,12 @@
             </action>
             <add-to-group group-id="RunDashboardContentToolbar" anchor="last"/>
         </group>
-        <action class="org.hotswap.hotswaphelper.ReloadChangedClassAction" id="org.hotswap.hotswaphelper.ReloadChangedClassAction"
-        text="Hotswap Changed Classes">
-            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
-            <keyboard-shortcut first-keystroke="control shift alt F9" keymap="$default"/>
-            <keyboard-shortcut first-keystroke="meta shift alt F9" keymap="macOS System Shortcuts"/>
-        </action>
+<!--        <action class="org.hotswap.hotswaphelper.ReloadChangedClassAction" id="org.hotswap.hotswaphelper.ReloadChangedClassAction"-->
+<!--        text="Hotswap Changed Classes">-->
+<!--            <add-to-group group-id="EditorPopupMenu" anchor="first"/>-->
+<!--            <keyboard-shortcut first-keystroke="control shift alt F9" keymap="$default"/>-->
+<!--            <keyboard-shortcut first-keystroke="meta shift alt F9" keymap="macOS System Shortcuts"/>-->
+<!--        </action>-->
     </actions>
 
     <applicationListeners>
