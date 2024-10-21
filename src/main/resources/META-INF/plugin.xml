@@ -19,6 +19,13 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>1.1.0</p>
+        <ul>
+            <li>1.Fix mybatis xml reload not work issue</li>
+        </ul>
+        <ul>
+            <li>1.修复mybatis xml没有热加载的问题</li>
+        </ul>
         <p>1.0.9</p>
         <ul>
             <li>1.Support mybatisPlus version from 3.0 by <a href="https://github.com/homejim">homejim</a></li>
