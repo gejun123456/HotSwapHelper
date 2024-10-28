@@ -15,6 +15,7 @@
  */
 package org.hotswap.hotswaphelper.settings
 
+import com.google.common.base.Joiner
 import com.intellij.execution.RunManager
 import com.intellij.ide.BrowserUtil
 import com.intellij.openapi.fileChooser.FileChooserDescriptor
@@ -25,8 +26,10 @@ import com.intellij.openapi.ui.Messages
 import com.intellij.ui.DocumentAdapter
 import com.intellij.util.execution.ParametersListUtil
 import org.apache.commons.lang.StringUtils
+import org.hotswap.hotswaphelper.ui.CopyTextDialog
 import org.hotswap.hotswaphelper.ui.HotSwapAgentPluginSettingsForm
 import java.awt.CardLayout
+import java.lang.StringBuilder
 import java.util.*
 import javax.swing.JComponent
 import javax.swing.event.DocumentEvent
@@ -35,7 +38,7 @@ import javax.swing.event.DocumentEvent
  * @author Dmitry Zhuravlev
  *         Date:  09.03.2017
  */
-class HotSwapHelperPluginSettingsConfigurable(project: Project) : Configurable {
+class HotSwapHelperPluginSettingsConfigurable(var project: Project) : Configurable {
     companion object {
         val bundle = ResourceBundle.getBundle("HotSwapHelperIntellijPluginBundle")!!
         private const val DCEVM_NOT_DETERMINED = "<not determined>"
@@ -74,7 +77,7 @@ class HotSwapHelperPluginSettingsConfigurable(project: Project) : Configurable {
     override fun createComponent(): JComponent? {
         setupFormComponents()
         //support it in later release version.
-        form.disablePluginPanel.isVisible = false;
+        form.disablePluginPanel.isVisible = true;
         return form.rootPanel
     }
 
@@ -109,6 +112,17 @@ class HotSwapHelperPluginSettingsConfigurable(project: Project) : Configurable {
         form.updateButton.addActionListener {
             BrowserUtil.browse("https://github.com/HotswapProjects/HotswapAgent/releases")
         }
+
+        form.exampleButton.addActionListener({
+            val allPluginName = "Hotswapper, JdkPlugin, AnonymousClassPatch, ClassInitPlugin, WatchResources, Hibernate, HibernateJakarta, Hibernate3JPA, Hibernate3, Spring, SpringBoot, Jersey1, Jersey2, Jetty, Tomcat, ZK, Logback, Log4j2, MyFaces, Mojarra, Omnifaces, ELResolver, WildFlyELResolver, OsgiEquinox, Owb, OwbJakarta, Proxy, WebObjects, Weld, WeldJakarta, JBossModules, ResteasyRegistry, Deltaspike, DeltaspikeJakarta, GlassFish, Weblogic, Vaadin, Wicket, CxfJAXRS, FreeMarker, Undertow, MyBatis, MyBatisPlus, IBatis, JacksonPlugin, Idea, Thymeleaf, Velocity, Sponge"
+            var split = allPluginName.split(",");
+            //trim all names.
+            split = split.map { it.trim() }
+            var join = Joiner.on(",").join(split)
+            val text = "all plugin names:\n"+join+"\n\n";
+            val disableSpringText = "disable spring plugins:\n"+"Spring,Springboot";
+            CopyTextDialog(project,text+disableSpringText).show()
+        })
 //        form.dcevmDownloadSuggestionLabel.apply {
 //            setHtmlText("""
 //                   DCEVM installation not found for JDK specified for the current project.
@@ -143,7 +157,7 @@ class HotSwapHelperPluginSettingsConfigurable(project: Project) : Configurable {
 //        }
     }
 
-    private fun String.parse() = ParametersListUtil.COLON_LINE_PARSER.`fun`(this).map(String::trim).toMutableSet()
+    private fun String.parse() = this.split(",").map(String::trim).toMutableSet()
 
-    private fun Set<String>.joinString() = ParametersListUtil.COLON_LINE_JOINER.`fun`(this.toList())
+    private fun Set<String>.joinString() = Joiner.on(",").join(this);
 }

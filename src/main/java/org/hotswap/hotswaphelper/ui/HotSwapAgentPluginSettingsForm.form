@@ -63,7 +63,7 @@
               <component id="e6d0f" class="com.intellij.ui.components.JBLabel">
                 <constraints border-constraint="West"/>
                 <properties>
-                  <text value="Disabled plugins:"/>
+                  <text resource-bundle="string" key="disabled.plugins"/>
                 </properties>
               </component>
               <component id="1e918" class="javax.swing.JTextField" binding="disabledPluginsField" custom-create="true">
@@ -81,6 +81,14 @@
             <properties>
               <text value="download"/>
               <visible value="true"/>
+            </properties>
+          </component>
+          <component id="15263" class="javax.swing.JButton" binding="exampleButton">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text resource-bundle="string" key="example"/>
             </properties>
           </component>
         </children>

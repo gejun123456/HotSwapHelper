@@ -1,5 +1,6 @@
 package org.hotswap.hotswaphelper.runner;
 
+import com.google.common.base.Joiner;
 import com.intellij.execution.CantRunException;
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.JavaTestConfigurationBase;
@@ -10,6 +11,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.projectRoots.Sdk;
 import com.intellij.openapi.ui.Messages;
 import lombok.val;
+import org.apache.commons.lang3.StringUtils;
 import org.hotswap.hotswaphelper.CheckResult;
 import org.hotswap.hotswaphelper.JdkManager;
 import org.hotswap.hotswaphelper.settings.HotSwapHelperPluginSettingsProvider;
@@ -21,6 +23,7 @@ import org.jetbrains.jps.model.java.JdkVersionDetector;
 
 import java.io.File;
 import java.io.InputStream;
+import java.util.Set;
 
 /**
  * @author bruce ge 2024/8/20
@@ -108,6 +111,13 @@ public interface MyRunner {
                         }
                     }
 
+                }
+                Set<String> disabledPlugins = currentState.getDisabledPlugins();
+                if(!disabledPlugins.isEmpty()){
+                    String join = Joiner.on(",").join(disabledPlugins);
+                    if(StringUtils.isNotBlank(join)) {
+                        javaParameters.getVMParametersList().addParametersString("-Dhotswapagent.disablePlugin=" + join);
+                    }
                 }
             }
         }

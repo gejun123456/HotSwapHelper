@@ -49,6 +49,7 @@ public class HotSwapAgentPluginSettingsForm {
     public JTextField disabledPluginsField;
     public JCheckBox useExternalAgentFileCheckBox;
     public JPanel disablePluginPanel;
+    public JButton exampleButton;
 
     private void createUIComponents() {
         disabledPluginsField = new ExpandableTextField(ParametersListUtil.COLON_LINE_PARSER, ParametersListUtil.COLON_LINE_JOINER);
@@ -104,6 +105,9 @@ public class HotSwapAgentPluginSettingsForm {
         updateButton.setText("download");
         updateButton.setVisible(true);
         panel1.add(updateButton, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        exampleButton = new JButton();
+        this.$$$loadButtonText$$$(exampleButton, this.$$$getMessageFromBundle$$$("string", "example"));
+        panel1.add(exampleButton, new GridConstraints(1, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JPanel panel4 = new JPanel();
         panel4.setLayout(new BorderLayout(0, 0));
         rootPanel.add(panel4, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_VERTICAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
