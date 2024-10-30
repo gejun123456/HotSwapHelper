@@ -97,7 +97,7 @@ public class HotSwapAgentPluginSettingsForm {
         disablePluginPanel.setLayout(new BorderLayout(0, 0));
         panel1.add(disablePluginPanel, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         final JBLabel jBLabel2 = new JBLabel();
-        jBLabel2.setText("Disabled plugins:");
+        this.$$$loadLabelText$$$(jBLabel2, this.$$$getMessageFromBundle$$$("string", "disabled.plugins"));
         disablePluginPanel.add(jBLabel2, BorderLayout.WEST);
         disabledPluginsField.setToolTipText("Semicolon separated list of disabled plugins");
         disablePluginPanel.add(disabledPluginsField, BorderLayout.CENTER);
@@ -133,6 +133,33 @@ public class HotSwapAgentPluginSettingsForm {
             bundle = ResourceBundle.getBundle(path);
         }
         return bundle.getString(key);
+    }
+
+    /**
+     * @noinspection ALL
+     */
+    private void $$$loadLabelText$$$(JLabel component, String text) {
+        StringBuffer result = new StringBuffer();
+        boolean haveMnemonic = false;
+        char mnemonic = '\0';
+        int mnemonicIndex = -1;
+        for (int i = 0; i < text.length(); i++) {
+            if (text.charAt(i) == '&') {
+                i++;
+                if (i == text.length()) break;
+                if (!haveMnemonic && text.charAt(i) != '&') {
+                    haveMnemonic = true;
+                    mnemonic = text.charAt(i);
+                    mnemonicIndex = result.length();
+                }
+            }
+            result.append(text.charAt(i));
+        }
+        component.setText(result.toString());
+        if (haveMnemonic) {
+            component.setDisplayedMnemonic(mnemonic);
+            component.setDisplayedMnemonicIndex(mnemonicIndex);
+        }
     }
 
     /**

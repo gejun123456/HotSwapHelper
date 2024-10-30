@@ -88,6 +88,9 @@ Spring dev tool | 免费开源   | 依赖springboot             | 使用重启�
 #### spring getBean找不到类  
 1. 如果这个bean使用了接口，请使用接口来找或者用bean的名字来查找bean  
 
+#### 修改类后A fatal error has been detected by the Java Runtime Environment:
+1. 一般是jdk8的问题，可以用jdk11看看，有问题也可联系我来看看  
+
 #### Intellij新ui 按钮看不到 怎么拖出来  
 
 1.在IDEA dubug 按钮那里右键 有个 customize Toolbar -> Add Actions -> 搜索Hotswap 然后添加到General Actions中  
