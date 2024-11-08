@@ -67,7 +67,7 @@ public interface MyRunner {
                             return;
                         } else {
                             javaParameters.getVMParametersList().addParametersString("-XXaltjvm=dcevm");
-                            javaParameters.getVMParametersList().addParametersString("-javaagent:" + agentFile.getAbsolutePath());
+                            javaParameters.getVMParametersList().addParametersString("-javaagent:\"" + agentFile.getAbsolutePath()+"\"");
                         }
                     } else if (javaVersion == 11) {
                         //check if jbr?

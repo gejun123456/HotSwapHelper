@@ -33,7 +33,8 @@ springboot,springmvc,hibernate,mybatis,mybatis-plus,log4j等等，可以参考ht
 1. 在maven或gradle clean后请用ctrl F9编译项目两次，然后再启动项目。
 2. 可以使用Build module编译单个module。
 3. 如果还有问题，可以查看intellij的版本是否是2023的版本，升级到2024版本。  
-4. 其他问题请联系我来看看  
+4. 禁用掉springboot插件
+5. 其他问题请联系我来看看  
 #### 修改了xml后用ctrl shift F9报错了 File Not Found 
 可以使用ctrl F9或者在xml的文件夹上用ctrl Shift F9或者build module
 
@@ -91,6 +92,8 @@ Spring dev tool | 免费开源   | 依赖springboot             | 使用重启�
 #### 修改类后A fatal error has been detected by the Java Runtime Environment:
 1. 一般是jdk8的问题，可以用jdk11看看，有问题也可联系我来看看  
 
+
+
 #### Intellij新ui 按钮看不到 怎么拖出来  
 
 1.在IDEA dubug 按钮那里右键 有个 customize Toolbar -> Add Actions -> 搜索Hotswap 然后添加到General Actions中  
@@ -99,7 +102,7 @@ Spring dev tool | 免费开源   | 依赖springboot             | 使用重启�
 #### java17启动报错 java.nio.channels.ReadableByteChannel sun.nio.ch.ChannelInputStream.ch accessible: module java.base does not "opens sun.nio.ch" to unnamed module @8297b3a
 
 使用插件新版本即
-#### java.lang.NoClassDefFoundError: org/hotswap/agent/config/PluginManage
+#### java.lang.NoClassDefFoundError: org/hotswap/agent/config/PluginManager
 Edit Configuration -> Shorten Command Line -> Jar manifest
 
 #### 为什么需要下载一个 jdk？
