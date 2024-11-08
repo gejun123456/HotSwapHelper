@@ -22,9 +22,11 @@
         <p>1.1.0</p>
         <ul>
             <li>1.Fix mybatis xml reload not work issue</li>
+            <li>2.Support disable plugins</li>
         </ul>
         <ul>
             <li>1.修复mybatis xml没有热加载的问题</li>
+            <li>2.支持禁用插件</li>
         </ul>
         <p>1.0.9</p>
         <ul>
