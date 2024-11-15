@@ -33,7 +33,7 @@ springboot,springmvc,hibernate,mybatis,mybatis-plus,log4j等等，可以参考ht
 1. 在maven或gradle clean后请用ctrl F9编译项目两次，然后再启动项目。
 2. 可以使用Build module编译单个module。
 3. 如果还有问题，可以查看intellij的版本是否是2023的版本，升级到2024版本。  
-4. 禁用掉springboot插件
+4. 禁用掉springboot插件    
 5. 其他问题请联系我来看看  
 #### 修改了xml后用ctrl shift F9报错了 File Not Found 
 可以使用ctrl F9或者在xml的文件夹上用ctrl Shift F9或者build module
@@ -88,6 +88,10 @@ Spring dev tool | 免费开源   | 依赖springboot             | 使用重启�
 
 #### spring getBean找不到类  
 1. 如果这个bean使用了接口，请使用接口来找或者用bean的名字来查找bean  
+
+
+#### IDEA 2024.3版本出现NoClassFoundException
+1. 使用java17 或者降级IDEA版本
 
 #### 修改类后A fatal error has been detected by the Java Runtime Environment:
 1. 一般是jdk8的问题，可以用jdk11看看，有问题也可联系我来看看  

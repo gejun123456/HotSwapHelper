@@ -39,8 +39,8 @@ The jdk provided by [HotSwapHelper Releases](https://github.com/gejun123456/HotS
 dcevm with hotswap folder into it, so you don't need to install dcevm separately.
 If you don't like it, you can always install by yourself from doc:[HotSwapAgent GitHub page](https://github.com/HotswapProjects/HotswapAgent).
 
-#### java17 startUp issue java.nio.channels.ReadableByteChannel sun.nio.ch.ChannelInputStream.ch accessible: module java.base does not "opens sun.nio.ch" to unnamed module @8297b3a
-Update to plugin 1.0.2 version, it has fixed.
+#### 2024.3 meet NoClassFound Exception
+1. DownGrade to 2024.2 or older version or use java17
 
 ### Encountering Issues?
 Just issue on github or contact me following:  
