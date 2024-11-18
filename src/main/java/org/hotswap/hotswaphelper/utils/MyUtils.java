@@ -29,4 +29,8 @@ public class MyUtils {
     public static File getHotSwapJarPath(){
         return new File(getHotSwapFolder(),"hotswap-agent.jar");
     }
+
+    public static File getDebuggerAgentFile(){
+        return new File(getHotSwapFolder(),"debugger-agent.jar");
+    }
 }

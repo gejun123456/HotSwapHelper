@@ -31,6 +31,16 @@ public class StartUpListener implements AppLifecycleListener {
             //copy resource to the file
             FileUtils.copyInputStreamToFile(resourceAsStream, agentFile);
             resourceAsStream.close();
+
+            File debuggerAgentFile = MyUtils.getDebuggerAgentFile();
+            if(debuggerAgentFile.exists()){
+               debuggerAgentFile.delete();
+            }
+
+            InputStream debuggerAgentResourceFile = this.getClass().getClassLoader().getResourceAsStream("debugger-agent.jar");
+            //copy resource to the file
+            FileUtils.copyInputStreamToFile(debuggerAgentResourceFile, debuggerAgentFile);
+            debuggerAgentResourceFile.close();
          } catch (Exception var3) {
             throw new RuntimeException(var3);
          }
