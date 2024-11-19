@@ -19,6 +19,13 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>1.1.2</p>
+        <ul>
+            <li>1.Support 2024.3 NoClassFoundException issue</li>
+        </ul>
+        <ul>
+            <li>1.兼容2024.3 解决了报错问题</li>
+        </ul>
         <p>1.1.0</p>
         <ul>
             <li>1.Fix mybatis xml reload not work issue</li>
