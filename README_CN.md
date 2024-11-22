@@ -7,9 +7,9 @@
 
 1. https://github.com/gejun123456/HotSwapHelper/releases 根据自己的jdk版本去下载对应的jdk或者去qq群下载
 2. 下载后解压，idea配置为对应的jdk
-3. 安装了HotSwapHelper后在idea的debug按钮旁边有两个图标，使用Debug With HotSwap 即可热更新
+3. Intellij安装了HotSwapHelper插件后在idea的debug按钮旁边有个图标，使用Debug With HotSwap 即可热更新
 4. 查看日志中是否出现org.hotswap.agent.HotswapAgent字样，出现则代表加载成功了
-5. 修改代码后,需要编译一下Ctrl f9 build project即可 注意修改xml要用ctrl+F9 多模块的项目只用编译修改了代码的模块就行 Build module.
+5. 修改代码后,需要编译一下Ctrl F9(build project),多模块的项目只用编译修改了代码的模块就行Build module.
 
 ### 支持框架
 
