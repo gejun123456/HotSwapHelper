@@ -27,6 +27,7 @@ public class JdkNotSupportedDialog extends DialogWrapper {
     private JLabel errorLabel;
     private LinkLabel dontCheckJdk;
     private LinkLabel documentationLink;
+    public LinkLabel jbrLink;
 
     public JdkNotSupportedDialog(@Nullable Project project, boolean canBeParent, String errorText) {
         super(project, canBeParent);
@@ -51,6 +52,14 @@ public class JdkNotSupportedDialog extends DialogWrapper {
                 return;
             }
         }, null);
+
+        jbrLink.setListener(new LinkListener() {
+            @Override
+            public void linkSelected(LinkLabel aSource, Object aLinkData) {
+                BrowserUtil.browse("https://github.com/JetBrains/JetBrainsRuntime");
+                return;
+            }
+        },null);
 
         documentationLink.setListener(new LinkListener() {
             @Override
