@@ -79,6 +79,11 @@ public class JdkManager {
                             result.setJavaVersion(11);
                             return result;
                         } else {
+                            if(result.isJbr()){
+                                result.setHasFound(true);
+                                result.setJavaVersion(11);
+                                return result;
+                            }
                             result.setHasFound(false);
                             result.setErrorText("hotSwap file not exist in your jdk home," +
                                                 "the path is" + file.getAbsolutePath() + downloadJdkInGithubRelease);
@@ -91,6 +96,11 @@ public class JdkManager {
                             result.setJavaVersion(feature);
                             return result;
                         } else {
+                            if(result.isJbr()){
+                                result.setHasFound(true);
+                                result.setJavaVersion(feature);
+                                return result;
+                            }
                             result.setHasFound(false);
                             result.setErrorText("hotSwap file not exist in your jdk home,"+file.getAbsolutePath()+"please download jdk in github release");
                             return result;

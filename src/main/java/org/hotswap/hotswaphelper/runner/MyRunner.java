@@ -50,72 +50,73 @@ public interface MyRunner {
                 Project project = ((RunConfiguration) runProfile).getProject();
                 HotSwapHelperPluginSettingsProvider.State currentState = HotSwapHelperPluginSettingsProvider.Companion.getInstance(project).getCurrentState();
                 boolean useExternalHotSwapAgentFile = currentState.getUseExternalHotSwapAgentFile();
-                if (!useExternalHotSwapAgentFile) {
-                    if (javaVersion == 8) {
-                        File agentFile = MyUtils.getHotSwapJarPath();
-                        if (!agentFile.exists()) {
-                            ApplicationManager.getApplication().invokeLater(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Messages.showErrorDialog(((RunConfiguration) runProfile).getProject(),
-                                            "HotSwap agent jar not found," +
-                                            "please check your folder:" + agentFile.getAbsolutePath() + " is there exist " +
-                                            "hotswap-agent.jar" +
-                                            "https://github.com/gejun123456/HotSwapIntellij", "HotSwap Agent Jar Not Found");
-                                }
-                            });
-                            return;
-                        } else {
-                            javaParameters.getVMParametersList().addParametersString("-XXaltjvm=dcevm");
-                            javaParameters.getVMParametersList().addParametersString("-javaagent:\"" + agentFile.getAbsolutePath()+"\"");
+//                if (!useExternalHotSwapAgentFile) {
+//                    if (javaVersion == 8) {
+//                        File agentFile = MyUtils.getHotSwapJarPath();
+//                        if (!agentFile.exists()) {
+//                            ApplicationManager.getApplication().invokeLater(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                    Messages.showErrorDialog(((RunConfiguration) runProfile).getProject(),
+//                                            "HotSwap agent jar not found," +
+//                                            "please check your folder:" + agentFile.getAbsolutePath() + " is there exist " +
+//                                            "hotswap-agent.jar" +
+//                                            "https://github.com/gejun123456/HotSwapIntellij", "HotSwap Agent Jar Not Found");
+//                                }
+//                            });
+//                            return;
+//                        } else {
+//                            javaParameters.getVMParametersList().addParametersString("-XXaltjvm=dcevm");
+//                            javaParameters.getVMParametersList().addParametersString("-javaagent:\"" + agentFile.getAbsolutePath()+"\"");
+//                        }
+//                    } else if (javaVersion == 11) {
+//                        //check if jbr?
+//                        if (result.isJbr()) {
+//                            javaParameters.getVMParametersList().addParametersString("-XX:+AllowEnhancedClassRedefinition");
+//                        }
+//                        javaParameters.getVMParametersList().addParametersString("-XX:HotswapAgent=fatjar");
+//                    } else if (javaVersion >= 17) {
+//                        javaParameters.getVMParametersList().addParametersString("-XX:+AllowEnhancedClassRedefinition");
+//                        javaParameters.getVMParametersList().addParametersString("-XX:HotswapAgent=fatjar");
+//                        javaParameters.getVMParametersList().addParametersString("-XX:+ClassUnloading");
+//                        //add --add-opens
+//                        addOpens(javaParameters);
+//                    }
+//                } else {
+                String agentPath = MyUtils.getHotSwapJarPath().getAbsolutePath();
+                // use external mode?
+                if (useExternalHotSwapAgentFile) {
+                    agentPath = currentState.getAgentPath();
+                }
+                File agentFile = new File(agentPath);
+                if (!agentFile.exists()) {
+                    ApplicationManager.getApplication().invokeLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            Messages.showErrorDialog(((RunConfiguration) runProfile).getProject(),
+                                    "HotSwap agent jar not found in path:" + agentFile.getAbsolutePath(), "Error");
                         }
-                    } else if (javaVersion == 11) {
-                        //check if jbr?
-                        if (result.isJbr()) {
-                            javaParameters.getVMParametersList().addParametersString("-XX:+AllowEnhancedClassRedefinition");
-                        }
-                        javaParameters.getVMParametersList().addParametersString("-XX:HotswapAgent=fatjar");
-                    } else if (javaVersion >= 17) {
+                    });
+                    return;
+                }
+                javaParameters.getVMParametersList().addParametersString("-javaagent:\"" + agentFile.getAbsolutePath() + "\"");
+                if (javaVersion == 8) {
+                    javaParameters.getVMParametersList().addParametersString("-XXaltjvm=dcevm");
+                } else if (javaVersion >= 11) {
+                    if (result.isJbr() || javaVersion >= 17) {
                         javaParameters.getVMParametersList().addParametersString("-XX:+AllowEnhancedClassRedefinition");
-                        javaParameters.getVMParametersList().addParametersString("-XX:HotswapAgent=fatjar");
-                        javaParameters.getVMParametersList().addParametersString("-XX:+ClassUnloading");
+                    }
+                    javaParameters.getVMParametersList().addParametersString("-XX:HotswapAgent=external");
+                    if (javaVersion >= 17) {
                         //add --add-opens
+                        javaParameters.getVMParametersList().addParametersString("-XX:+ClassUnloading");
                         addOpens(javaParameters);
                     }
-                } else {
-                    // use external mode?
-                    String agentPath = currentState.getAgentPath();
-                    File agentFile = new File(agentPath);
-                    if (!agentFile.exists()) {
-                        ApplicationManager.getApplication().invokeLater(new Runnable() {
-                            @Override
-                            public void run() {
-                                Messages.showErrorDialog(((RunConfiguration) runProfile).getProject(),
-                                        "HotSwap agent jar not found in path:" + agentFile.getAbsolutePath(), "Error");
-                            }
-                        });
-                        return;
-                    }
-                    javaParameters.getVMParametersList().addParametersString("-javaagent:\"" + agentFile.getAbsolutePath() + "\"");
-                    if (javaVersion == 8) {
-                        javaParameters.getVMParametersList().addParametersString("-XXaltjvm=dcevm");
-                    } else if (javaVersion >= 11) {
-                        if (result.isJbr() || javaVersion >= 17) {
-                            javaParameters.getVMParametersList().addParametersString("-XX:+AllowEnhancedClassRedefinition");
-                        }
-                        javaParameters.getVMParametersList().addParametersString("-XX:HotswapAgent=external");
-                        if (javaVersion >= 17) {
-                            //add --add-opens
-                            javaParameters.getVMParametersList().addParametersString("-XX:+ClassUnloading");
-                            addOpens(javaParameters);
-                        }
-                    }
-
                 }
                 Set<String> disabledPlugins = currentState.getDisabledPlugins();
-                if(!disabledPlugins.isEmpty()){
+                if (!disabledPlugins.isEmpty()) {
                     String join = Joiner.on(",").join(disabledPlugins);
-                    if(StringUtils.isNotBlank(join)) {
+                    if (StringUtils.isNotBlank(join)) {
                         javaParameters.getVMParametersList().addParametersString("-Dhotswapagent.disablePlugin=" + join);
                     }
                 }
@@ -161,24 +162,24 @@ public interface MyRunner {
             Project project = environment.getProject();
             boolean useExternalHotSwapAgentFile = HotSwapHelperPluginSettingsProvider.Companion.getInstance(project).getCurrentState().getUseExternalHotSwapAgentFile();
             //copy the hotwap agent file to the folder if 11 or 17.
-            if (result.getJavaVersion() > 8 && !useExternalHotSwapAgentFile) {
-                try {
-                    // make sure to use with the least version in plugin resource.
-                    // user can config it later if needed.
-                    //copy the hotswap agent to the place.
-                    File agentFile = new File(homePath, "lib/hotswap/hotswap-agent.jar");
-                    //copy the stream to the file.
-                    if (agentFile.exists()) {
-                        agentFile.delete();
-                    }
-                    InputStream resourceAsStream = JdkManager.class.getClassLoader().getResourceAsStream("hotswap-agent.jar");
-                    //copy resource to the file
-                    FileUtils.copyInputStreamToFile(resourceAsStream, agentFile);
-                    resourceAsStream.close();
-                } catch (Exception e) {
-                    //ignore this.
-                }
-            }
+//            if (result.getJavaVersion() > 8 && !useExternalHotSwapAgentFile) {
+//                try {
+//                    // make sure to use with the least version in plugin resource.
+//                    // user can config it later if needed.
+//                    //copy the hotswap agent to the place.
+//                    File agentFile = new File(homePath, "lib/hotswap/hotswap-agent.jar");
+//                    //copy the stream to the file.
+//                    if (agentFile.exists()) {
+//                        agentFile.delete();
+//                    }
+//                    InputStream resourceAsStream = JdkManager.class.getClassLoader().getResourceAsStream("hotswap-agent.jar");
+//                    //copy resource to the file
+//                    FileUtils.copyInputStreamToFile(resourceAsStream, agentFile);
+//                    resourceAsStream.close();
+//                } catch (Exception e) {
+//                    //ignore this.
+//                }
+//            }
 
             //when use external, no need to delete the file.
 //            if(useExternalHotSwapAgentFile){
