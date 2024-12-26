@@ -1,5 +1,5 @@
 ## HotSwapHelper 基于HotSwapAgent热更新的Intellij插件，修改代码后无需重启服务器
-### 完美兼容国内常见的springboot+mybatis+mybatisplus等项目的热加载
+### 完美兼容国内常见的springboot+mybatis+mybatisplus等项目的热加载,完美兼容若依，ruoyi vue pro,jeecg等项目
 
 [![Jetbrains Plugins](https://img.shields.io/jetbrains/plugin/v/25171-a8translate.svg)][plugin]
 [![加入QQ群](https://img.shields.io/badge/chat-QQ群-46BC99.svg?style=flat-square)](https://qm.qq.com/q/JQKyhlt4ke)  
