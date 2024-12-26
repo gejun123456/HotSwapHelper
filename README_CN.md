@@ -1,4 +1,5 @@
-## HotSwapHelper 基于HotSwapAgent热更新的Intellij插件
+## HotSwapHelper 基于HotSwapAgent热更新的Intellij插件，修改代码后无需重启服务器
+### 完美兼容国内常见的springboot+mybatis+mybatisplus等项目的热加载
 
 [![Jetbrains Plugins](https://img.shields.io/jetbrains/plugin/v/25171-a8translate.svg)][plugin]
 [![加入QQ群](https://img.shields.io/badge/chat-QQ群-46BC99.svg?style=flat-square)](https://qm.qq.com/q/JQKyhlt4ke)  
@@ -19,7 +20,7 @@ springboot,springmvc,hibernate,mybatis,mybatis-plus,log4j等等，可以参考ht
 
 
 #### HotSwapAgent支持的操作  
-1. 修改java方法，增减java方法字段等等，唯一不支持的操作是修改类继承关系比如改变父类或者删除接口
+1. 修改java方法，增减java方法字段等等，修改xml,增减xml等，唯一不支持的操作是修改类继承关系比如改变父类或者删除接口
 
 #### Ctrl+F9速度很慢  
 1. 修改一个文件可以用ctrl shift F9 修改单个module的话在Build菜单 Build Module或者文件夹上build module
