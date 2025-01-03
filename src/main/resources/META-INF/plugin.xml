@@ -19,6 +19,14 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>1.1.4</p>
+        <ul>
+            <li>1.exception fix when use default agent file</li>
+        </ul>
+        <ul>
+            <li>1.修复非spring web项目Filter报错</li>
+            <li>2.兼容ruoyi flowable项目</li>
+        </ul>
         <p>1.1.3</p>
         <ul>
             <li>1.When using jbr, wont check hotswapAgent.jar so user can just download from jbr github</li>
