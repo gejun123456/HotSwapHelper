@@ -48,8 +48,8 @@ public class JdkNotSupportedDialog extends DialogWrapper {
         dontCheckJdk.setListener(new LinkListener() {
             @Override
             public void linkSelected(LinkLabel aSource, Object aLinkData) {
-                Messages.showInfoMessage(project, "Current is not supported, Will be available in future plugin versions", "Not Check Jdk");
-                return;
+                //shows setting pages. show intellij settings page.
+                Messages.showInfoMessage("You can disable jdk check in settings->hotswap helper", "Disable Jdk Check");
             }
         }, null);
 

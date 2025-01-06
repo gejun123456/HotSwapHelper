@@ -41,6 +41,8 @@ class HotSwapHelperPluginSettingsProvider : PersistentStateComponent<HotSwapHelp
 //        var enableAgentForAllConfiguration = false
 //        var selectedRunConfigurations = mutableSetOf<String>()
         var disabledPlugins = mutableSetOf<String>()
+
+        var dontCheckJdk = false;
     }
 
     var currentState = State()

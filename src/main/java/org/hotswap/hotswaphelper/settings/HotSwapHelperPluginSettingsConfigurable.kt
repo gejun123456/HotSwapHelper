@@ -59,12 +59,14 @@ class HotSwapHelperPluginSettingsConfigurable(var project: Project) : Configurab
 
         val text = form.agentInstallPathField.text
         val useExternalAgentFile = form.useExternalAgentFileCheckBox.isSelected
+        val currentDontCheckJdk = form.dontCheckJdkCheckBox.isSelected
         if(useExternalAgentFile&&StringUtils.isBlank(text)){
             Messages.showErrorDialog("when use external, agent must not null empty","agent file empty");
             return;
         }
         stateProvider.currentState.agentPath = text
         stateProvider.currentState.useExternalHotSwapAgentFile = useExternalAgentFile;
+        stateProvider.currentState.dontCheckJdk = currentDontCheckJdk
 //        stateProvider.currentState.enableAgentForAllConfiguration = form.applyAgentToAllConfigurationsBox.isSelected
 //        stateProvider.currentState.selectedRunConfigurations = form.configurationTableProvider.getSelectedConfigurationNames()
         stateProvider.currentState.disabledPlugins = form.disabledPluginsField.text.parse()
@@ -86,6 +88,7 @@ class HotSwapHelperPluginSettingsConfigurable(var project: Project) : Configurab
 //        form.applyAgentToAllConfigurationsBox.isSelected = stateProvider.currentState.enableAgentForAllConfiguration
         form.disabledPluginsField.text = stateProvider.currentState.disabledPlugins.joinString()
         form.useExternalAgentFileCheckBox.isSelected = stateProvider.currentState.useExternalHotSwapAgentFile
+        form.dontCheckJdkCheckBox.isSelected = stateProvider.currentState.dontCheckJdk
         stateChanged = false
     }
 
@@ -109,6 +112,10 @@ class HotSwapHelperPluginSettingsConfigurable(var project: Project) : Configurab
         form.useExternalAgentFileCheckBox.addItemListener {
             stateChanged = form.useExternalAgentFileCheckBox.isSelected != stateProvider.currentState.useExternalHotSwapAgentFile;
         }
+
+        form.dontCheckJdkCheckBox.addItemListener{
+            stateChanged = form.dontCheckJdkCheckBox.isSelected !=stateProvider.currentState.dontCheckJdk
+        }
         form.updateButton.addActionListener {
             BrowserUtil.browse("https://github.com/HotswapProjects/HotswapAgent/releases")
         }
@@ -123,6 +130,13 @@ class HotSwapHelperPluginSettingsConfigurable(var project: Project) : Configurab
             val disableSpringText = "disable spring plugins:\n"+"Spring,Springboot";
             CopyTextDialog(project,text+disableSpringText).show()
         })
+
+        //set the linkListener
+
+        form.whatWillHappen.setListener({ label, linkData ->
+            // Your implementation here
+            BrowserUtil.browse("https://github.com/HotswapProjects/HotswapAgent")
+        }, null)
 //        form.dcevmDownloadSuggestionLabel.apply {
 //            setHtmlText("""
 //                   DCEVM installation not found for JDK specified for the current project.

@@ -12,7 +12,7 @@ import java.util.Properties;
  * @author bruce ge 2024/8/19
  */
 public class JdkManager {
-    public static CheckResult checkJdkHome(String jdkhome){
+    public static CheckResult checkJdkHome(String jdkhome,boolean dontCheckJdk){
         //get java version from jdk home.
         //get the release file.
         String downloadJdkInGithubRelease = " please download jdk in github release";
@@ -36,6 +36,11 @@ public class JdkManager {
                     //not supported.
                     result.setHasFound(false);
                     result.setErrorText("before jdk1.8 is not supported");
+                    return result;
+                }
+                if(dontCheckJdk){
+                    result.setHasFound(true);
+                    result.setJavaVersion(feature);
                     return result;
                 }
                 if(feature==8){
@@ -116,7 +121,7 @@ public class JdkManager {
             }
         } else {
             result.setHasFound(false);
-            result.setErrorText("release file not found in your jdk home:"+jdkhome+" Please download jdk");
+            result.setErrorText("release file not found in path:"+release.getAbsolutePath()+" Please download jdk");
             return result;
         }
     }

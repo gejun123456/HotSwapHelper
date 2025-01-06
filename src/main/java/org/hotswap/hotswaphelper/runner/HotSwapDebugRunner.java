@@ -7,10 +7,12 @@ import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.execution.ui.RunContentDescriptor;
 import com.intellij.openapi.application.ApplicationInfo;
 import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.project.Project;
 import com.intellij.util.text.VersionComparatorUtil;
 import org.hotswap.hotswaphelper.CheckResult;
 import org.hotswap.hotswaphelper.HotSwapDebugExecutor;
 import org.hotswap.hotswaphelper.JdkManager;
+import org.hotswap.hotswaphelper.settings.HotSwapHelperPluginSettingsProvider;
 import org.hotswap.hotswaphelper.utils.MyUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -51,7 +53,9 @@ public class HotSwapDebugRunner extends GenericDebuggerRunner implements MyRunne
             if (state instanceof JavaCommandLine) {
                 JavaParameters javaParameters = ((JavaCommandLine) state).getJavaParameters();
                 String jdkPath = javaParameters.getJdkPath();
-                CheckResult checkResult = JdkManager.checkJdkHome(jdkPath);
+                Project project1 = env.getProject();
+                boolean dontCheckJdk = HotSwapHelperPluginSettingsProvider.Companion.getInstance(project1).getCurrentState().getDontCheckJdk();
+                CheckResult checkResult = JdkManager.checkJdkHome(jdkPath,dontCheckJdk);
                 //make sure if < 17
                 if(checkResult.getJavaVersion()<17) {
                     ParametersList vmParametersList = javaParameters.getVMParametersList();

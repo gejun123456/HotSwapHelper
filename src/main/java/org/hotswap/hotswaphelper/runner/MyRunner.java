@@ -34,8 +34,10 @@ public interface MyRunner {
             //get current jdk to check.
             Sdk jdk1 = javaParameters.getJdk();
             String homePath1 = jdk1.getHomePath();
+            Project project1 = ((RunConfiguration) runProfile).getProject();
+            boolean dontCheckJdk = HotSwapHelperPluginSettingsProvider.Companion.getInstance(project1).getCurrentState().getDontCheckJdk();
             //todo maybe parse it from versionString?
-            CheckResult result = JdkManager.checkJdkHome(homePath1);
+            CheckResult result = JdkManager.checkJdkHome(homePath1,dontCheckJdk);
             Sdk jdk = javaParameters.getJdk();
             //get user jdk version. if this is from dcevm jdk, add the agent to it.
 //            String jdkPath = javaParameters.getJdkPath();
@@ -147,8 +149,12 @@ public interface MyRunner {
             if (homePath == null) {
                 throw new CantRunException("please select jdk");
             }
+
+            Project project1 = environment.getProject();
+            boolean dontCheckJdk = HotSwapHelperPluginSettingsProvider.Companion.getInstance(project1).getCurrentState().getDontCheckJdk();
+
             //add setting to not check jdk.
-            CheckResult result = JdkManager.checkJdkHome(homePath);
+            CheckResult result = JdkManager.checkJdkHome(homePath,dontCheckJdk);
             if (!result.isHasFound()) {
                 ApplicationManager.getApplication().invokeLater(new Runnable() {
                     @Override
