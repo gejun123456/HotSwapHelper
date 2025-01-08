@@ -62,6 +62,7 @@ RuoYi-Vue-Plus | https://gitee.com/dromara/RuoYi-Vue-Plus | 支持mybatis xml热
 jeecg |https://github.com/jeecgboot/JeecgBoot | 支持mybatis xml热加载 java热加载
 mall |https://gitee.com/macrozheng/mall| 支持mybatis xml热加载 java热加载
 ruoyi-vue-pro|https://gitee.com/zhijiantianya/ruoyi-vue-pro|支持mybatis xml热加载 java热加载
+ruoyi_flowable|https://gitee.com/tony2y/RuoYi-flowable.git|支持mybatis xml热加载 java热加载
 
 
 ### 和其他方案对比
