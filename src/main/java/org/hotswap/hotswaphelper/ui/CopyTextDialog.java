@@ -26,15 +26,15 @@ public class CopyTextDialog extends DialogWrapper {
     @Nullable
     private Project project;
 
-    public CopyTextDialog(@Nullable Project project, String text) {
+    public CopyTextDialog(@Nullable Project project, String text, String title) {
         super(project, true, IdeModalityType.MODELESS);
         this.project = project;
         $$$setupUI$$$();
         this.text = text;
         theTextArea.setText(text);
-        this.setSize(400, 400);
+        this.setSize(800, 800);
         setOKButtonText("Ok");
-        setTitle("Plugin Names to Disable");
+        setTitle(title);
         init();
     }
 

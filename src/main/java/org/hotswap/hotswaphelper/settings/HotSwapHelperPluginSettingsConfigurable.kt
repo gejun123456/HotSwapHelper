@@ -26,8 +26,11 @@ import com.intellij.openapi.ui.Messages
 import com.intellij.ui.DocumentAdapter
 import com.intellij.util.execution.ParametersListUtil
 import org.apache.commons.lang.StringUtils
+import org.hotswap.hotswaphelper.JdkManager
 import org.hotswap.hotswaphelper.ui.CopyTextDialog
 import org.hotswap.hotswaphelper.ui.HotSwapAgentPluginSettingsForm
+import org.hotswap.hotswaphelper.utils.MyUtils
+import org.hotswap.hotswaphelper.utils.MyUtils.allOpens
 import java.awt.CardLayout
 import java.lang.StringBuilder
 import java.util.*
@@ -60,8 +63,8 @@ class HotSwapHelperPluginSettingsConfigurable(var project: Project) : Configurab
         val text = form.agentInstallPathField.text
         val useExternalAgentFile = form.useExternalAgentFileCheckBox.isSelected
         val currentDontCheckJdk = form.dontCheckJdkCheckBox.isSelected
-        if(useExternalAgentFile&&StringUtils.isBlank(text)){
-            Messages.showErrorDialog("when use external, agent must not null empty","agent file empty");
+        if (useExternalAgentFile && StringUtils.isBlank(text)) {
+            Messages.showErrorDialog("when use external, agent must not null empty", "agent file empty");
             return;
         }
         stateProvider.currentState.agentPath = text
@@ -73,7 +76,6 @@ class HotSwapHelperPluginSettingsConfigurable(var project: Project) : Configurab
 //        showUpdateButton()
         stateChanged = false
     }
-
 
 
     override fun createComponent(): JComponent? {
@@ -98,37 +100,44 @@ class HotSwapHelperPluginSettingsConfigurable(var project: Project) : Configurab
 //        projectRootManager.projectSdk?.let { sdk ->
 //            form.dcevmVersionLabel.text = DCEVMUtil.determineDCEVMVersion(sdk) ?: DCEVM_NOT_DETERMINED
 //        }
-        form.agentInstallPathField.addBrowseFolderListener(null, null, null, FileChooserDescriptor(false, false, true, true, false, false))
+        form.agentInstallPathField.addBrowseFolderListener(
+            null,
+            null,
+            null,
+            FileChooserDescriptor(false, false, true, true, false, false)
+        )
         form.agentInstallPathField.textField.document.addDocumentListener(object : DocumentAdapter() {
             override fun textChanged(e: DocumentEvent) {
                 stateChanged = form.agentInstallPathField.textField.text != stateProvider.currentState.agentPath
             }
         })
-        form.disabledPluginsField.document.addDocumentListener(object: DocumentAdapter(){
+        form.disabledPluginsField.document.addDocumentListener(object : DocumentAdapter() {
             override fun textChanged(e: DocumentEvent) {
                 stateChanged = form.disabledPluginsField.text != stateProvider.currentState.disabledPlugins.joinString()
             }
         })
         form.useExternalAgentFileCheckBox.addItemListener {
-            stateChanged = form.useExternalAgentFileCheckBox.isSelected != stateProvider.currentState.useExternalHotSwapAgentFile;
+            stateChanged =
+                form.useExternalAgentFileCheckBox.isSelected != stateProvider.currentState.useExternalHotSwapAgentFile;
         }
 
-        form.dontCheckJdkCheckBox.addItemListener{
-            stateChanged = form.dontCheckJdkCheckBox.isSelected !=stateProvider.currentState.dontCheckJdk
+        form.dontCheckJdkCheckBox.addItemListener {
+            stateChanged = form.dontCheckJdkCheckBox.isSelected != stateProvider.currentState.dontCheckJdk
         }
         form.updateButton.addActionListener {
             BrowserUtil.browse("https://github.com/HotswapProjects/HotswapAgent/releases")
         }
 
         form.exampleButton.addActionListener({
-            val allPluginName = "Hotswapper, JdkPlugin, AnonymousClassPatch, ClassInitPlugin, WatchResources, Hibernate, HibernateJakarta, Hibernate3JPA, Hibernate3, Spring, SpringBoot, Jersey1, Jersey2, Jetty, Tomcat, ZK, Logback, Log4j2, MyFaces, Mojarra, Omnifaces, ELResolver, WildFlyELResolver, OsgiEquinox, Owb, OwbJakarta, Proxy, WebObjects, Weld, WeldJakarta, JBossModules, ResteasyRegistry, Deltaspike, DeltaspikeJakarta, GlassFish, Weblogic, Vaadin, Wicket, CxfJAXRS, FreeMarker, Undertow, MyBatis, MyBatisPlus, IBatis, JacksonPlugin, Idea, Thymeleaf, Velocity, Sponge"
+            val allPluginName =
+                "Hotswapper, JdkPlugin, AnonymousClassPatch, ClassInitPlugin, WatchResources, Hibernate, HibernateJakarta, Hibernate3JPA, Hibernate3, Spring, SpringBoot, Jersey1, Jersey2, Jetty, Tomcat, ZK, Logback, Log4j2, MyFaces, Mojarra, Omnifaces, ELResolver, WildFlyELResolver, OsgiEquinox, Owb, OwbJakarta, Proxy, WebObjects, Weld, WeldJakarta, JBossModules, ResteasyRegistry, Deltaspike, DeltaspikeJakarta, GlassFish, Weblogic, Vaadin, Wicket, CxfJAXRS, FreeMarker, Undertow, MyBatis, MyBatisPlus, IBatis, JacksonPlugin, Idea, Thymeleaf, Velocity, Sponge"
             var split = allPluginName.split(",");
             //trim all names.
             split = split.map { it.trim() }
             var join = Joiner.on(",").join(split)
-            val text = "all plugin names:\n"+join+"\n\n";
-            val disableSpringText = "disable spring plugins:\n"+"Spring,Springboot";
-            CopyTextDialog(project,text+disableSpringText).show()
+            val text = "all plugin names:\n" + join + "\n\n";
+            val disableSpringText = "disable spring plugins:\n" + "Spring,Springboot";
+            CopyTextDialog(project, text + disableSpringText,"Plugin name to disable").show()
         })
 
         //set the linkListener
@@ -137,6 +146,14 @@ class HotSwapHelperPluginSettingsConfigurable(var project: Project) : Configurab
             // Your implementation here
             BrowserUtil.browse("https://github.com/HotswapProjects/HotswapAgent")
         }, null)
+
+        form.showVmParametersForButton.addActionListener({
+            val builder = StringBuilder()
+            builder.append(buildVmCommandFor(8));
+            builder.append(buildVmCommandFor(11));
+            builder.append(buildVmCommandFor(17));
+            CopyTextDialog(project, builder.toString(),"Vm Parameters").show()
+        })
 //        form.dcevmDownloadSuggestionLabel.apply {
 //            setHtmlText("""
 //                   DCEVM installation not found for JDK specified for the current project.
@@ -169,6 +186,57 @@ class HotSwapHelperPluginSettingsConfigurable(var project: Project) : Configurab
 //        } else {
 //            (form.updateButtonPanel.layout as CardLayout).show(form.updateButtonPanel, "emptyCard")
 //        }
+    }
+
+    fun buildVmCommandFor(jdkVersion: Int): String {
+        val builder = StringBuilder()
+        builder.append("java$jdkVersion:\n")
+        val isUseExternal = form.useExternalAgentFileCheckBox.isSelected
+        val agentPath = if (isUseExternal) {
+            form.agentInstallPathField.text
+        } else {
+            MyUtils.getHotSwapJarPath().absolutePath
+        }
+        //get current project jdk
+        val sdk = ProjectRootManager.getInstance(project).projectSdk
+        var isJbr = false;
+        if (sdk == null) {
+            return "no project jdk found for current project"
+        }
+        val homePath = sdk.homePath
+        if (homePath == null) {
+            return "no project jdk found for current project"
+        }
+        val result = JdkManager.checkJdkHome(homePath, true)
+        if (result.isJbr) {
+            isJbr = true;
+        }
+        builder.append("-javaagent:\"" + agentPath + "\"")
+        builder.append("\n")
+        if (jdkVersion == 8) {
+            builder.append("-XXaltjvm=dcevm\n")
+        } else {
+            builder.append("-XX:HotswapAgent=external\n")
+            if (jdkVersion == 11 && isJbr) {
+                builder.append("-XX:+AllowEnhancedClassRedefinition\n")
+            }
+            if (jdkVersion >= 17) {
+                builder.append("-XX:+AllowEnhancedClassRedefinition\n")
+                builder.append("-XX:+ClassUnloading\n");
+                for (item in allOpens) {
+                    builder.append(item + "\n");
+                }
+            }
+        }
+        val texts = form.disabledPluginsField.text
+        val disablePlugins = texts.parse()
+        if (texts.isNotBlank() && disablePlugins.isNotEmpty()) {
+            val join = Joiner.on(",").join(disablePlugins)
+            builder.append("-Dhotswapagent.disablePlugin=" + join + "\n")
+        }
+
+        builder.append("\n\n");
+        return builder.toString()
     }
 
     private fun String.parse() = this.split(",").map(String::trim).toMutableSet()

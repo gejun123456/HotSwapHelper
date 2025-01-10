@@ -1,6 +1,7 @@
 package org.hotswap.hotswaphelper.runner;
 
 import com.google.common.base.Joiner;
+import com.google.common.collect.Lists;
 import com.intellij.execution.CantRunException;
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.JavaTestConfigurationBase;
@@ -23,12 +24,15 @@ import org.jetbrains.jps.model.java.JdkVersionDetector;
 
 import java.io.File;
 import java.io.InputStream;
+import java.util.List;
 import java.util.Set;
 
 /**
  * @author bruce ge 2024/8/20
  */
 public interface MyRunner {
+
+
     static void patchProfile(@NotNull JavaParameters javaParameters, @NotNull RunProfile runProfile) {
         if (runProfile instanceof RunConfiguration) {
             //get current jdk to check.
@@ -128,12 +132,9 @@ public interface MyRunner {
 
 
     static void addOpens(@NotNull JavaParameters javaParameters) {
-        javaParameters.getVMParametersList().addParametersString("--add-opens java.base/sun.nio.ch=ALL-UNNAMED");
-        javaParameters.getVMParametersList().addParametersString("--add-opens=java.base/java.lang=ALL-UNNAMED");
-        javaParameters.getVMParametersList().addParametersString("--add-opens=java.base/java.lang.reflect=ALL-UNNAMED");
-        javaParameters.getVMParametersList().addParametersString("--add-opens=java.base/java.io=ALL-UNNAMED");
-        javaParameters.getVMParametersList().addParametersString("--add-opens=java.base/sun.security.action=ALL-UNNAMED");
-        javaParameters.getVMParametersList().addParametersString("--add-opens=java.base/jdk.internal.reflect=ALL-UNNAMED");
+        for (String allOpen : MyUtils.allOpens) {
+            javaParameters.getVMParametersList().addParametersString(allOpen);
+        }
     }
 
     static boolean checkJdk(@NotNull ExecutionEnvironment environment) throws ExecutionException {
