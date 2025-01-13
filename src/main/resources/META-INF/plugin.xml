@@ -119,13 +119,14 @@
     <depends>com.intellij.modules.lang</depends>
 
     <depends>com.intellij.java</depends>
+    <depends optional="true" config-file="conf_gradle.xml">com.intellij.gradle</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <notificationGroup displayType="NONE" id="hot.swap.notification.none"/>
         <notificationGroup displayType="BALLOON" id="hot.swap.notification.balloon"/>
 <!--        <executor implementation="org.hotswap.hotswaphelper.HotSwapExecutor"/>-->
         <executor implementation="org.hotswap.hotswaphelper.HotSwapDebugExecutor"/>
-        <programRunner implementation="org.hotswap.hotswaphelper.runner.HotSwapRunner"/>
+<!--        <programRunner implementation="org.hotswap.hotswaphelper.runner.HotSwapRunner"/>-->
         <programRunner implementation="org.hotswap.hotswaphelper.runner.HotSwapDebugRunner"/>
         <java.programPatcher implementation="org.hotswap.hotswaphelper.runner.HotswapPatcher"/>
         <projectConfigurable instance="org.hotswap.hotswaphelper.settings.HotSwapHelperPluginSettingsConfigurable"
