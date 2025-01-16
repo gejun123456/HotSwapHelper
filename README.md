@@ -40,7 +40,7 @@ dcevm with hotswap folder into it, so you don't need to install dcevm separately
 If you don't like it, you can always install by yourself from doc:[HotSwapAgent GitHub page](https://github.com/HotswapProjects/HotswapAgent).
 
 #### IDEA 2024.3 meet NoClassFound Exception
-1. DownGrade to 2024.2 or older version or use java17
+1. "Build, Execution, Deployment" → "Debugger" → "Async Stack Traces" and uncheck the "Instrumenting agent".
 
 ### Encountering Issues?
 Just issue on github or contact me following:  

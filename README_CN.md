@@ -92,8 +92,8 @@ Spring dev tool | 免费开源   | 依赖springboot,使用重启技术，兼容�
 1. 如果这个bean使用了接口，请使用接口来找或者用bean的名字来查找bean  
 
 
-#### IDEA 2024.3版本出现NoClassFoundException
-1. 使用java17 或者降级IDEA版本
+#### 升级到IDEA 2024.3版本出现NoClassFoundException或其他报错
+1. 升级下插件 如果还不行则配置设置"Build, Execution, Deployment" → "Debugger" → "Async Stack Traces" 关闭 "Instrumenting agent"选项
 
 #### 修改类后A fatal error has been detected by the Java Runtime Environment:
 1. 一般是jdk8的问题，可以用jdk11看看，有问题也可联系我来看看  
