@@ -117,6 +117,12 @@ dcevm用来支持更好的热加载功能，比如类加减字段和方法等。
 无需自己再去安装dcevm或者根据jdk版本去查对应的jdk加入agent文件等，方便用户使用。
 如果您不喜欢这种方式，您可以根据文档[HotSwapAgent GitHub page](https://github.com/HotswapProjects/HotswapAgent)自行安装
 
+#### 适用于Mac Aarch64 M芯片的 Java 8 JDK 选择  
+目前dcevm没有专门为 Mac Aarch64 M 系列设计的 Java 8 JDK。  
+如果使用 **macAdoptJdk-1.8-x64**，则需要通过转译运行，速度较慢。   
+或者可以使用 **jbr11-aarch** 版本，大多数情况下可以正常运行，没有问题。 
+
+
 #### 其他问题也可以查看HotSwapAgent 看看是否支持或者去提交issue https://github.com/HotswapProjects/HotswapAgent
 
 ### 碰到问题

@@ -19,6 +19,16 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>1.1.5</p>
+        <ul>
+            <li>1.extract vm options from setting for gradle project ect</li>
+            <li>2.add support for dont check jdk</li>
+        </ul>
+        <ul>
+            <li>1.从设置中提取vm options，适配gradle项目</li>
+            <li>2.增加不检测jdk的选项</li>
+            <li>3.兼容mybatisplus 3.5.7以上版本，比如ruoyi vue plus项目</li>
+        </ul>
         <p>1.1.4</p>
         <ul>
             <li>1.exception fix when use default agent file</li>

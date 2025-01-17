@@ -45,7 +45,12 @@ If you don't like it, you can always install by yourself from doc:[HotSwapAgent 
 ### Encountering Issues?
 Just issue on github or contact me following:  
 You can contact me by joining the QQ group: [HotSwapHelper Plugin User Group](https://qm.qq.com/q/JQKyhlt4ke)  
-Or send an email to: gejun123456@gmail.com  
+Or send an email to: gejun123456@gmail.com 
+
+### mac aarch64 m serials java8 jdk which to use
+Current there is no jdk for mac aarch64 m serials java8.
+macAdoptJdk-1.8-x64 will need emulation, the speed is slow.
+or use jbr11-aarch version most case will work with no problem.
 
 ### ScreenShot
 ![runAndDebug](https://raw.githubusercontent.com/gejun123456/HotSwapHelper/master/screenShot/DebugWithHotSwap.png)
