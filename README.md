@@ -22,7 +22,7 @@
 Spring Boot, Spring MVC, Hibernate, MyBatis, MyBatis-Plus, Log4j, etc. For more information, visit the [HotSwapAgent GitHub page](https://github.com/HotswapProjects/HotswapAgent).
 
 
-#### java.lang.NoClassDefFoundError: org/hotswap/agent/config/PluginManage
+#### java.lang.NoClassDefFoundError: org/hotswap/agent/config/PluginManager
 Edit Configuration -> Shorten Command Line -> Jar manifest
 
 ### Open-Source Projects Tested Locally

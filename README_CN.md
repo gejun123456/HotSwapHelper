@@ -99,6 +99,12 @@ Spring dev tool | 免费开源   | 依赖springboot,使用重启技术，兼容�
 1. 一般是jdk8的问题，可以用jdk11看看，有问题也可联系我来看看  
 
 
+#### tomcat或者jetty等项目如何热加载:
+1. 1.1.5版本的插件在设置->HotSwapHelper界面可以导出vm参数，然后在tomcat或者jetty的vm参数中加入这个参数,修改代码或xml文件需要使用
+点击update按钮使用 update classes and resources选项即可热加载
+
+#### tomcat多模块项目无法热加载xml等
+1. 需要resource目录添加 hotswap-agent.properties文件 里面有个选项 extraClasspath=C:/Users/Administrator/Downloads/SpringMVCForTomcat/SpringMVCForTomcat/target/classes 添加其他模块的classes路径就能热加载了
 
 #### Intellij新ui 按钮看不到 怎么拖出来  
 
