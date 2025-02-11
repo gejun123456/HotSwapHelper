@@ -166,6 +166,15 @@
 <!--        </action>-->
     </actions>
 
+    <actions>
+        <action id="HotSwapHelper.GenerateProperties" 
+                class="org.hotswap.hotswaphelper.actions.GenerateHotswapPropertiesAction"
+                text="Generate Hotswap Agent Properties"
+                description="Generate hotswap-agent.properties file in resources directory">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+        </action>
+    </actions>
+
     <applicationListeners>
         <listener class="org.hotswap.hotswaphelper.StartUpListener" topic="com.intellij.ide.AppLifecycleListener"/>
     </applicationListeners>
