@@ -1,7 +1,15 @@
 package org.hotswap.hotswaphelper.utils;
 
 import com.google.common.collect.Lists;
+import com.intellij.notification.Notification;
+import com.intellij.notification.NotificationAction;
+import com.intellij.notification.NotificationType;
+import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.options.ShowSettingsUtil;
+import com.intellij.openapi.project.Project;
+import com.intellij.xdebugger.impl.settings.DebuggerConfigurable;
 import com.sun.jna.Platform;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.nio.file.Files;
@@ -39,5 +47,19 @@ public class MyUtils {
 
     public static File getDebuggerAgentFile(){
         return new File(getHotSwapFolder(),"debugger-agent.jar");
+    }
+
+    public static void notifyUserToOpenReloadClasses() {
+        Notification notification = new Notification("HotSwapAgent", "HotSwapAgent issues", "Current hotswap reload after compilation is never,Please change it to always", NotificationType.ERROR);
+        notification.addAction(new NotificationAction("Open Settings") {
+            @Override
+            public void actionPerformed(@NotNull AnActionEvent e, @NotNull Notification notification) {
+                Project project = e.getProject();
+                if (project != null) {
+                    ShowSettingsUtil.getInstance().showSettingsDialog(project, "reference.idesettings.debugger.hotswap");
+                }
+            }
+        });
+        notification.notify(null);
     }
 }

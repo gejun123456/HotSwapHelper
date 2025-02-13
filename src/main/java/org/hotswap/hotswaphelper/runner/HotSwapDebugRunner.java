@@ -1,6 +1,7 @@
 package org.hotswap.hotswaphelper.runner;
 
 import com.intellij.debugger.impl.GenericDebuggerRunner;
+import com.intellij.debugger.settings.DebuggerSettings;
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.configurations.*;
 import com.intellij.execution.runners.ExecutionEnvironment;
@@ -41,6 +42,19 @@ public class HotSwapDebugRunner extends GenericDebuggerRunner implements MyRunne
 
     @Override
     public void execute(@NotNull ExecutionEnvironment environment) throws ExecutionException {
+        //check if reload classes is open.
+        DebuggerSettings debuggerSettings = DebuggerSettings.getInstance();
+        String runHotswapAfterCompile = debuggerSettings.RUN_HOTSWAP_AFTER_COMPILE;
+        if(runHotswapAfterCompile.equals(DebuggerSettings.RUN_HOTSWAP_NEVER)){
+            //Notify user to open the reload classes.
+            ApplicationManager.getApplication().invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    //create Notification to notify user to open the reload classes.
+                    MyUtils.notifyUserToOpenReloadClasses();
+                }
+            });
+        }
         if (MyRunner.checkJdk(environment)) return;
         super.execute(environment);
     }
