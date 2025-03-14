@@ -19,6 +19,15 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>1.1.6</p>
+        <ul>
+            <li>1.Support generate hotswap-agent.properties file</li>
+            <li>2.Check if reload after compilation is used and notify user</li>
+        </ul>
+        <ul>
+            <li>1.支持生成hotswap-agent.properties文件</li>
+            <li>2.检查是否在编译后热加载是否开启，并通知用户</li>
+        </ul>
         <p>1.1.5</p>
         <ul>
             <li>1.extract vm options from setting for gradle project ect</li>
@@ -167,7 +176,7 @@
     </actions>
 
     <actions>
-        <action id="HotSwapHelper.GenerateProperties" 
+        <action id="HotSwapHelper.GenerateProperties"
                 class="org.hotswap.hotswaphelper.actions.GenerateHotswapPropertiesAction"
                 text="Generate Hotswap Agent Properties"
                 description="Generate hotswap-agent.properties file in resources directory">
