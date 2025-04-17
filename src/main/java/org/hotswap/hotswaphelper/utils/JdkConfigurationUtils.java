@@ -116,7 +116,7 @@ public class JdkConfigurationUtils {
      */
     private static Sdk createJdkWithJavaSdkImpl(@NotNull String name, @NotNull String home) {
         try {
-            return JavaSdkImpl.getInstance().createJdk(name, home);
+            return JavaSdkImpl.getInstance().createJdk(name, home,false);
         } catch (Exception e) {
             LOG.error("JavaSdkImpl creation failed", e);
             return null;
