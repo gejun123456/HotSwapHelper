@@ -144,8 +144,11 @@ public class JdkConfigurationUtils {
     private static boolean detectModernApi() {
         try {
             Class.forName("com.intellij.openapi.projectRoots.impl.JdkUtil");
+            LOG.warn("support JdkUtil 检测到新版 API（2019.3+ 的 JdkUtil）");
             return true;
         } catch (ClassNotFoundException e) {
+            LOG.warn("support JavaSdkImpl 使用兼容模式（2016.3+）");
+            LOG.warn("", e);
             return false;
         }
     }
