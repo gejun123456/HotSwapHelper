@@ -13,8 +13,6 @@ import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.projectRoots.ProjectJdkTable;
 import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.projectRoots.SdkModificator;
-import com.intellij.openapi.projectRoots.impl.JavaSdkImpl;
 import com.intellij.openapi.roots.ProjectRootManager;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.Messages;
@@ -30,10 +28,7 @@ import com.intellij.uiDesigner.core.Spacer;
 import com.intellij.util.ui.JBUI;
 import lombok.val;
 import org.hotswap.hotswaphelper.settings.HotSwapHelperPluginSettingsProvider;
-import org.hotswap.hotswaphelper.utils.ArchiveUtils;
-import org.hotswap.hotswaphelper.utils.DownloadTask;
-import org.hotswap.hotswaphelper.utils.FilePermissionUtils;
-import org.hotswap.hotswaphelper.utils.FileUtils;
+import org.hotswap.hotswaphelper.utils.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.yaml.snakeyaml.Yaml;
@@ -356,44 +351,17 @@ public class JdkNotSupportedDialog extends DialogWrapper {
     }
 
 
-    public void setupOrUpdateJdk(@NotNull Project project, @NotNull String jdkName, @NotNull String javaVersion, @NotNull String jdkHome) {
-        ProjectJdkTable sdkTable = ProjectJdkTable.getInstance();
-        Sdk existingJdk = sdkTable.findJdk(jdkName);
-        Sdk jdk;
-
-        // 始终使用 JavaSdkImpl 处理（新增或修改）
-        if (existingJdk == null) {
-            // 创建新JDK（自动配置类路径/源码）
-            jdk = JavaSdkImpl.getInstance().createJdk(jdkName, jdkHome);
-            sdkTable.addJdk(jdk);
-        } else {
-            // 修改现有JDK：先移除再重新创建（保证路径配置正确）
-            sdkTable.removeJdk(existingJdk);
-            jdk = JavaSdkImpl.getInstance().createJdk(jdkName, jdkHome);
-            sdkTable.addJdk(jdk);
-        }
-
-        // 设置版本信息（可选）
-        SdkModificator modificator = jdk.getSdkModificator();
-        modificator.setVersionString(javaVersion);
-        modificator.commitChanges();
-
-        // 应用到项目
-        ProjectRootManager.getInstance(project).setProjectSdk(jdk);
-
-        System.out.println("设置jdk成功 项目jdk" + javaVersion);
-        currentJdkText.setText("当前项目jdk: " + javaVersion);
-    }
-
     private void changeJdk(@NotNull Project project, String majorJavaVersion, String hotswapJdkName, String jdkHome) {
         try {
-            setupOrUpdateJdk(project, majorJavaVersion, hotswapJdkName, jdkHome);
+            JdkConfigurationUtils.setupProjectJdk(project, majorJavaVersion, hotswapJdkName,jdkHome);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
 //                        Messages.showWarningDialog("设置项目jdk成功 设置jdk执行权限失败 请手动赋予jdk目录执行权限", "设置项目jdk成功");
             SwingUtilities.invokeLater(() -> Messages.showWarningDialog("设置项目jdk失败", "设置项目jdk失败"));
+            return;
         }
+        currentJdkText.setText("当前项目jdk: " + majorJavaVersion);
         try {
             FilePermissionUtils.setPermissionsRecursive(Paths.get(jdkHome));
 //                        Messages.showInfoMessage("设置项目jdk成功 设置jdk执行权限成功", "设置项目jdk成功");
