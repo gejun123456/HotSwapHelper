@@ -7,12 +7,9 @@ import com.intellij.notification.NotificationType;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.options.ShowSettingsUtil;
 import com.intellij.openapi.project.Project;
-import com.intellij.xdebugger.impl.settings.DebuggerConfigurable;
-import com.sun.jna.Platform;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
-import java.nio.file.Files;
 import java.util.List;
 
 /**
