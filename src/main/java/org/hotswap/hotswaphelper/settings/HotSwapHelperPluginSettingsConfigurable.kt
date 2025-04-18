@@ -24,7 +24,6 @@ import com.intellij.openapi.project.Project
 import com.intellij.openapi.roots.ProjectRootManager
 import com.intellij.openapi.ui.Messages
 import com.intellij.ui.DocumentAdapter
-import com.intellij.util.execution.ParametersListUtil
 import org.apache.commons.lang.StringUtils
 import org.hotswap.hotswaphelper.JdkManager
 import org.hotswap.hotswaphelper.ui.CopyTextDialog
@@ -32,7 +31,6 @@ import org.hotswap.hotswaphelper.ui.HotSwapAgentPluginSettingsForm
 import org.hotswap.hotswaphelper.utils.MyUtils
 import org.hotswap.hotswaphelper.utils.MyUtils.allOpens
 import java.awt.CardLayout
-import java.lang.StringBuilder
 import java.util.*
 import javax.swing.JComponent
 import javax.swing.event.DocumentEvent
@@ -60,14 +58,16 @@ class HotSwapHelperPluginSettingsConfigurable(var project: Project) : Configurab
 
     override fun apply() {
 
-        val text = form.agentInstallPathField.text
+        val agentPath = form.agentInstallPathField.text
+        val jdkDirectory = form.jdkDirectoryField.text
         val useExternalAgentFile = form.useExternalAgentFileCheckBox.isSelected
         val currentDontCheckJdk = form.dontCheckJdkCheckBox.isSelected
-        if (useExternalAgentFile && StringUtils.isBlank(text)) {
+        if (useExternalAgentFile && StringUtils.isBlank(agentPath)) {
             Messages.showErrorDialog("when use external, agent must not null empty", "agent file empty");
             return;
         }
-        stateProvider.currentState.agentPath = text
+        stateProvider.currentState.agentPath = agentPath
+        stateProvider.currentState.jdkDirectory = jdkDirectory
         stateProvider.currentState.useExternalHotSwapAgentFile = useExternalAgentFile;
         stateProvider.currentState.dontCheckJdk = currentDontCheckJdk
 //        stateProvider.currentState.enableAgentForAllConfiguration = form.applyAgentToAllConfigurationsBox.isSelected
@@ -87,6 +87,7 @@ class HotSwapHelperPluginSettingsConfigurable(var project: Project) : Configurab
 
     override fun reset() {
         form.agentInstallPathField.text = stateProvider.currentState.agentPath
+        form.jdkDirectoryField.text = stateProvider.currentState.jdkDirectory
 //        form.applyAgentToAllConfigurationsBox.isSelected = stateProvider.currentState.enableAgentForAllConfiguration
         form.disabledPluginsField.text = stateProvider.currentState.disabledPlugins.joinString()
         form.useExternalAgentFileCheckBox.isSelected = stateProvider.currentState.useExternalHotSwapAgentFile
@@ -109,6 +110,17 @@ class HotSwapHelperPluginSettingsConfigurable(var project: Project) : Configurab
         form.agentInstallPathField.textField.document.addDocumentListener(object : DocumentAdapter() {
             override fun textChanged(e: DocumentEvent) {
                 stateChanged = form.agentInstallPathField.textField.text != stateProvider.currentState.agentPath
+            }
+        })
+        form.jdkDirectoryField.addBrowseFolderListener(
+            null,
+            null,
+            null,
+            FileChooserDescriptor(false, true, true, false, false, false)
+        )
+        form.jdkDirectoryField.textField.document.addDocumentListener(object : DocumentAdapter() {
+            override fun textChanged(e: DocumentEvent) {
+                stateChanged = form.jdkDirectoryField.textField.text != stateProvider.currentState.jdkDirectory
             }
         })
         form.disabledPluginsField.document.addDocumentListener(object : DocumentAdapter() {

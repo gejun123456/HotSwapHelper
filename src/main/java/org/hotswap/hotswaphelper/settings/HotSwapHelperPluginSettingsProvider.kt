@@ -38,6 +38,7 @@ class HotSwapHelperPluginSettingsProvider : PersistentStateComponent<HotSwapHelp
     class State {
         var useExternalHotSwapAgentFile = false;
         var agentPath = ""
+        var jdkDirectory = ""
 //        var enableAgentForAllConfiguration = false
 //        var selectedRunConfigurations = mutableSetOf<String>()
         var disabledPlugins = mutableSetOf<String>()
@@ -51,6 +52,7 @@ class HotSwapHelperPluginSettingsProvider : PersistentStateComponent<HotSwapHelp
 
     override fun loadState(state: State) {
         currentState.agentPath = state.agentPath
+        currentState.jdkDirectory = state.jdkDirectory
 //        currentState.enableAgentForAllConfiguration = state.enableAgentForAllConfiguration
 //        currentState.selectedRunConfigurations = state.selectedRunConfigurations
         currentState.disabledPlugins = state.disabledPlugins
