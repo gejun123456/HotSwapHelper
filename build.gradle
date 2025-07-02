@@ -1,4 +1,5 @@
 buildscript {
+    ext.kotlin_version = '1.9.22'
     ext.kotlin_version = '1.5.0'
     repositories {
         mavenCentral()
@@ -95,5 +96,24 @@ dependencies {
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.2'
     // 测试用例
     testCompile 'junit:junit:4.12'
+    //hutool
+    implementation 'cn.hutool:hutool-all:5.8.21'
+    //xml
+    implementation 'org.jdom:jdom2:2.0.6'
+    // Apache Commons Compress（支持 ZIP/TAR/GZIP/BZIP2 等）
+    implementation 'org.apache.commons:commons-compress:1.26.1'
+    // 可选：支持 XZ/LZMA 压缩（如 .tar.xz）
+    implementation 'org.tukaani:xz:1.9'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+}
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "11"
+    }
 }
 

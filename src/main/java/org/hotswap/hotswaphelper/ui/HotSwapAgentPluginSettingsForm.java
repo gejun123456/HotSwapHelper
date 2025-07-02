@@ -54,6 +54,7 @@ public class HotSwapAgentPluginSettingsForm {
     public JCheckBox dontCheckJdkCheckBox;
     public LinkLabel whatWillHappen;
     public JButton showVmParametersForButton;
+    public TextFieldWithBrowseButton jdkDirectoryField;
 
     private void createUIComponents() {
         disabledPluginsField = new ExpandableTextField(ParametersListUtil.COLON_LINE_PARSER, ParametersListUtil.COLON_LINE_JOINER);
