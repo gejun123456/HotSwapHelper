@@ -55,6 +55,9 @@ public class HotSwapAgentPluginSettingsForm {
     public LinkLabel whatWillHappen;
     public JButton showVmParametersForButton;
     public TextFieldWithBrowseButton jdkDirectoryField;
+    public JPanel jdkPanel;
+    public JButton disableAsyncStackTraceButton;
+    public LinkLabel disableStackTraceLinkLabel;
 
     private void createUIComponents() {
         disabledPluginsField = new ExpandableTextField(ParametersListUtil.COLON_LINE_PARSER, ParametersListUtil.COLON_LINE_JOINER);
@@ -122,22 +125,22 @@ public class HotSwapAgentPluginSettingsForm {
         showVmParametersForButton = new JButton();
         showVmParametersForButton.setText("show vm parameters for tomcat or gradle ect");
         panel1.add(showVmParametersForButton, new GridConstraints(3, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        final JPanel panel4 = new JPanel();
-        panel4.setLayout(new BorderLayout(0, 0));
-        panel1.add(panel4, new GridConstraints(4, 0, 1, 3, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        jdkPanel = new JPanel();
+        jdkPanel.setLayout(new BorderLayout(0, 0));
+        panel1.add(jdkPanel, new GridConstraints(4, 0, 1, 3, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         final JBLabel jBLabel3 = new JBLabel();
         jBLabel3.setHorizontalAlignment(11);
         jBLabel3.setHorizontalTextPosition(11);
         jBLabel3.setText("JDK Directory");
-        panel4.add(jBLabel3, BorderLayout.WEST);
+        jdkPanel.add(jBLabel3, BorderLayout.WEST);
         jdkDirectoryField = new TextFieldWithBrowseButton();
-        panel4.add(jdkDirectoryField, BorderLayout.CENTER);
-        final JPanel panel5 = new JPanel();
-        panel5.setLayout(new BorderLayout(0, 0));
-        rootPanel.add(panel5, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_VERTICAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        jdkPanel.add(jdkDirectoryField, BorderLayout.CENTER);
+        final JPanel panel4 = new JPanel();
+        panel4.setLayout(new BorderLayout(0, 0));
+        rootPanel.add(panel4, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_VERTICAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         useExternalAgentFileCheckBox = new JCheckBox();
         this.$$$loadButtonText$$$(useExternalAgentFileCheckBox, this.$$$getMessageFromBundle$$$("string", "useexternalagentfileforcurrentproject"));
-        panel5.add(useExternalAgentFileCheckBox, BorderLayout.WEST);
+        panel4.add(useExternalAgentFileCheckBox, BorderLayout.WEST);
         final Spacer spacer1 = new Spacer();
         rootPanel.add(spacer1, new GridConstraints(2, 0, 1, 4, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL, 1, GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
     }

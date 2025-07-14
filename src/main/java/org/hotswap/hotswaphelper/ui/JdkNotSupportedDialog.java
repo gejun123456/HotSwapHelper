@@ -441,16 +441,16 @@ public class JdkNotSupportedDialog extends DialogWrapper {
         final Spacer spacer1 = new Spacer();
         downloadJdkPanel.add(spacer1, new GridConstraints(0, 1, 1, 3, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, 1, null, null, null, 0, false));
         final JTextField textField1 = new JTextField();
-        textField1.setText("下载hotswap jdk路径");
+        textField1.setText(this.$$$getMessageFromBundle$$$("string", "下载hotswap.jdk路径"));
         downloadJdkPanel.add(textField1, new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         jdkDirectoryField = new TextFieldWithBrowseButton();
-        jdkDirectoryField.setText("选择路径");
+        jdkDirectoryField.setText(this.$$$getMessageFromBundle$$$("string", "选择路径"));
         downloadJdkPanel.add(jdkDirectoryField, new GridConstraints(2, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, new Dimension(281, 30), null, 0, false));
         clearDownloadCacheButton = new JButton();
-        clearDownloadCacheButton.setText("清理下载缓存");
+        this.$$$loadButtonText$$$(clearDownloadCacheButton, this.$$$getMessageFromBundle$$$("string", "clearDownloadCache"));
         downloadJdkPanel.add(clearDownloadCacheButton, new GridConstraints(2, 2, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         downloadJdkButton = new JButton();
-        downloadJdkButton.setText("下载");
+        this.$$$loadButtonText$$$(downloadJdkButton, this.$$$getMessageFromBundle$$$("string", "download"));
         downloadJdkPanel.add(downloadJdkButton, new GridConstraints(1, 2, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, 1, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
     }
 
@@ -494,6 +494,33 @@ public class JdkNotSupportedDialog extends DialogWrapper {
         component.setText(result.toString());
         if (haveMnemonic) {
             component.setDisplayedMnemonic(mnemonic);
+            component.setDisplayedMnemonicIndex(mnemonicIndex);
+        }
+    }
+
+    /**
+     * @noinspection ALL
+     */
+    private void $$$loadButtonText$$$(AbstractButton component, String text) {
+        StringBuffer result = new StringBuffer();
+        boolean haveMnemonic = false;
+        char mnemonic = '\0';
+        int mnemonicIndex = -1;
+        for (int i = 0; i < text.length(); i++) {
+            if (text.charAt(i) == '&') {
+                i++;
+                if (i == text.length()) break;
+                if (!haveMnemonic && text.charAt(i) != '&') {
+                    haveMnemonic = true;
+                    mnemonic = text.charAt(i);
+                    mnemonicIndex = result.length();
+                }
+            }
+            result.append(text.charAt(i));
+        }
+        component.setText(result.toString());
+        if (haveMnemonic) {
+            component.setMnemonic(mnemonic);
             component.setDisplayedMnemonicIndex(mnemonicIndex);
         }
     }

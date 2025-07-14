@@ -16,10 +16,13 @@
 package org.hotswap.hotswaphelper.settings
 
 import com.google.common.base.Joiner
+import com.intellij.debugger.settings.CaptureConfigurable
+import com.intellij.debugger.settings.DebuggerProjectSettings
 import com.intellij.execution.RunManager
 import com.intellij.ide.BrowserUtil
 import com.intellij.openapi.fileChooser.FileChooserDescriptor
 import com.intellij.openapi.options.Configurable
+import com.intellij.openapi.options.ShowSettingsUtil
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.roots.ProjectRootManager
 import com.intellij.openapi.ui.Messages
@@ -82,6 +85,7 @@ class HotSwapHelperPluginSettingsConfigurable(var project: Project) : Configurab
         setupFormComponents()
         //support it in later release version.
         form.disablePluginPanel.isVisible = true;
+        form.jdkPanel.isVisible = false;
         return form.rootPanel
     }
 
@@ -158,6 +162,15 @@ class HotSwapHelperPluginSettingsConfigurable(var project: Project) : Configurab
             // Your implementation here
             BrowserUtil.browse("https://github.com/HotswapProjects/HotswapAgent")
         }, null)
+
+        form.disableStackTraceLinkLabel.setListener({ label, linkData ->
+            // Your implementation here
+            BrowserUtil.browse("https://youtrack.jetbrains.com/issue/IDEA-367510/DCEVM-HotswapAgent-doesnt-work-together-with-Async-Stack-Traces-Instrumenting-agent")
+        }, null)
+
+        form.disableAsyncStackTraceButton.addActionListener({
+            ShowSettingsUtil.getInstance().showSettingsDialog(project, CaptureConfigurable::class.java)
+        })
 
         form.showVmParametersForButton.addActionListener({
             val builder = StringBuilder()
