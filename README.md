@@ -43,9 +43,14 @@ If you don't like it, you can always install by yourself from doc:[HotSwapAgent 
 1. "Build, Execution, Deployment" → "Debugger" → "Async Stack Traces" and uncheck the "Instrumenting agent".
 
 ### Encountering Issues?
-Just issue on github or contact me following:  
-You can contact me by joining the QQ group: [HotSwapHelper Plugin User Group](https://qm.qq.com/q/JQKyhlt4ke)  
+Just issue on github : https://github.com/gejun123456/HotSwapHelper
 Or send an email to: gejun123456@gmail.com 
+
+#### A fatal error has been detected by the Java Runtime Environment:
+1. most likely is jdk8 problem, use jdk11, or latest jbr jdk.
+   related issues
+   https://youtrack.jetbrains.com/issue/JBR-7674/Any-hotswap-attempt-causes-JBR-to-crash-in-IntelliJ-IDEA-2024.2.3
+   https://youtrack.jetbrains.com/issues/JBR?q=hotswap
 
 ### mac aarch64 m serials java8 jdk which to use
 Current there is no jdk for mac aarch64 m serials java8.

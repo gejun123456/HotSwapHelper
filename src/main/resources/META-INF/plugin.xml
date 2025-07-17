@@ -19,6 +19,13 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>1.1.7</p>
+        <ul>
+            <li>1.Support disable debugger instrumenting agent</li>
+        </ul>
+        <ul>
+            <li>1.支持从设置里面禁用debugger instrumenting agent</li>
+        </ul>
         <p>1.1.6</p>
         <ul>
             <li>1.Support generate hotswap-agent.properties file</li>

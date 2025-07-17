@@ -96,8 +96,10 @@ Spring dev tool | 免费开源   | 依赖springboot,使用重启技术，兼容�
 1. 升级下插件 如果还不行则配置设置"Build, Execution, Deployment" → "Debugger" → "Async Stack Traces" 关闭 "Instrumenting agent"选项
 
 #### 修改类后A fatal error has been detected by the Java Runtime Environment:
-1. 一般是jdk8的问题，可以用jdk11看看，有问题也可联系我来看看  
-
+1. 一般是jdk8的问题，可以用jdk11看看,也可能是jdk版本的问题,可以打包下可以稳定重现的demo项目
+关联的issue
+https://youtrack.jetbrains.com/issue/JBR-7674/Any-hotswap-attempt-causes-JBR-to-crash-in-IntelliJ-IDEA-2024.2.3
+https://youtrack.jetbrains.com/issues/JBR?q=hotswap
 
 #### tomcat或者jetty等项目如何热加载:
 1. 1.1.5版本的插件在设置->HotSwapHelper界面可以导出vm参数，然后在tomcat或者jetty的vm参数中加入这个参数,修改代码或xml文件需要使用
