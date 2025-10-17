@@ -63,22 +63,26 @@ public class HotSwapDebugRunner extends GenericDebuggerRunner implements MyRunne
     protected @Nullable RunContentDescriptor attachVirtualMachine(RunProfileState state, @NotNull ExecutionEnvironment env, RemoteConnection connection, boolean pollConnection) throws ExecutionException {
         int versionName = ApplicationInfo.getInstance().getBuild().getBaselineVersion();
         //check if version > 2024.3
+        //get the state.
         if(versionName>=243) {
             if (state instanceof JavaCommandLine) {
                 JavaParameters javaParameters = ((JavaCommandLine) state).getJavaParameters();
                 String jdkPath = javaParameters.getJdkPath();
                 Project project1 = env.getProject();
-                boolean dontCheckJdk = HotSwapHelperPluginSettingsProvider.Companion.getInstance(project1).getCurrentState().getDontCheckJdk();
-                CheckResult checkResult = JdkManager.checkJdkHome(jdkPath,dontCheckJdk);
-                //make sure if < 17
-                if(checkResult.getJavaVersion()<17) {
-                    ParametersList vmParametersList = javaParameters.getVMParametersList();
-                    List<String> parameters = vmParametersList.getParameters();
-                    for (String parameter : parameters) {
-                        if (parameter.contains("-javaagent:") && parameter.contains("debugger-agent.jar")) {
-                            File agentFile = MyUtils.getDebuggerAgentFile();
-                            vmParametersList.replaceOrAppend(parameter, "-javaagent:" + agentFile.getAbsolutePath());
-                            break;
+                HotSwapHelperPluginSettingsProvider.State currentState = HotSwapHelperPluginSettingsProvider.Companion.getInstance(project1).getCurrentState();
+                if(currentState.getUseOldDebuggerAgentAfter243()) {
+                    boolean dontCheckJdk = currentState.getDontCheckJdk();
+                    CheckResult checkResult = JdkManager.checkJdkHome(jdkPath, dontCheckJdk);
+                    //make sure if < 17
+                    if (checkResult.getJavaVersion() < 17) {
+                        ParametersList vmParametersList = javaParameters.getVMParametersList();
+                        List<String> parameters = vmParametersList.getParameters();
+                        for (String parameter : parameters) {
+                            if (parameter.contains("-javaagent:") && parameter.contains("debugger-agent.jar")) {
+                                File agentFile = MyUtils.getDebuggerAgentFile();
+                                vmParametersList.replaceOrAppend(parameter, "-javaagent:" + agentFile.getAbsolutePath());
+                                break;
+                            }
                         }
                     }
                 }

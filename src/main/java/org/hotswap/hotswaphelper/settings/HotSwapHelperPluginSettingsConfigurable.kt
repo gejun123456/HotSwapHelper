@@ -76,6 +76,7 @@ class HotSwapHelperPluginSettingsConfigurable(var project: Project) : Configurab
 //        stateProvider.currentState.enableAgentForAllConfiguration = form.applyAgentToAllConfigurationsBox.isSelected
 //        stateProvider.currentState.selectedRunConfigurations = form.configurationTableProvider.getSelectedConfigurationNames()
         stateProvider.currentState.disabledPlugins = form.disabledPluginsField.text.parse()
+        stateProvider.currentState.useOldDebuggerAgentAfter243 = form.useOldDebuggerAgentCheckBox.isSelected
 //        showUpdateButton()
         stateChanged = false
     }
@@ -96,6 +97,7 @@ class HotSwapHelperPluginSettingsConfigurable(var project: Project) : Configurab
         form.disabledPluginsField.text = stateProvider.currentState.disabledPlugins.joinString()
         form.useExternalAgentFileCheckBox.isSelected = stateProvider.currentState.useExternalHotSwapAgentFile
         form.dontCheckJdkCheckBox.isSelected = stateProvider.currentState.dontCheckJdk
+        form.useOldDebuggerAgentCheckBox.isSelected = stateProvider.currentState.useOldDebuggerAgentAfter243
         stateChanged = false
     }
 
@@ -143,6 +145,15 @@ class HotSwapHelperPluginSettingsConfigurable(var project: Project) : Configurab
         form.updateButton.addActionListener {
             BrowserUtil.browse("https://github.com/HotswapProjects/HotswapAgent/releases")
         }
+
+        form.useOldDebuggerAgentCheckBox.addItemListener {
+            stateChanged = form.useOldDebuggerAgentCheckBox.isSelected != stateProvider.currentState.useOldDebuggerAgentAfter243
+        }
+
+        form.useOldDebugger.setListener({ label, linkData ->
+            // Your implementation here
+            BrowserUtil.browse("https://github.com/JetBrains/debugger-agent/issues/9")
+        }, null);
 
         form.exampleButton.addActionListener({
             val allPluginName =

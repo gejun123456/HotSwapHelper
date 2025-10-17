@@ -44,6 +44,7 @@ class HotSwapHelperPluginSettingsProvider : PersistentStateComponent<HotSwapHelp
         var disabledPlugins = mutableSetOf<String>()
 
         var dontCheckJdk = false;
+        var useOldDebuggerAgentAfter243 = true;
     }
 
     var currentState = State()
@@ -57,5 +58,7 @@ class HotSwapHelperPluginSettingsProvider : PersistentStateComponent<HotSwapHelp
 //        currentState.selectedRunConfigurations = state.selectedRunConfigurations
         currentState.disabledPlugins = state.disabledPlugins
         currentState.useExternalHotSwapAgentFile = state.useExternalHotSwapAgentFile;
+        currentState.dontCheckJdk = state.dontCheckJdk;
+        currentState.useOldDebuggerAgentAfter243 = state.useOldDebuggerAgentAfter243;
     }
 }
