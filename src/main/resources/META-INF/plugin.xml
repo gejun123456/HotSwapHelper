@@ -145,7 +145,7 @@
         ]]></change-notes>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-    <idea-version since-build="192"/>
+    <idea-version since-build="222"/>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->
@@ -185,6 +185,14 @@
             </action>
             <add-to-group group-id="RunDashboardContentToolbar" anchor="last"/>
         </group>
+
+        <action id="org.hotswap.hotswaphelper.actions.HotSwapDebugTopAction"
+                class="org.hotswap.hotswaphelper.actions.HotSwapDebugTopAction"
+                icon="/icons/rotate.png"
+                text="Debug with HotSwap"
+                description="Debug selected configuration with HotSwap Agent">
+            <add-to-group group-id="MainToolbarRight" anchor="after" relative-to-action="RunToolbarWidgetAction"/>
+        </action>
     </actions>
 
     <actions>
