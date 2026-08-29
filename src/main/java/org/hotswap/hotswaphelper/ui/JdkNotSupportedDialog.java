@@ -27,12 +27,20 @@ import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.uiDesigner.core.Spacer;
 import com.intellij.util.ui.JBUI;
 import lombok.val;
+import com.intellij.execution.Executor;
+import com.intellij.execution.ExecutorRegistry;
+import com.intellij.execution.ProgramRunnerUtil;
+import com.intellij.execution.RunManager;
+import com.intellij.execution.RunnerAndConfigurationSettings;
+import com.intellij.notification.Notification;
+import com.intellij.notification.NotificationType;
+import org.hotswap.hotswaphelper.HotSwapDebugExecutor;
+import org.hotswap.hotswaphelper.IconUtils;
 import org.hotswap.hotswaphelper.settings.HotSwapHelperPluginSettingsProvider;
 import org.hotswap.hotswaphelper.utils.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.yaml.snakeyaml.Yaml;
-
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import java.awt.*;
@@ -53,6 +61,7 @@ import java.util.stream.Collectors;
  * @author bruce ge 2024/8/22
  */
 public class JdkNotSupportedDialog extends DialogWrapper {
+    private Project project;
     public LinkLabel jbrLink;
     private TextFieldWithBrowseButton jdkDirectoryField = new TextFieldWithBrowseButton();
     private JPanel panel1;
@@ -69,6 +78,7 @@ public class JdkNotSupportedDialog extends DialogWrapper {
 
     public JdkNotSupportedDialog(@Nullable Project project, boolean canBeParent, String errorText) {
         super(project, canBeParent);
+        this.project = project;
         ApplicationManager.getApplication().runWriteAction(() -> {
             errorLabel.setText(errorText);
             ProjectRootManager projectRootManager = ProjectRootManager.getInstance(project);
@@ -115,11 +125,12 @@ public class JdkNotSupportedDialog extends DialogWrapper {
                 }
             }, null);
 
+            ResourceBundle bundle = ResourceBundle.getBundle("string");
+            dontCheckJdk.setText(bundle.getString("dont.check.jdk.and.run"));
             dontCheckJdk.setListener(new LinkListener() {
                 @Override
                 public void linkSelected(LinkLabel aSource, Object aLinkData) {
-                    //shows setting pages. show intellij settings page.
-                    Messages.showInfoMessage("You can disable jdk check in settings->hotswap helper", "Disable Jdk Check");
+                    ignoreJdkAndRun();
                 }
             }, null);
 
@@ -167,6 +178,48 @@ public class JdkNotSupportedDialog extends DialogWrapper {
             });
             init();
         });
+    }
+    @Override
+    protected Action @NotNull [] createActions() {
+        ResourceBundle bundle = ResourceBundle.getBundle("string");
+        Action ignoreAndRunAction = new AbstractAction(bundle.getString("dont.check.jdk.and.run")) {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ignoreJdkAndRun();
+            }
+        };
+        return new Action[]{ignoreAndRunAction, getCancelAction()};
+    }
+
+    public void ignoreJdkAndRun() {
+        if (project != null) {
+            HotSwapHelperPluginSettingsProvider.State state =
+                    HotSwapHelperPluginSettingsProvider.Companion.getInstance(project).getCurrentState();
+            state.setDontCheckJdk(true);
+        }
+
+        close(OK_EXIT_CODE);
+
+        if (project != null) {
+            ApplicationManager.getApplication().invokeLater(() -> {
+                RunManager runManager = RunManager.getInstance(project);
+                RunnerAndConfigurationSettings selectedConfiguration = runManager.getSelectedConfiguration();
+                Executor executor = ExecutorRegistry.getInstance().getExecutorById(HotSwapDebugExecutor.EXECUTOR_ID);
+                if (selectedConfiguration != null && executor != null) {
+                    ProgramRunnerUtil.executeConfiguration(selectedConfiguration, executor);
+                }
+
+                ResourceBundle bundle = ResourceBundle.getBundle("string");
+                Notification notification = new Notification(
+                        "hot.swap.notification.balloon",
+                        bundle.getString("dont.check.jdk.notification.title"),
+                        bundle.getString("dont.check.jdk.notification.content"),
+                        NotificationType.INFORMATION
+                );
+                notification.setIcon(IconUtils.hotSwapDebugIcon);
+                notification.notify(project);
+            });
+        }
     }
 
     /**
