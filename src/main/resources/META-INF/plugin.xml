@@ -24,11 +24,13 @@
             <li>1.Support dynamic injection for Gradle projects (e.g. bootRun, runIde) without modifying build.gradle</li>
             <li>2.Add -XX:+IgnoreUnrecognizedVMOptions for arbitrary standard JDKs compatibility</li>
             <li>3.Accurate routing between IDEA run and Gradle run configurations</li>
+            <li>4.Add dedicated top-level toolbar button for prominent visibility in both New UI and Classic UI</li>
         </ul>
         <ul>
             <li>1.支持Gradle项目（如bootRun、runIde等）零侵入动态注入，无需手动修改build.gradle即可一键热加载</li>
             <li>2.新增-XX:+IgnoreUnrecognizedVMOptions参数，大幅增强任意标准JDK（如非JBR/普通OpenJDK）的兼容性，避免启动闪退</li>
             <li>3.精准分流IDEA运行模式与Gradle运行模式</li>
+            <li>4.主工具栏常驻显示独立的HotSwap Debug大图标（支持新版UI与经典UI），告别三个点折叠</li>
         </ul>
         <p>1.1.7</p>
         <ul>
@@ -183,14 +185,18 @@
             <action id="org.hotswap.hotswaphelper.action.HotSwapDebugAction" icon="/icons/rotate.png"
                     class="org.hotswap.hotswaphelper.HotSwapDebugAction" text="HotSwapAgentDebug" description="HotSwapAgentDebug">
             </action>
-            <add-to-group group-id="RunDashboardContentToolbar" anchor="last"/>
+            <add-to-group group-id="RunDashboardContentToolbar" anchor="after" relative-to-action="RunDashboardContentToolbar.Debug"/>
         </group>
-<!--        <action class="org.hotswap.hotswaphelper.ReloadChangedClassAction" id="org.hotswap.hotswaphelper.ReloadChangedClassAction"-->
-<!--        text="Hotswap Changed Classes">-->
-<!--            <add-to-group group-id="EditorPopupMenu" anchor="first"/>-->
-<!--            <keyboard-shortcut first-keystroke="control shift alt F9" keymap="$default"/>-->
-<!--            <keyboard-shortcut first-keystroke="meta shift alt F9" keymap="macOS System Shortcuts"/>-->
-<!--        </action>-->
+
+        <action id="org.hotswap.hotswaphelper.actions.HotSwapDebugTopAction"
+                class="org.hotswap.hotswaphelper.actions.HotSwapDebugTopAction"
+                icon="/icons/rotate.png"
+                text="Debug with HotSwap"
+                description="Debug selected configuration with HotSwap Agent">
+            <add-to-group group-id="MainToolbarRight" anchor="after" relative-to-action="RunToolbarWidgetAction"/>
+            <add-to-group group-id="ToolbarRunGroup" anchor="after" relative-to-action="Debug"/>
+            <add-to-group group-id="RunMenu" anchor="after" relative-to-action="Debug"/>
+        </action>
     </actions>
 
     <actions>
