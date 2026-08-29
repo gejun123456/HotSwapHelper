@@ -19,6 +19,17 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>1.1.8</p>
+        <ul>
+            <li>1.Support dynamic injection for Gradle projects (e.g. bootRun, runIde) without modifying build.gradle</li>
+            <li>2.Add -XX:+IgnoreUnrecognizedVMOptions for arbitrary standard JDKs compatibility</li>
+            <li>3.Accurate routing between IDEA run and Gradle run configurations</li>
+        </ul>
+        <ul>
+            <li>1.支持Gradle项目（如bootRun、runIde等）零侵入动态注入，无需手动修改build.gradle即可一键热加载</li>
+            <li>2.新增-XX:+IgnoreUnrecognizedVMOptions参数，大幅增强任意标准JDK（如非JBR/普通OpenJDK）的兼容性，避免启动闪退</li>
+            <li>3.精准分流IDEA运行模式与Gradle运行模式</li>
+        </ul>
         <p>1.1.7</p>
         <ul>
             <li>1.Support disable debugger instrumenting agent</li>

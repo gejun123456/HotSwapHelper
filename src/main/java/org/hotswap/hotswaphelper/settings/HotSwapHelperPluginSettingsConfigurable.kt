@@ -249,6 +249,7 @@ class HotSwapHelperPluginSettingsConfigurable(var project: Project) : Configurab
         }
         builder.append("-javaagent:\"" + agentPath + "\"")
         builder.append("\n")
+        builder.append("-XX:+IgnoreUnrecognizedVMOptions\n")
         if (jdkVersion == 8) {
             builder.append("-XXaltjvm=dcevm\n")
         } else {

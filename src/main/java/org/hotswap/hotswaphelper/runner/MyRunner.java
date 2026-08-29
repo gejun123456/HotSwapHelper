@@ -106,6 +106,7 @@ public interface MyRunner {
                     return;
                 }
                 javaParameters.getVMParametersList().addParametersString("-javaagent:\"" + agentFile.getAbsolutePath() + "\"");
+                javaParameters.getVMParametersList().addParametersString("-XX:+IgnoreUnrecognizedVMOptions");
                 if (javaVersion == 8) {
                     javaParameters.getVMParametersList().addParametersString("-XXaltjvm=dcevm");
                 } else if (javaVersion >= 11) {

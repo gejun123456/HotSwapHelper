@@ -1,3 +1,5 @@
 <idea-plugin>
-
+    <applicationListeners>
+        <listener class="org.hotswap.hotswaphelper.runner.GradleExecutionListener" topic="com.intellij.execution.ExecutionListener"/>
+    </applicationListeners>
 </idea-plugin>
