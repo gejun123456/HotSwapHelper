@@ -12,6 +12,15 @@ public class CheckResult {
 
     public boolean jbr = false;
 
+    public boolean dcevm = false;
+
+    public boolean isDcevm() {
+        return dcevm;
+    }
+
+    public void setDcevm(boolean dcevm) {
+        this.dcevm = dcevm;
+    }
 
     public boolean isJbr() {
         return jbr;

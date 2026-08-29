@@ -108,7 +108,9 @@ public interface MyRunner {
                 javaParameters.getVMParametersList().addParametersString("-javaagent:\"" + agentFile.getAbsolutePath() + "\"");
                 javaParameters.getVMParametersList().addParametersString("-XX:+IgnoreUnrecognizedVMOptions");
                 if (javaVersion == 8) {
-                    javaParameters.getVMParametersList().addParametersString("-XXaltjvm=dcevm");
+                    if (result.isDcevm()) {
+                        javaParameters.getVMParametersList().addParametersString("-XXaltjvm=dcevm");
+                    }
                 } else if (javaVersion >= 11) {
                     if (result.isJbr() || javaVersion >= 17) {
                         javaParameters.getVMParametersList().addParametersString("-XX:+AllowEnhancedClassRedefinition");

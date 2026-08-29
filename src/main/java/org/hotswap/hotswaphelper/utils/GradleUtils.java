@@ -117,7 +117,16 @@ public class GradleUtils {
                 "                def argsToAdd = [\"-javaagent:\" + agentJar.absolutePath]\n" +
                 "                if (majorVersion == 8) {\n" +
                 "                    argsToAdd.add(\"-XX:+IgnoreUnrecognizedVMOptions\")\n" +
-                "                    argsToAdd.add(\"-XXaltjvm=dcevm\")\n" +
+                "                    def javaHome = System.getProperty(\"java.home\")\n" +
+                "                    def isMac = System.getProperty(\"os.name\", \"\").toLowerCase().contains(\"mac\") || System.getProperty(\"os.name\", \"\").toLowerCase().contains(\"darwin\")\n" +
+                "                    def isArm = System.getProperty(\"os.arch\", \"\").toLowerCase().contains(\"aarch64\") || System.getProperty(\"os.arch\", \"\").toLowerCase().contains(\"arm64\")\n" +
+                "                    def dcevmExists = false\n" +
+                "                    if (javaHome != null && !(isMac && isArm)) {\n" +
+                "                        dcevmExists = new File(javaHome, \"bin/dcevm\").exists() || new File(javaHome, \"lib/dcevm\").exists() || new File(javaHome, \"lib/amd64/dcevm\").exists()\n" +
+                "                    }\n" +
+                "                    if (dcevmExists) {\n" +
+                "                        argsToAdd.add(\"-XXaltjvm=dcevm\")\n" +
+                "                    }\n" +
                 "                } else {\n" +
                 "                    argsToAdd.add(\"-XX:+IgnoreUnrecognizedVMOptions\")\n" +
                 "                    argsToAdd.add(\"-XX:+AllowEnhancedClassRedefinition\")\n" +
