@@ -32,10 +32,14 @@ import com.intellij.execution.ExecutorRegistry;
 import com.intellij.execution.ProgramRunnerUtil;
 import com.intellij.execution.RunManager;
 import com.intellij.execution.RunnerAndConfigurationSettings;
+import com.intellij.execution.configurations.RunProfile;
+import com.intellij.execution.executors.DefaultDebugExecutor;
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationType;
+import com.intellij.openapi.util.UserDataHolder;
 import org.hotswap.hotswaphelper.HotSwapDebugExecutor;
 import org.hotswap.hotswaphelper.IconUtils;
+import org.hotswap.hotswaphelper.actions.HotSwapDebugTopAction;
 import org.hotswap.hotswaphelper.settings.HotSwapHelperPluginSettingsProvider;
 import org.hotswap.hotswaphelper.utils.*;
 import org.jetbrains.annotations.NotNull;
@@ -204,9 +208,19 @@ public class JdkNotSupportedDialog extends DialogWrapper {
             ApplicationManager.getApplication().invokeLater(() -> {
                 RunManager runManager = RunManager.getInstance(project);
                 RunnerAndConfigurationSettings selectedConfiguration = runManager.getSelectedConfiguration();
-                Executor executor = ExecutorRegistry.getInstance().getExecutorById(HotSwapDebugExecutor.EXECUTOR_ID);
-                if (selectedConfiguration != null && executor != null) {
-                    ProgramRunnerUtil.executeConfiguration(selectedConfiguration, executor);
+                if (selectedConfiguration != null) {
+                    RunProfile profile = selectedConfiguration.getConfiguration();
+                    if (GradleUtils.isGradleRunConfiguration(profile)) {
+                        if (profile instanceof UserDataHolder) {
+                            ((UserDataHolder) profile).putUserData(HotSwapDebugTopAction.HOTSWAP_DEBUG_TRIGGERED, true);
+                        }
+                        ProgramRunnerUtil.executeConfiguration(selectedConfiguration, DefaultDebugExecutor.getDebugExecutorInstance());
+                    } else {
+                        Executor executor = ExecutorRegistry.getInstance().getExecutorById(HotSwapDebugExecutor.EXECUTOR_ID);
+                        if (executor != null) {
+                            ProgramRunnerUtil.executeConfiguration(selectedConfiguration, executor);
+                        }
+                    }
                 }
 
                 ResourceBundle bundle = ResourceBundle.getBundle("string");

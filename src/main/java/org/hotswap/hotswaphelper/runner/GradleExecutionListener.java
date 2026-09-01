@@ -6,7 +6,9 @@ import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.openapi.externalSystem.model.execution.ExternalSystemTaskExecutionSettings;
 import com.intellij.openapi.externalSystem.service.execution.ExternalSystemRunConfiguration;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.util.UserDataHolder;
 import org.hotswap.hotswaphelper.HotSwapDebugExecutor;
+import org.hotswap.hotswaphelper.actions.HotSwapDebugTopAction;
 import org.hotswap.hotswaphelper.utils.GradleUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -30,10 +32,18 @@ public class GradleExecutionListener implements ExecutionListener {
 
         // 2. 如果是用 Gradle 跑 (GradleRunConfiguration / ExternalSystemRunConfiguration)
         if (GradleUtils.isGradleRunConfiguration(runProfile)) {
-            // 仅在用户明确使用 HotSwapDebugExecutor 时才动态注入
-            boolean isHotSwapDebug = HotSwapDebugExecutor.EXECUTOR_ID.equals(executorId);
+            // 严格检查：只有通过 HotSwap Debug 触发，才注入 init script
+            boolean isHotSwapTriggered = HotSwapDebugExecutor.EXECUTOR_ID.equals(executorId);
+            if (runProfile instanceof UserDataHolder) {
+                UserDataHolder holder = (UserDataHolder) runProfile;
+                if (Boolean.TRUE.equals(holder.getUserData(HotSwapDebugTopAction.HOTSWAP_DEBUG_TRIGGERED))) {
+                    isHotSwapTriggered = true;
+                    // 用完即清理标记，避免影响后续普通启动
+                    holder.putUserData(HotSwapDebugTopAction.HOTSWAP_DEBUG_TRIGGERED, null);
+                }
+            }
 
-            if (isHotSwapDebug && runProfile instanceof ExternalSystemRunConfiguration) {
+            if (isHotSwapTriggered && runProfile instanceof ExternalSystemRunConfiguration) {
                 Project project = env.getProject();
                 ExternalSystemRunConfiguration externalConfig = (ExternalSystemRunConfiguration) runProfile;
                 ExternalSystemTaskExecutionSettings settings = externalConfig.getSettings();
