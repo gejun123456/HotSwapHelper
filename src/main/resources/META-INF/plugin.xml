@@ -19,6 +19,13 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>1.1.9</p>
+        <ul>
+            <li>1.Fix: strictly inject HotSwapAgent only when running with HotSwap Debug, ensuring standard Gradle Debug remains untouched</li>
+        </ul>
+        <ul>
+            <li>1.紧急修复：严格仅在用户点击「HotSwap Debug」时注入热加载，普通 Gradle Debug 模式保持原生完全不受影响</li>
+        </ul>
         <p>1.1.8</p>
         <ul>
             <li>1.Support dynamic injection for Gradle projects (e.g. bootRun, runIde) without modifying build.gradle</li>

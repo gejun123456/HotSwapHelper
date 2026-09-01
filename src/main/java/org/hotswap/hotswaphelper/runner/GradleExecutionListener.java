@@ -2,7 +2,6 @@ package org.hotswap.hotswaphelper.runner;
 
 import com.intellij.execution.ExecutionListener;
 import com.intellij.execution.configurations.RunProfile;
-import com.intellij.execution.executors.DefaultDebugExecutor;
 import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.openapi.externalSystem.model.execution.ExternalSystemTaskExecutionSettings;
 import com.intellij.openapi.externalSystem.service.execution.ExternalSystemRunConfiguration;
@@ -31,11 +30,10 @@ public class GradleExecutionListener implements ExecutionListener {
 
         // 2. 如果是用 Gradle 跑 (GradleRunConfiguration / ExternalSystemRunConfiguration)
         if (GradleUtils.isGradleRunConfiguration(runProfile)) {
-            // 仅在 HotSwapDebugExecutor 或标准 Debug 模式下注入（支持热重载）
-            boolean isDebugMode = HotSwapDebugExecutor.EXECUTOR_ID.equals(executorId)
-                    || DefaultDebugExecutor.EXECUTOR_ID.equals(executorId);
+            // 仅在用户明确使用 HotSwapDebugExecutor 时才动态注入
+            boolean isHotSwapDebug = HotSwapDebugExecutor.EXECUTOR_ID.equals(executorId);
 
-            if (isDebugMode && runProfile instanceof ExternalSystemRunConfiguration) {
+            if (isHotSwapDebug && runProfile instanceof ExternalSystemRunConfiguration) {
                 Project project = env.getProject();
                 ExternalSystemRunConfiguration externalConfig = (ExternalSystemRunConfiguration) runProfile;
                 ExternalSystemTaskExecutionSettings settings = externalConfig.getSettings();
