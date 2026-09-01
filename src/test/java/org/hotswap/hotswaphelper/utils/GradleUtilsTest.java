@@ -58,6 +58,24 @@ public class GradleUtilsTest {
 
         Assert.assertEquals(firstPass, secondPass);
     }
+    @Test
+    public void testRemoveGradleScriptParameters() {
+        ExternalSystemTaskExecutionSettings settings = new ExternalSystemTaskExecutionSettings();
+        settings.setScriptParameters("--info --stacktrace --init-script \"C:/tmp/.hotswap/hotswap-init.gradle\"");
+
+        GradleUtils.removeGradleScriptParameters(settings);
+        Assert.assertEquals("--info --stacktrace", settings.getScriptParameters());
+
+        // Without quotes
+        settings.setScriptParameters("--init-script C:/tmp/.hotswap/hotswap-init.gradle --info");
+        GradleUtils.removeGradleScriptParameters(settings);
+        Assert.assertEquals("--info", settings.getScriptParameters());
+
+        // Only init script
+        settings.setScriptParameters("--init-script \"C:/tmp/.hotswap/hotswap-init.gradle\"");
+        GradleUtils.removeGradleScriptParameters(settings);
+        Assert.assertEquals("", settings.getScriptParameters());
+    }
 
     @Test
     public void testIsGradleRunConfigurationWithNull() {

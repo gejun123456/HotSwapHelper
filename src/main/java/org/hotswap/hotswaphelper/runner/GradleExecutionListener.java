@@ -2,6 +2,7 @@ package org.hotswap.hotswaphelper.runner;
 
 import com.intellij.execution.ExecutionListener;
 import com.intellij.execution.configurations.RunProfile;
+import com.intellij.execution.process.ProcessHandler;
 import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.openapi.externalSystem.model.execution.ExternalSystemTaskExecutionSettings;
 import com.intellij.openapi.externalSystem.service.execution.ExternalSystemRunConfiguration;
@@ -16,6 +17,7 @@ import java.io.File;
 
 /**
  * Listens for Gradle task execution to dynamically inject HotSwapAgent init-script.
+ * Ensures strict cleanup so normal Debug or Run is 100% clean and unpolluted.
  *
  * @author bruce ge
  */
@@ -43,16 +45,34 @@ public class GradleExecutionListener implements ExecutionListener {
                 }
             }
 
-            if (isHotSwapTriggered && runProfile instanceof ExternalSystemRunConfiguration) {
+            if (runProfile instanceof ExternalSystemRunConfiguration) {
                 Project project = env.getProject();
                 ExternalSystemRunConfiguration externalConfig = (ExternalSystemRunConfiguration) runProfile;
                 ExternalSystemTaskExecutionSettings settings = externalConfig.getSettings();
                 if (settings != null) {
-                    File initScript = GradleUtils.getOrGenerateInitScript(project);
-                    if (initScript.exists()) {
-                        GradleUtils.patchGradleScriptParameters(settings, initScript);
+                    if (isHotSwapTriggered) {
+                        File initScript = GradleUtils.getOrGenerateInitScript(project);
+                        if (initScript.exists()) {
+                            GradleUtils.patchGradleScriptParameters(settings, initScript);
+                        }
+                    } else {
+                        // 如果是普通 Debug 或普通 Run：确保彻底清理 init-script，绝不污染官方启动！
+                        GradleUtils.removeGradleScriptParameters(settings);
                     }
                 }
+            }
+        }
+    }
+
+    @Override
+    public void processStarted(@NotNull String executorId, @NotNull ExecutionEnvironment env, @NotNull ProcessHandler handler) {
+        // Gradle 进程一旦拉起，立即将 settings 中的 --init-script 清理复原，避免残留到配置中
+        RunProfile runProfile = env.getRunProfile();
+        if (runProfile instanceof ExternalSystemRunConfiguration) {
+            ExternalSystemRunConfiguration externalConfig = (ExternalSystemRunConfiguration) runProfile;
+            ExternalSystemTaskExecutionSettings settings = externalConfig.getSettings();
+            if (settings != null) {
+                GradleUtils.removeGradleScriptParameters(settings);
             }
         }
     }

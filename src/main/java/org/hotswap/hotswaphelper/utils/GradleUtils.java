@@ -170,4 +170,18 @@ public class GradleUtils {
             settings.setScriptParameters(scriptParams + " " + initScriptArg);
         }
     }
+
+    /**
+     * Removes the --init-script argument for HotSwap from Gradle task execution parameters if present.
+     */
+    public static void removeGradleScriptParameters(@NotNull ExternalSystemTaskExecutionSettings settings) {
+        String scriptParams = settings.getScriptParameters();
+        if (scriptParams != null && scriptParams.contains(INIT_SCRIPT_NAME)) {
+            String cleaned = scriptParams.replaceAll("--init-script\\s+[\"'][^\"']*" + INIT_SCRIPT_NAME + "[\"']", "")
+                    .replaceAll("--init-script\\s+[^\\s]*" + INIT_SCRIPT_NAME, "")
+                    .replaceAll("\\s+", " ")
+                    .trim();
+            settings.setScriptParameters(cleaned);
+        }
+    }
 }
