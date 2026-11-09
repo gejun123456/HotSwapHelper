@@ -12,4 +12,5 @@ out/
 build/
 idea-sandbox
 jvmargs.txt
-/.fastRequest/config/fastRequestCurrentProjectConfig.json
+/.fastRequest/
+test-projects/
