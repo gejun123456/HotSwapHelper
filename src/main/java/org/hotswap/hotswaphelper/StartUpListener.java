@@ -3,6 +3,7 @@ package org.hotswap.hotswaphelper;
 import com.intellij.ide.AppLifecycleListener;
 import com.intellij.openapi.application.ApplicationManager;
 import org.hotswap.hotswaphelper.utils.MyUtils;
+import org.hotswap.hotswaphelper.utils.HotSwapToolbarInstaller;
 import org.apache.commons.io.FileUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -16,6 +17,7 @@ public class StartUpListener implements AppLifecycleListener {
    }
 
    public void appFrameCreated(@NotNull List<String> commandLineArgs) {
+      ApplicationManager.getApplication().invokeLater(HotSwapToolbarInstaller::install);
       ApplicationManager.getApplication().executeOnPooledThread(() -> {
          try {
             File folder = MyUtils.getHotSwapFolder();

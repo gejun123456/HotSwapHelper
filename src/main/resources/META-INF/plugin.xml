@@ -198,7 +198,8 @@
                 icon="/icons/rotate.png"
                 text="Debug with HotSwap"
                 description="Debug selected configuration with HotSwap Agent">
-            <add-to-group group-id="MainToolbarRight" anchor="after" relative-to-action="RunToolbarWidgetAction"/>
+            <!-- The toolbar is chosen at startup based on the active UI and available groups. -->
+            <add-to-group group-id="RunMenu" anchor="last"/>
         </action>
     </actions>
 

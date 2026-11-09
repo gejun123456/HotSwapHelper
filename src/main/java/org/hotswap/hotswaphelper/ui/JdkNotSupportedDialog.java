@@ -27,19 +27,11 @@ import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.uiDesigner.core.Spacer;
 import com.intellij.util.ui.JBUI;
 import lombok.val;
-import com.intellij.execution.Executor;
-import com.intellij.execution.ExecutorRegistry;
-import com.intellij.execution.ProgramRunnerUtil;
 import com.intellij.execution.RunManager;
 import com.intellij.execution.RunnerAndConfigurationSettings;
-import com.intellij.execution.configurations.RunProfile;
-import com.intellij.execution.executors.DefaultDebugExecutor;
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationType;
-import com.intellij.openapi.util.UserDataHolder;
-import org.hotswap.hotswaphelper.HotSwapDebugExecutor;
 import org.hotswap.hotswaphelper.IconUtils;
-import org.hotswap.hotswaphelper.actions.HotSwapDebugTopAction;
 import org.hotswap.hotswaphelper.settings.HotSwapHelperPluginSettingsProvider;
 import org.hotswap.hotswaphelper.utils.*;
 import org.jetbrains.annotations.NotNull;
@@ -183,6 +175,7 @@ public class JdkNotSupportedDialog extends DialogWrapper {
             init();
         });
     }
+
     @Override
     protected Action @NotNull [] createActions() {
         ResourceBundle bundle = ResourceBundle.getBundle("string");
@@ -209,18 +202,7 @@ public class JdkNotSupportedDialog extends DialogWrapper {
                 RunManager runManager = RunManager.getInstance(project);
                 RunnerAndConfigurationSettings selectedConfiguration = runManager.getSelectedConfiguration();
                 if (selectedConfiguration != null) {
-                    RunProfile profile = selectedConfiguration.getConfiguration();
-                    if (GradleUtils.isGradleRunConfiguration(profile)) {
-                        if (profile instanceof UserDataHolder) {
-                            ((UserDataHolder) profile).putUserData(HotSwapDebugTopAction.HOTSWAP_DEBUG_TRIGGERED, true);
-                        }
-                        ProgramRunnerUtil.executeConfiguration(selectedConfiguration, DefaultDebugExecutor.getDebugExecutorInstance());
-                    } else {
-                        Executor executor = ExecutorRegistry.getInstance().getExecutorById(HotSwapDebugExecutor.EXECUTOR_ID);
-                        if (executor != null) {
-                            ProgramRunnerUtil.executeConfiguration(selectedConfiguration, executor);
-                        }
-                    }
+                    HotSwapDebugLauncher.execute(project, selectedConfiguration);
                 }
 
                 ResourceBundle bundle = ResourceBundle.getBundle("string");

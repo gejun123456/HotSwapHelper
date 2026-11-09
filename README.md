@@ -39,6 +39,14 @@ The jdk provided by [HotSwapHelper Releases](https://github.com/gejun123456/HotS
 dcevm with hotswap folder into it, so you don't need to install dcevm separately.
 If you don't like it, you can always install by yourself from doc:[HotSwapAgent GitHub page](https://github.com/HotswapProjects/HotswapAgent).
 
+#### Cannot find runner for Grails or another run configuration
+
+HotSwap Debug requires a runner that accepts both the configuration and the plugin's executor. Configurations with a dedicated debugger, such as Grails, may not support that executor. This error alone does not establish an IDEA EAP compatibility regression.
+
+First verify that standard Debug works. In Settings > HotSwapHelper, select the application's JDK and export the VM options. Add them to the application's JVM options in the Grails or other run configuration, then use standard Debug. If the launcher forks another JVM, pass the options to the application JVM. Check the application log for HotSwapAgent and verify reloading; manual injection does not establish support for every Grails reload feature.
+
+The toolbar disables HotSwap Debug when no matching runner exists and explains the workaround. If standard Debug also fails, report the full IDEA build number, Grails plugin version, and a minimal reproducer.
+
 #### IDEA 2024.3 meet NoClassFound Exception
 1. "Build, Execution, Deployment" → "Debugger" → "Async Stack Traces" and uncheck the "Instrumenting agent".
 

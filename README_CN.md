@@ -101,6 +101,17 @@ Spring dev tool | 免费开源   | 依赖springboot,使用重启技术，兼容�
 https://youtrack.jetbrains.com/issue/JBR-7674/Any-hotswap-attempt-causes-JBR-to-crash-in-IntelliJ-IDEA-2024.2.3
 https://youtrack.jetbrains.com/issues/JBR?q=hotswap
 
+#### Grails 等运行配置提示 Cannot find runner
+
+HotSwap Debug 需要与当前运行配置匹配的 runner。Grails 等使用专用调试 runner 的配置可能不支持插件的自定义 executor，不能仅凭此异常判断为 IDEA EAP 的版本兼容问题。
+
+1. 先确认该配置使用 IDEA 普通 Debug 能正常启动。
+2. 在设置 → HotSwapHelper 中选择应用使用的 JDK 并导出 VM 参数，将参数加入 Grails 等配置实际启动应用的 JVM 参数，再使用普通 Debug。若启动器会 fork JVM，需要传给应用 JVM。
+3. 确认应用启动日志包含 HotSwapAgent，并验证修改后热加载是否生效；手动注入不代表已经验证了所有 Grails 热加载功能。
+4. 若普通 Debug 也失败，请提供 IDEA 完整 build number、Grails 插件版本和最小复现项目。
+
+顶部 HotSwap Debug 按钮会在没有匹配 runner 时禁用，并在说明中提供手动配置方法。
+
 #### tomcat或者jetty等项目如何热加载:
 1. 1.1.5版本的插件在设置->HotSwapHelper界面可以导出vm参数，然后在tomcat或者jetty的vm参数中加入这个参数,修改代码或xml文件需要使用
 点击update按钮使用 update classes and resources选项即可热加载
