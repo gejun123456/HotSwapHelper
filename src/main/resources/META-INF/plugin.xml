@@ -19,6 +19,17 @@
         ]]></description>
 
     <change-notes><![CDATA[
+        <p>1.2.0</p>
+        <ul>
+            <li>Updated the bundled HotSwapAgent to 2.0.4.</li>
+            <li>HotSwap Debug appears once in the active IntelliJ toolbar and is also available from the Run menu.</li>
+            <li>Configurations without a compatible debug runner now show why HotSwap Debug is unavailable.</li>
+        </ul>
+        <ul>
+            <li>内置 HotSwapAgent 更新至 2.0.4。</li>
+            <li>HotSwap Debug 根据当前 IDEA 界面选择一个工具栏位置，并提供 Run 菜单入口。</li>
+            <li>运行配置缺少兼容的调试 runner 时，提示 HotSwap Debug 不可用的原因。</li>
+        </ul>
         <p>1.1.9</p>
         <ul>
             <li>1.Fix: strictly inject HotSwapAgent only when running with HotSwap Debug, ensuring standard Gradle Debug remains untouched</li>
