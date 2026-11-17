@@ -1,6 +1,5 @@
 buildscript {
     ext.kotlin_version = '1.9.22'
-    ext.kotlin_version = '1.5.0'
     repositories {
         mavenCentral()
         maven { url 'https://plugins.gradle.org/m2/' }
@@ -9,7 +8,6 @@ buildscript {
     // https://github.com/JetBrains/gradle-intellij-plugin/ 关注开发插件版本
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "org.jetbrains.intellij.plugins:gradle-intellij-plugin:0.7.3"
         classpath "com.guardsquare:proguard-gradle:7.3.0"
     }
 }
@@ -18,7 +16,7 @@ buildscript {
 // 这两个插件是必备
 plugins {
     id 'java'
-    id 'org.jetbrains.intellij' version '0.7.3'
+    id 'org.jetbrains.intellij' version '1.14.1'
 }
 
 apply plugin: 'kotlin'
@@ -27,8 +25,8 @@ apply plugin: 'kotlin'
 
 group 'com.bruce.plugins'
 version '1.2.0'
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
 compileJava.options.encoding = "UTF-8"
 compileTestJava.options.encoding = "UTF-8"
 
@@ -41,60 +39,59 @@ repositories {
 
 intellij {
 //    插件名称
-    pluginName 'HotSwapHelper'
+    pluginName.set('HotSwapHelper')
     // 沙箱目录位置，用于保存IDEA的设置，默认在build文件下面，防止clean，放在根目录下。
-    sandboxDirectory = "${rootProject.rootDir}/idea-sandbox"
+    sandboxDir.set("${rootProject.rootDir}/idea-sandbox")
     // 开发环境运行时使用的版本
-    version '2021.2.2'
+    version.set('2022.3.3')
     // 社区版
-//    type 'IC'
+//    type.set('IC')
     // 企业版
-    type 'IU'
+    type.set('IU')
     // 各种IDEA版本去这里找
     // https://www.jetbrains.com/intellij-repository/releases
     // 依赖的插件
-    plugins = ['java', 'maven', 'gradle']
+    plugins.set(['java', 'maven', 'gradle'])
     //Disables updating since-build attribute in plugin.xml
-    updateSinceUntilBuild false
-    downloadSources = true
+    updateSinceUntilBuild.set(false)
+    downloadSources.set(true)
 }
 
 runIde {
     //check if jvm args file exist.
     if (file("jvmArgs.txt").exists()) {
         //read jvm args from file.
-        jvmArgs = file("jvmArgs.txt").readLines()
-        jvmArgs(jvmArgs)
+        jvmArgs(file("jvmArgs.txt").readLines())
     }
 }
 
 dependencies {
     // jackson工具
-    compile 'com.fasterxml.jackson.core:jackson-databind:2.9.6'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.6'
     // guava工具
-//    compile 'com.google.guava:guava:29.0-jre'
+//    implementation 'com.google.guava:guava:29.0-jre'
     // velocity支持
-//    compile 'org.apache.velocity:velocity:1.7'
+//    implementation 'org.apache.velocity:velocity:1.7'
 
-//    compile fileTree(dir: 'libs', includes: ['*.jar'])
+//    implementation fileTree(dir: 'libs', includes: ['*.jar'])
 
     //add slf4j
-//    compile 'org.slf4j:slf4j-api:1.7.30'
+//    implementation 'org.slf4j:slf4j-api:1.7.30'
 
     // groovy支持
-//    compile 'org.codehaus.groovy:groovy:3.0.2'
+//    implementation 'org.codehaus.groovy:groovy:3.0.2'
     // beetl支持
-//    compile 'com.ibeetl:beetl:3.3.0.RELEASE'
+//    implementation 'com.ibeetl:beetl:3.3.0.RELEASE'
     // freemarker支持
-//    compile 'org.freemarker:freemarker:2.3.30'
+//    implementation 'org.freemarker:freemarker:2.3.30'
     // lombok 支持
-    compileOnly 'org.projectlombok:lombok:1.18.2'
+    compileOnly 'org.projectlombok:lombok:1.18.30'
     compileOnly group: 'com.alibaba', name: 'fastjson', version: '1.2.83'
 
-    annotationProcessor 'org.projectlombok:lombok:1.18.2'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.2'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
     // 测试用例
-    testCompile 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
     //hutool
     implementation 'cn.hutool:hutool-all:5.8.21'
     //xml
@@ -107,12 +104,11 @@ dependencies {
 }
 compileKotlin {
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
 }
 compileTestKotlin {
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
 }
-

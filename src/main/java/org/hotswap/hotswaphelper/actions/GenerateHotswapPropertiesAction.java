@@ -1,6 +1,7 @@
 package org.hotswap.hotswaphelper.actions;
 
 import org.hotswap.hotswaphelper.utils.HotswapPropertiesGenerator;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
@@ -56,5 +57,10 @@ public class GenerateHotswapPropertiesAction extends AnAction {
         VirtualFile existingFile = file.findChild("hotswap-agent.properties");
 
         e.getPresentation().setEnabledAndVisible(isResourceFolder && existingFile == null);
+    }
+
+    @Override
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.BGT;
     }
 }

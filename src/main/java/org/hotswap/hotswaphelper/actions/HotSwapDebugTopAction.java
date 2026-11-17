@@ -2,6 +2,7 @@ package org.hotswap.hotswaphelper.actions;
 
 import com.intellij.execution.RunManager;
 import com.intellij.execution.RunnerAndConfigurationSettings;
+import com.intellij.openapi.actionSystem.ActionUpdateThread;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.Presentation;
@@ -65,5 +66,10 @@ public class HotSwapDebugTopAction extends AnAction implements DumbAware {
             presentation.setText("Debug with HotSwap Agent");
             presentation.setDescription("Debug with HotSwap Agent");
         }
+    }
+
+    @Override
+    public @NotNull ActionUpdateThread getActionUpdateThread() {
+        return ActionUpdateThread.BGT;
     }
 }
